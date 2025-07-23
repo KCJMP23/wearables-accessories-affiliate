@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/server.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/server.ts"
+    }
+  ],
+  "env": {
+    "PAYLOAD_SECRET": "@payload-secret",
+    "DATABASE_URL": "@database-url",
+    "PAYLOAD_PUBLIC_SERVER_URL": "@payload-public-server-url"
+  }
+} 

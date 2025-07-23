@@ -1,0 +1,24 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useEffect, useState } from 'react';
+import { cn } from '../utils/cn';
+export const Toast = ({ message, type = 'info', duration = 5000, onClose, className }) => {
+    const [isVisible, setIsVisible] = useState(true);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(false);
+            setTimeout(onClose, 300); // Allow time for fade out animation
+        }, duration);
+        return () => clearTimeout(timer);
+    }, [duration, onClose]);
+    const typeStyles = {
+        success: 'bg-green-500 text-white',
+        error: 'bg-red-500 text-white',
+        warning: 'bg-yellow-500 text-white',
+        info: 'bg-blue-500 text-white'
+    };
+    return (_jsx("div", { className: cn('fixed top-4 right-4 z-50 p-4 rounded-md shadow-lg transition-all duration-300', typeStyles[type], isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2', className), children: _jsxs("div", { className: "flex items-center justify-between", children: [_jsx("span", { className: "text-sm font-medium", children: message }), _jsx("button", { onClick: () => {
+                        setIsVisible(false);
+                        setTimeout(onClose, 300);
+                    }, className: "ml-4 text-white hover:text-gray-200", children: "\u2715" })] }) }));
+};

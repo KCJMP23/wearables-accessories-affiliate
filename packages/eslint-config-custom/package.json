@@ -1,0 +1,26 @@
+{
+  "name": "@affiliate/eslint-config-custom",
+  "version": "1.0.0",
+  "description": "Shared ESLint configuration for the affiliate platform",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "keywords": [
+    "eslint",
+    "config",
+    "affiliate",
+    "shared"
+  ],
+  "author": "Affiliate Platform Team",
+  "license": "MIT"
+}
