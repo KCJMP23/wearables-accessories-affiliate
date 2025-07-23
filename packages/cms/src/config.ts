@@ -1,18 +1,20 @@
 import { buildConfig } from 'payload';
 import { postgresAdapter } from '@payloadcms/db-postgres';
-import { slateEditor } from '@payloadcms/richtext-slate';
+import pkg from '@payloadcms/richtext-slate';
 import path from 'path';
-import { Users } from './collections/Users';
-import { Posts } from './collections/Posts';
-import { Pages } from './collections/Pages';
-import { Media } from './collections/Media';
-import { Categories } from './collections/Categories';
-import { Tags } from './collections/Tags';
-import { Products } from './collections/Products';
+import { Users } from './collections/Users.js';
+import { Posts } from './collections/Posts.js';
+import { Pages } from './collections/Pages.js';
+import { Media } from './collections/Media.js';
+import { Categories } from './collections/Categories.js';
+import { Tags } from './collections/Tags.js';
+import { Products } from './collections/Products.js';
+
+const { slateEditor } = pkg;
 
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'your-secret-key-here',
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3002',
   admin: {
     user: Users.slug,
     meta: {

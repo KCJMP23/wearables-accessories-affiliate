@@ -46,17 +46,17 @@ export interface ImageGenerationResponse {
 }
 export interface AIServiceConfig {
     openai: {
-        apiKey: string;
+        apiKey?: string;
         baseUrl?: string;
         defaultModel: string;
     };
     claude: {
-        apiKey: string;
+        apiKey?: string;
         baseUrl?: string;
         defaultModel: string;
     };
     leonardo: {
-        apiKey: string;
+        apiKey?: string;
         baseUrl?: string;
     };
 }

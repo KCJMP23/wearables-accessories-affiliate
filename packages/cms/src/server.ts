@@ -2,7 +2,7 @@ import express from 'express';
 import payload from 'payload';
 import { resolve } from 'path';
 import { config } from 'dotenv';
-import payloadConfig from './config';
+import payloadConfig from './config.js';
 
 // Load environment variables
 config();
@@ -26,8 +26,8 @@ const start = async () => {
     next();
   });
 
-  app.listen(3000, () => {
-    console.log('Payload CMS server running on http://localhost:3000');
+  app.listen(3002, () => {
+    console.log('Payload CMS server running on http://localhost:3002');
   });
 };
 

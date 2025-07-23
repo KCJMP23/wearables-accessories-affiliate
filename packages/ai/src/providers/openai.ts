@@ -11,8 +11,13 @@ export class OpenAIService {
   private client: OpenAI;
 
   constructor() {
+    const apiKey = aiConfig.openai.apiKey;
+    if (!apiKey) {
+      throw new Error('OpenAI API key is required');
+    }
+    
     this.client = new OpenAI({
-      apiKey: aiConfig.openai.apiKey,
+      apiKey,
       baseURL: aiConfig.openai.baseUrl,
     });
   }

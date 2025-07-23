@@ -3,17 +3,17 @@ import { AIServiceConfig } from '@affiliate/shared-types';
 
 const aiConfigSchema = z.object({
   openai: z.object({
-    apiKey: z.string().min(1, 'OpenAI API key is required'),
+    apiKey: z.string().optional(),
     baseUrl: z.string().url().optional(),
     defaultModel: z.string().default('gpt-4o-mini'),
   }),
   claude: z.object({
-    apiKey: z.string().min(1, 'Claude API key is required'),
+    apiKey: z.string().optional(),
     baseUrl: z.string().url().optional(),
     defaultModel: z.string().default('claude-3-haiku-20240307'),
   }),
   leonardo: z.object({
-    apiKey: z.string().min(1, 'Leonardo.AI API key is required'),
+    apiKey: z.string().optional(),
     baseUrl: z.string().url().optional(),
   }),
 });

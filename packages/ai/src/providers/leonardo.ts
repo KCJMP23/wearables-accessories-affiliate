@@ -9,8 +9,12 @@ export class LeonardoService {
   private baseUrl: string;
 
   constructor() {
-    this.apiKey = aiConfig.leonardo.apiKey;
+    this.apiKey = aiConfig.leonardo.apiKey || '';
     this.baseUrl = aiConfig.leonardo.baseUrl || 'https://cloud.leonardo.ai/api/rest/v1';
+    
+    if (!this.apiKey) {
+      throw new Error('Leonardo.AI API key is required');
+    }
   }
 
   async generateImage(request: ImageGenerationRequest): Promise<ImageGenerationResponse> {

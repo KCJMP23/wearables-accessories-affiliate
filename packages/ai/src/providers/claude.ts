@@ -9,8 +9,13 @@ export class ClaudeService {
   private client: Anthropic;
 
   constructor() {
+    const apiKey = aiConfig.claude.apiKey;
+    if (!apiKey) {
+      throw new Error('Claude API key is required');
+    }
+    
     this.client = new Anthropic({
-      apiKey: aiConfig.claude.apiKey,
+      apiKey,
       baseURL: aiConfig.claude.baseUrl,
     });
   }
