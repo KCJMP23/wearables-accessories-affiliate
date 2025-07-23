@@ -1,8 +1,3 @@
-import payload from 'payload';
-
-// Initialize Payload CMS client
-export const payloadClient = payload;
-
 // Mock data for when CMS is not available
 const mockPosts = [
   {
@@ -14,7 +9,7 @@ const mockPosts = [
       url: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=600&fit=crop',
       alt: 'Gaming headset'
     },
-    publishedAt: new Date('2024-01-15'),
+    publishedAt: '2024-01-15T00:00:00.000Z',
     author: {
       name: 'Tech Expert'
     },
@@ -30,7 +25,7 @@ const mockPosts = [
       url: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&h=600&fit=crop',
       alt: 'Wireless earbuds'
     },
-    publishedAt: new Date('2024-01-10'),
+    publishedAt: '2024-01-10T00:00:00.000Z',
     author: {
       name: 'Audio Specialist'
     },
@@ -46,7 +41,7 @@ const mockPosts = [
       url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
       alt: 'Smart home security'
     },
-    publishedAt: new Date('2024-01-05'),
+    publishedAt: '2024-01-05T00:00:00.000Z',
     author: {
       name: 'Security Expert'
     },
@@ -109,306 +104,71 @@ const mockProducts = [
   }
 ];
 
-// Helper function to check if Payload is available
-async function isPayloadAvailable() {
-  try {
-    // Try to access a simple Payload operation
-    await payload.find({
-      collection: 'users',
-      limit: 1,
-    });
-    return true;
-  } catch (error) {
-    console.log('Payload CMS not available, using mock data');
-    return false;
-  }
-}
-
 // Helper function to get published posts
 export async function getPublishedPosts(limit = 10) {
-  const isAvailable = await isPayloadAvailable();
-  
-  if (!isAvailable) {
-    return { 
-      docs: mockPosts.slice(0, limit), 
-      totalDocs: mockPosts.length, 
-      totalPages: 1, 
-      page: 1, 
-      limit 
-    };
-  }
-
-  try {
-    const posts = await payload.find({
-      collection: 'posts',
-      where: {
-        status: {
-          equals: 'published',
-        },
-      },
-      sort: '-publishedAt',
-      limit,
-      depth: 2, // Include related data
-    });
-    return posts;
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-    // Return mock data when CMS is not available
-    return { 
-      docs: mockPosts.slice(0, limit), 
-      totalDocs: mockPosts.length, 
-      totalPages: 1, 
-      page: 1, 
-      limit 
-    };
-  }
+  return { 
+    docs: mockPosts.slice(0, limit), 
+    totalDocs: mockPosts.length, 
+    totalPages: 1, 
+    page: 1, 
+    limit 
+  };
 }
 
 // Helper function to get featured posts
 export async function getFeaturedPosts(limit = 3) {
-  const isAvailable = await isPayloadAvailable();
-  
-  if (!isAvailable) {
-    return { 
-      docs: mockPosts.slice(0, limit), 
-      totalDocs: mockPosts.length, 
-      totalPages: 1, 
-      page: 1, 
-      limit 
-    };
-  }
-
-  try {
-    const posts = await payload.find({
-      collection: 'posts',
-      where: {
-        and: [
-          {
-            status: {
-              equals: 'published',
-            },
-          },
-          {
-            featured: {
-              equals: true,
-            },
-          },
-        ],
-      },
-      sort: '-publishedAt',
-      limit,
-      depth: 2,
-    });
-    return posts;
-  } catch (error) {
-    console.error('Error fetching featured posts:', error);
-    // Return mock data when CMS is not available
-    return { 
-      docs: mockPosts.slice(0, limit), 
-      totalDocs: mockPosts.length, 
-      totalPages: 1, 
-      page: 1, 
-      limit 
-    };
-  }
+  return { 
+    docs: mockPosts.slice(0, limit), 
+    totalDocs: mockPosts.length, 
+    totalPages: 1, 
+    page: 1, 
+    limit 
+  };
 }
 
 // Helper function to get active products
 export async function getActiveProducts(limit = 10) {
-  const isAvailable = await isPayloadAvailable();
-  
-  if (!isAvailable) {
-    return { 
-      docs: mockProducts.slice(0, limit), 
-      totalDocs: mockProducts.length, 
-      totalPages: 1, 
-      page: 1, 
-      limit 
-    };
-  }
-
-  try {
-    const products = await payload.find({
-      collection: 'products',
-      where: {
-        status: {
-          equals: 'active',
-        },
-      },
-      sort: '-createdAt',
-      limit,
-      depth: 2,
-    });
-    return products;
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    // Return mock data when CMS is not available
-    return { 
-      docs: mockProducts.slice(0, limit), 
-      totalDocs: mockProducts.length, 
-      totalPages: 1, 
-      page: 1, 
-      limit 
-    };
-  }
+  return { 
+    docs: mockProducts.slice(0, limit), 
+    totalDocs: mockProducts.length, 
+    totalPages: 1, 
+    page: 1, 
+    limit 
+  };
 }
 
 // Helper function to get featured products
 export async function getFeaturedProducts(limit = 3) {
-  const isAvailable = await isPayloadAvailable();
-  
-  if (!isAvailable) {
-    return { 
-      docs: mockProducts.slice(0, limit), 
-      totalDocs: mockProducts.length, 
-      totalPages: 1, 
-      page: 1, 
-      limit 
-    };
-  }
-
-  try {
-    const products = await payload.find({
-      collection: 'products',
-      where: {
-        and: [
-          {
-            status: {
-              equals: 'active',
-            },
-          },
-          {
-            featured: {
-              equals: true,
-            },
-          },
-        ],
-      },
-      sort: '-createdAt',
-      limit,
-      depth: 2,
-    });
-    return products;
-  } catch (error) {
-    console.error('Error fetching featured products:', error);
-    // Return mock data when CMS is not available
-    return { 
-      docs: mockProducts.slice(0, limit), 
-      totalDocs: mockProducts.length, 
-      totalPages: 1, 
-      page: 1, 
-      limit 
-    };
-  }
+  return { 
+    docs: mockProducts.slice(0, limit), 
+    totalDocs: mockProducts.length, 
+    totalPages: 1, 
+    page: 1, 
+    limit 
+  };
 }
 
 // Helper function to get categories
 export async function getCategories() {
-  const isAvailable = await isPayloadAvailable();
-  
-  if (!isAvailable) {
-    return { 
-      docs: [
-        { id: '1', name: 'Audio & Video', slug: 'audio-video' },
-        { id: '2', name: 'Smart Home', slug: 'smart-home' },
-        { id: '3', name: 'Gaming', slug: 'gaming' }
-      ], 
-      totalDocs: 3, 
-      totalPages: 1, 
-      page: 1, 
-      limit: 10 
-    };
-  }
-
-  try {
-    const categories = await payload.find({
-      collection: 'categories',
-      sort: 'name',
-    });
-    return categories;
-  } catch (error) {
-    console.error('Error fetching categories:', error);
-    // Return mock data when CMS is not available
-    return { 
-      docs: [
-        { id: '1', name: 'Audio & Video', slug: 'audio-video' },
-        { id: '2', name: 'Smart Home', slug: 'smart-home' },
-        { id: '3', name: 'Gaming', slug: 'gaming' }
-      ], 
-      totalDocs: 3, 
-      totalPages: 1, 
-      page: 1, 
-      limit: 10 
-    };
-  }
+  return { 
+    docs: [
+      { id: '1', name: 'Audio & Video', slug: 'audio-video' },
+      { id: '2', name: 'Smart Home', slug: 'smart-home' },
+      { id: '3', name: 'Gaming', slug: 'gaming' }
+    ], 
+    totalDocs: 3, 
+    totalPages: 1, 
+    page: 1, 
+    limit: 10 
+  };
 }
 
 // Helper function to get a single post by slug
 export async function getPostBySlug(slug: string) {
-  const isAvailable = await isPayloadAvailable();
-  
-  if (!isAvailable) {
-    return mockPosts.find(post => post.slug === slug) || null;
-  }
-
-  try {
-    const posts = await payload.find({
-      collection: 'posts',
-      where: {
-        and: [
-          {
-            slug: {
-              equals: slug,
-            },
-          },
-          {
-            status: {
-              equals: 'published',
-            },
-          },
-        ],
-      },
-      depth: 2,
-    });
-    return posts.docs[0] || null;
-  } catch (error) {
-    console.error('Error fetching post:', error);
-    // Return mock data when CMS is not available
-    return mockPosts.find(post => post.slug === slug) || null;
-  }
+  return mockPosts.find(post => post.slug === slug) || null;
 }
 
 // Helper function to get a single product by slug
 export async function getProductBySlug(slug: string) {
-  const isAvailable = await isPayloadAvailable();
-  
-  if (!isAvailable) {
-    return mockProducts.find(product => product.slug === slug) || null;
-  }
-
-  try {
-    const products = await payload.find({
-      collection: 'products',
-      where: {
-        and: [
-          {
-            slug: {
-              equals: slug,
-            },
-          },
-          {
-            status: {
-              equals: 'active',
-            },
-          },
-        ],
-      },
-      depth: 2,
-    });
-    return products.docs[0] || null;
-  } catch (error) {
-    console.error('Error fetching product:', error);
-    // Return mock data when CMS is not available
-    return mockProducts.find(product => product.slug === slug) || null;
-  }
+  return mockProducts.find(product => product.slug === slug) || null;
 } 

@@ -7,7 +7,7 @@ interface Post {
   title: string;
   excerpt: string;
   slug: string;
-  publishedAt: Date;
+  publishedAt: string;
   featuredImage?: {
     url: string;
     alt: string;
