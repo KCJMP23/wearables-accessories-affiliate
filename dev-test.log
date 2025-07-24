@@ -202,3 +202,113 @@ web:dev: [?25h
 @affiliate/db:dev: src/utils.ts(437,28): error TS7006: Parameter 'p' implicitly has an 'any' type.
 @affiliate/db:dev: 
 @affiliate/db:dev: 5:47:31 PM - Found 13 errors. Watching for file changes.
+@affiliate/ai:dev: [2J[3J[H6:09:51 PM - File change detected. Starting incremental compilation...
+@affiliate/ai:dev: 
+@affiliate/ai:dev: src/service.ts(259,33): error TS2300: Duplicate identifier 'content'.
+@affiliate/ai:dev: src/service.ts(293,11): error TS2300: Duplicate identifier 'content'.
+@affiliate/ai:dev: src/service.ts(362,25): error TS18048: 'usage' is possibly 'undefined'.
+@affiliate/ai:dev: 
+@affiliate/ai:dev: 6:09:51 PM - Found 3 errors. Watching for file changes.
+@affiliate/ai:dev: [2J[3J[H6:10:06 PM - File change detected. Starting incremental compilation...
+@affiliate/ai:dev: 
+@affiliate/ai:dev: src/service.ts(362,25): error TS18048: 'usage' is possibly 'undefined'.
+@affiliate/ai:dev: 
+@affiliate/ai:dev: 6:10:06 PM - Found 1 error. Watching for file changes.
+@affiliate/ai:dev: [2J[3J[H6:10:11 PM - File change detected. Starting incremental compilation...
+@affiliate/ai:dev: 
+@affiliate/ai:dev: 
+@affiliate/ai:dev: 6:10:11 PM - Found 0 errors. Watching for file changes.
+@affiliate/db:dev: [2J[3J[H6:17:03 PM - File change detected. Starting incremental compilation...
+@affiliate/db:dev: 
+@affiliate/db:dev: src/index.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/index.ts(4,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/seed.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/utils.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/utils.ts(1,24): error TS2305: Module '"@prisma/client"' has no exported member 'Prisma'.
+@affiliate/db:dev: src/utils.ts(20,14): error TS2323: Cannot redeclare exported variable 'contentService'.
+@affiliate/db:dev: src/utils.ts(126,14): error TS2323: Cannot redeclare exported variable 'siteService'.
+@affiliate/db:dev: src/utils.ts(191,14): error TS2323: Cannot redeclare exported variable 'affiliateLinkService'.
+@affiliate/db:dev: src/utils.ts(280,45): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(281,39): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(294,14): error TS2323: Cannot redeclare exported variable 'productService'.
+@affiliate/db:dev: src/utils.ts(383,45): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(384,39): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(388,41): error TS7006: Parameter 'sum' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(388,46): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(423,31): error TS7006: Parameter 'stat' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(437,28): error TS7006: Parameter 'p' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(450,14): error TS2323: Cannot redeclare exported variable 'newsletterService'.
+@affiliate/db:dev: src/utils.ts(519,14): error TS2323: Cannot redeclare exported variable 'categoryService'.
+@affiliate/db:dev: src/utils.ts(574,14): error TS2323: Cannot redeclare exported variable 'tagService'.
+@affiliate/db:dev: src/utils.ts(618,14): error TS2323: Cannot redeclare exported variable 'mediaService'.
+@affiliate/db:dev: src/utils.ts(676,14): error TS2323: Cannot redeclare exported variable 'merchantService'.
+@affiliate/db:dev: src/utils.ts(729,14): error TS2323: Cannot redeclare exported variable 'auditService'.
+@affiliate/db:dev: src/utils.ts(771,14): error TS2323: Cannot redeclare exported variable 'recipeService'.
+@affiliate/db:dev: src/utils.ts(865,14): error TS2323: Cannot redeclare exported variable 'aiContentService'.
+@affiliate/db:dev: src/utils.ts(925,14): error TS2323: Cannot redeclare exported variable 'notificationService'.
+@affiliate/db:dev: src/utils.ts(972,14): error TS2323: Cannot redeclare exported variable 'contentTypeService'.
+@affiliate/db:dev: src/utils.ts(1025,14): error TS2323: Cannot redeclare exported variable 'customNicheService'.
+@affiliate/db:dev: src/utils.ts(1083,14): error TS2323: Cannot redeclare exported variable 'autoBlogPostService'.
+@affiliate/db:dev: src/utils.ts(1169,14): error TS2323: Cannot redeclare exported variable 'contentScheduleService'.
+@affiliate/db:dev: src/utils.ts(1251,14): error TS2323: Cannot redeclare exported variable 'productCategoryService'.
+@affiliate/db:dev: src/utils.ts(1357,11): error TS7034: Variable 'rootCategories' implicitly has type 'any[]' in some locations where its type cannot be determined.
+@affiliate/db:dev: src/utils.ts(1359,24): error TS7006: Parameter 'category' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(1363,24): error TS7006: Parameter 'category' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(1375,12): error TS7005: Variable 'rootCategories' implicitly has an 'any[]' type.
+@affiliate/db:dev: src/utils.ts(1380,3): error TS2323: Cannot redeclare exported variable 'contentService'.
+@affiliate/db:dev: src/utils.ts(1380,3): error TS2484: Export declaration conflicts with exported declaration of 'contentService'.
+@affiliate/db:dev: src/utils.ts(1381,3): error TS2323: Cannot redeclare exported variable 'siteService'.
+@affiliate/db:dev: src/utils.ts(1381,3): error TS2484: Export declaration conflicts with exported declaration of 'siteService'.
+@affiliate/db:dev: src/utils.ts(1382,3): error TS2323: Cannot redeclare exported variable 'affiliateLinkService'.
+@affiliate/db:dev: src/utils.ts(1382,3): error TS2484: Export declaration conflicts with exported declaration of 'affiliateLinkService'.
+@affiliate/db:dev: src/utils.ts(1383,3): error TS2323: Cannot redeclare exported variable 'productService'.
+@affiliate/db:dev: src/utils.ts(1383,3): error TS2484: Export declaration conflicts with exported declaration of 'productService'.
+@affiliate/db:dev: src/utils.ts(1384,3): error TS2323: Cannot redeclare exported variable 'categoryService'.
+@affiliate/db:dev: src/utils.ts(1384,3): error TS2484: Export declaration conflicts with exported declaration of 'categoryService'.
+@affiliate/db:dev: src/utils.ts(1385,3): error TS2323: Cannot redeclare exported variable 'tagService'.
+@affiliate/db:dev: src/utils.ts(1385,3): error TS2484: Export declaration conflicts with exported declaration of 'tagService'.
+@affiliate/db:dev: src/utils.ts(1386,3): error TS2323: Cannot redeclare exported variable 'mediaService'.
+@affiliate/db:dev: src/utils.ts(1386,3): error TS2484: Export declaration conflicts with exported declaration of 'mediaService'.
+@affiliate/db:dev: src/utils.ts(1387,3): error TS2323: Cannot redeclare exported variable 'merchantService'.
+@affiliate/db:dev: src/utils.ts(1387,3): error TS2484: Export declaration conflicts with exported declaration of 'merchantService'.
+@affiliate/db:dev: src/utils.ts(1388,3): error TS2323: Cannot redeclare exported variable 'auditService'.
+@affiliate/db:dev: src/utils.ts(1388,3): error TS2484: Export declaration conflicts with exported declaration of 'auditService'.
+@affiliate/db:dev: src/utils.ts(1389,3): error TS2323: Cannot redeclare exported variable 'newsletterService'.
+@affiliate/db:dev: src/utils.ts(1389,3): error TS2484: Export declaration conflicts with exported declaration of 'newsletterService'.
+@affiliate/db:dev: src/utils.ts(1390,3): error TS2323: Cannot redeclare exported variable 'recipeService'.
+@affiliate/db:dev: src/utils.ts(1390,3): error TS2484: Export declaration conflicts with exported declaration of 'recipeService'.
+@affiliate/db:dev: src/utils.ts(1391,3): error TS2323: Cannot redeclare exported variable 'aiContentService'.
+@affiliate/db:dev: src/utils.ts(1391,3): error TS2484: Export declaration conflicts with exported declaration of 'aiContentService'.
+@affiliate/db:dev: src/utils.ts(1392,3): error TS2323: Cannot redeclare exported variable 'notificationService'.
+@affiliate/db:dev: src/utils.ts(1392,3): error TS2484: Export declaration conflicts with exported declaration of 'notificationService'.
+@affiliate/db:dev: src/utils.ts(1393,3): error TS2323: Cannot redeclare exported variable 'contentTypeService'.
+@affiliate/db:dev: src/utils.ts(1393,3): error TS2484: Export declaration conflicts with exported declaration of 'contentTypeService'.
+@affiliate/db:dev: src/utils.ts(1394,3): error TS2323: Cannot redeclare exported variable 'customNicheService'.
+@affiliate/db:dev: src/utils.ts(1394,3): error TS2484: Export declaration conflicts with exported declaration of 'customNicheService'.
+@affiliate/db:dev: src/utils.ts(1395,3): error TS2323: Cannot redeclare exported variable 'autoBlogPostService'.
+@affiliate/db:dev: src/utils.ts(1395,3): error TS2484: Export declaration conflicts with exported declaration of 'autoBlogPostService'.
+@affiliate/db:dev: src/utils.ts(1396,3): error TS2323: Cannot redeclare exported variable 'contentScheduleService'.
+@affiliate/db:dev: src/utils.ts(1396,3): error TS2484: Export declaration conflicts with exported declaration of 'contentScheduleService'.
+@affiliate/db:dev: src/utils.ts(1397,3): error TS2323: Cannot redeclare exported variable 'productCategoryService'.
+@affiliate/db:dev: src/utils.ts(1397,3): error TS2484: Export declaration conflicts with exported declaration of 'productCategoryService'.
+@affiliate/db:dev: 
+@affiliate/db:dev: 6:17:03 PM - Found 71 errors. Watching for file changes.
+@affiliate/db:dev: [2J[3J[H6:18:17 PM - File change detected. Starting incremental compilation...
+@affiliate/db:dev: 
+@affiliate/db:dev: src/index.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/index.ts(4,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/seed.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/utils.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/utils.ts(1,24): error TS2305: Module '"@prisma/client"' has no exported member 'Prisma'.
+@affiliate/db:dev: src/utils.ts(280,45): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(281,39): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(383,45): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(384,39): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(388,41): error TS7006: Parameter 'sum' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(388,46): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(423,31): error TS7006: Parameter 'stat' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(437,28): error TS7006: Parameter 'p' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(1359,24): error TS7006: Parameter 'category' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(1363,24): error TS7006: Parameter 'category' implicitly has an 'any' type.
+@affiliate/db:dev: 
+@affiliate/db:dev: 6:18:18 PM - Found 15 errors. Watching for file changes.

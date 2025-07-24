@@ -1021,4 +1021,359 @@ export const contentTypeService = {
   }
 };
 
+// Custom Niche Management
+export const customNicheService = {
+  async create(data: Prisma.CustomNicheCreateInput) {
+    return await prisma.customNiche.create({ data });
+  },
+
+  async findById(id: string) {
+    return await prisma.customNiche.findUnique({
+      where: { id },
+      include: {
+        sites: true
+      }
+    });
+  },
+
+  async findByName(name: string) {
+    return await prisma.customNiche.findFirst({
+      where: { name },
+      include: {
+        sites: true
+      }
+    });
+  },
+
+  async findAll(options?: {
+    isActive?: boolean;
+    limit?: number;
+    offset?: number;
+  }) {
+    const where: Prisma.CustomNicheWhereInput = {};
+    if (options?.isActive !== undefined) where.isActive = options.isActive;
+
+    return await prisma.customNiche.findMany({
+      where,
+      include: {
+        sites: true
+      },
+      take: options?.limit || 50,
+      skip: options?.offset || 0,
+      orderBy: { createdAt: 'desc' }
+    });
+  },
+
+  async update(id: string, data: Prisma.CustomNicheUpdateInput) {
+    return await prisma.customNiche.update({
+      where: { id },
+      data,
+      include: {
+        sites: true
+      }
+    });
+  },
+
+  async delete(id: string) {
+    return await prisma.customNiche.delete({ where: { id } });
+  }
+};
+
+// Auto Blog Post Management
+export const autoBlogPostService = {
+  async create(data: Prisma.AutoBlogPostCreateInput) {
+    return await prisma.autoBlogPost.create({ data });
+  },
+
+  async findById(id: string) {
+    return await prisma.autoBlogPost.findUnique({
+      where: { id },
+      include: {
+        site: true
+      }
+    });
+  },
+
+  async findBySite(siteId: string, options?: {
+    status?: string;
+    postType?: string;
+    limit?: number;
+    offset?: number;
+  }) {
+    const where: Prisma.AutoBlogPostWhereInput = { siteId };
+    if (options?.status) where.status = options.status;
+    if (options?.postType) where.postType = options.postType;
+
+    return await prisma.autoBlogPost.findMany({
+      where,
+      include: {
+        site: true
+      },
+      take: options?.limit || 50,
+      skip: options?.offset || 0,
+      orderBy: { createdAt: 'desc' }
+    });
+  },
+
+  async findAll(options?: {
+    status?: string;
+    postType?: string;
+    limit?: number;
+    offset?: number;
+  }) {
+    const where: Prisma.AutoBlogPostWhereInput = {};
+    if (options?.status) where.status = options.status;
+    if (options?.postType) where.postType = options.postType;
+
+    return await prisma.autoBlogPost.findMany({
+      where,
+      include: {
+        site: true
+      },
+      take: options?.limit || 50,
+      skip: options?.offset || 0,
+      orderBy: { createdAt: 'desc' }
+    });
+  },
+
+  async update(id: string, data: Prisma.AutoBlogPostUpdateInput) {
+    return await prisma.autoBlogPost.update({
+      where: { id },
+      data,
+      include: {
+        site: true
+      }
+    });
+  },
+
+  async delete(id: string) {
+    return await prisma.autoBlogPost.delete({ where: { id } });
+  },
+
+  async getScheduledPosts() {
+    return await prisma.autoBlogPost.findMany({
+      where: {
+        status: 'scheduled',
+        scheduledAt: {
+          lte: new Date()
+        }
+      },
+      include: {
+        site: true
+      }
+    });
+  }
+};
+
+// Content Schedule Management
+export const contentScheduleService = {
+  async create(data: Prisma.ContentScheduleCreateInput) {
+    return await prisma.contentSchedule.create({ data });
+  },
+
+  async findById(id: string) {
+    return await prisma.contentSchedule.findUnique({
+      where: { id },
+      include: {
+        site: true
+      }
+    });
+  },
+
+  async findBySite(siteId: string, options?: {
+    isActive?: boolean;
+    limit?: number;
+    offset?: number;
+  }) {
+    const where: Prisma.ContentScheduleWhereInput = { siteId };
+    if (options?.isActive !== undefined) where.isActive = options.isActive;
+
+    return await prisma.contentSchedule.findMany({
+      where,
+      include: {
+        site: true
+      },
+      take: options?.limit || 50,
+      skip: options?.offset || 0,
+      orderBy: { createdAt: 'desc' }
+    });
+  },
+
+  async findAll(options?: {
+    isActive?: boolean;
+    limit?: number;
+    offset?: number;
+  }) {
+    const where: Prisma.ContentScheduleWhereInput = {};
+    if (options?.isActive !== undefined) where.isActive = options.isActive;
+
+    return await prisma.contentSchedule.findMany({
+      where,
+      include: {
+        site: true
+      },
+      take: options?.limit || 50,
+      skip: options?.offset || 0,
+      orderBy: { createdAt: 'desc' }
+    });
+  },
+
+  async update(id: string, data: Prisma.ContentScheduleUpdateInput) {
+    return await prisma.contentSchedule.update({
+      where: { id },
+      data,
+      include: {
+        site: true
+      }
+    });
+  },
+
+  async delete(id: string) {
+    return await prisma.contentSchedule.delete({ where: { id } });
+  },
+
+  async getDueSchedules() {
+    return await prisma.contentSchedule.findMany({
+      where: {
+        isActive: true,
+        nextRunAt: {
+          lte: new Date()
+        }
+      },
+      include: {
+        site: true
+      }
+    });
+  }
+};
+
+// Product Category Management
+export const productCategoryService = {
+  async create(data: Prisma.ProductCategoryCreateInput) {
+    return await prisma.productCategory.create({ data });
+  },
+
+  async findById(id: string) {
+    return await prisma.productCategory.findUnique({
+      where: { id },
+      include: {
+        site: true,
+        parent: true,
+        children: true,
+        products: { include: { product: true } }
+      }
+    });
+  },
+
+  async findBySlug(slug: string) {
+    return await prisma.productCategory.findUnique({
+      where: { slug },
+      include: {
+        site: true,
+        parent: true,
+        children: true,
+        products: { include: { product: true } }
+      }
+    });
+  },
+
+  async findBySite(siteId: string, options?: {
+    isActive?: boolean;
+    parentId?: string | null;
+    limit?: number;
+    offset?: number;
+  }) {
+    const where: Prisma.ProductCategoryWhereInput = { siteId };
+    if (options?.isActive !== undefined) where.isActive = options.isActive;
+    if (options?.parentId !== undefined) where.parentId = options.parentId;
+
+    return await prisma.productCategory.findMany({
+      where,
+      include: {
+        site: true,
+        parent: true,
+        children: true,
+        products: { include: { product: true } }
+      },
+      take: options?.limit || 50,
+      skip: options?.offset || 0,
+      orderBy: { displayOrder: 'asc', createdAt: 'asc' }
+    });
+  },
+
+  async findAll(options?: {
+    isActive?: boolean;
+    parentId?: string | null;
+    limit?: number;
+    offset?: number;
+  }) {
+    const where: Prisma.ProductCategoryWhereInput = {};
+    if (options?.isActive !== undefined) where.isActive = options.isActive;
+    if (options?.parentId !== undefined) where.parentId = options.parentId;
+
+    return await prisma.productCategory.findMany({
+      where,
+      include: {
+        site: true,
+        parent: true,
+        children: true,
+        products: { include: { product: true } }
+      },
+      take: options?.limit || 50,
+      skip: options?.offset || 0,
+      orderBy: { displayOrder: 'asc', createdAt: 'asc' }
+    });
+  },
+
+  async update(id: string, data: Prisma.ProductCategoryUpdateInput) {
+    return await prisma.productCategory.update({
+      where: { id },
+      data,
+      include: {
+        site: true,
+        parent: true,
+        children: true,
+        products: { include: { product: true } }
+      }
+    });
+  },
+
+  async delete(id: string) {
+    return await prisma.productCategory.delete({ where: { id } });
+  },
+
+  async getHierarchy(siteId: string) {
+    const categories = await prisma.productCategory.findMany({
+      where: { siteId, isActive: true },
+      include: {
+        parent: true,
+        children: true
+      },
+      orderBy: { displayOrder: 'asc', createdAt: 'asc' }
+    });
+
+    // Build hierarchy
+    const categoryMap = new Map();
+    const rootCategories: any[] = [];
+
+    categories.forEach(category => {
+      categoryMap.set(category.id, category);
+    });
+
+    categories.forEach(category => {
+      if (category.parentId) {
+        const parent = categoryMap.get(category.parentId);
+        if (parent) {
+          if (!parent.children) parent.children = [];
+          parent.children.push(category);
+        }
+      } else {
+        rootCategories.push(category);
+      }
+    });
+
+    return rootCategories;
+  }
+};
+
 export default prisma;

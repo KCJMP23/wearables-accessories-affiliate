@@ -1,8 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { siteService } from '@affiliate/db/src/utils';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+import { 
+  siteService, 
+  customNicheService, 
+  autoBlogPostService, 
+  contentScheduleService, 
+  productCategoryService 
+} from '@affiliate/db/src/utils';
+import { AIService } from '@affiliate/ai';
 
 export async function POST(request: NextRequest) {
   try {
+    // Check authentication
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.email) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     const body = await request.json();
     const {
       siteConfig,
@@ -12,7 +30,14 @@ export async function POST(request: NextRequest) {
       deploymentConfig
     } = body;
 
-    // Step 1: Create the site in the database
+    // Step 1: Create custom niche if needed
+    let customNicheId = null;
+    if (siteConfig.nicheType === 'custom' && siteConfig.customNiche) {
+      const customNiche = await createCustomNiche(siteConfig.customNiche);
+      customNicheId = customNiche.id;
+    }
+
+    // Step 2: Create the site in the database with all new fields
     const site = await siteService.create({
       name: siteConfig.name,
       domain: siteConfig.domain,
@@ -22,96 +47,150 @@ export async function POST(request: NextRequest) {
       siteDescription: siteConfig.description,
       siteTitle: `${siteConfig.name} - Best ${siteConfig.niche} Reviews & Comparisons`,
       metaDescription: seoConfig.metaDescription || `Discover the best ${siteConfig.niche} products with expert reviews, comparisons, and exclusive deals.`,
-      googleAnalyticsId: siteConfig.googleAnalytics,
-      googleSearchConsoleUrl: siteConfig.googleSearchConsole,
       socialLinks: siteConfig.socialLinks,
+      // New fields for custom niche and auto-blogger
+      nicheType: siteConfig.nicheType,
+      customNiche: customNicheId ? { connect: { id: customNicheId } } : undefined,
+      nicheKeywords: siteConfig.customNiche?.keywords || [],
+      targetAudience: siteConfig.customNiche?.targetAudience,
+      autoBlogEnabled: contentConfig.autoBlogEnabled,
+      autoBlogFrequency: contentConfig.autoBlogFrequency,
+      autoBlogPostTypes: contentConfig.autoBlogPostTypes,
+      autoBlogCategories: contentConfig.autoBlogCategories,
     });
 
-    // Step 2: Generate content if requested
+    // Step 3: Create product categories if custom niche
+    if (siteConfig.nicheType === 'custom' && siteConfig.customNiche?.categories) {
+      await createProductCategories(site.id, siteConfig.customNiche.categories);
+    }
+
+    // Step 4: Generate initial content if requested
     if (contentConfig.generateBlogPosts || contentConfig.generateProductReviews) {
-      // This would integrate with the AI service to generate content
-      // For now, we'll create placeholder content
-      const generatedContent = await generateContent(siteConfig, contentConfig);
-      
-      // Save the generated content to the database
-      // This would be implemented with the CMS service
+      const generatedContent = await generateInitialContent(siteConfig, contentConfig, site.id);
+      await saveGeneratedContent(generatedContent, site.id);
     }
 
-    // Step 3: Import products if requested
+    // Step 5: Set up automated content scheduling
+    if (contentConfig.autoBlogEnabled) {
+      await setupContentSchedule(site.id, contentConfig, siteConfig);
+    }
+
+    // Step 6: Import products if requested
     if (productConfig.importProducts) {
-      // This would integrate with Amazon API or other product sources
-      const importedProducts = await importProducts(siteConfig, productConfig);
-      
-      // Save the products to the database
-      // This would be implemented with the product service
+      const importedProducts = await importProducts(siteConfig, productConfig, site.id);
+      await saveImportedProducts(importedProducts, site.id);
     }
 
-    // Step 4: SEO optimization
-    if (seoConfig.generateSitemap) {
-      await generateSitemap(siteConfig.domain);
-    }
+    // Step 7: Configure SEO
+    await configureSEO(site.id, seoConfig);
 
-    if (seoConfig.generateRobotsTxt) {
-      await generateRobotsTxt(siteConfig.domain);
-    }
-
-    // Step 5: Deploy to Vercel if requested
+    // Step 8: Deploy to Vercel if requested
     if (deploymentConfig.deployToVercel) {
       const deploymentResult = await deployToVercel(siteConfig, deploymentConfig);
-      
       return NextResponse.json({
         success: true,
-        message: 'Site deployed successfully!',
         data: {
           site,
-          deploymentUrl: deploymentResult.url,
-          deploymentId: deploymentResult.id
+          deployment: deploymentResult,
+          message: 'Site deployed successfully!'
         }
       });
     }
 
     return NextResponse.json({
       success: true,
-      message: 'Site created successfully!',
-      data: { site }
+      data: {
+        site,
+        message: 'Site created successfully!'
+      }
     });
 
   } catch (error) {
     console.error('Deployment error:', error);
     return NextResponse.json(
       { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Deployment failed' 
+        error: 'Deployment failed',
+        details: error instanceof Error ? error.message : 'Unknown error'
       },
       { status: 500 }
     );
   }
 }
 
-// Helper functions for content generation
-async function generateContent(siteConfig: any, contentConfig: any) {
-  // This would integrate with OpenAI/Claude to generate content
-  const content = {
+async function createCustomNiche(customNiche: any) {
+  return await customNicheService.create({
+    name: customNiche.name,
+    description: customNiche.description,
+    keywords: customNiche.keywords,
+    categories: customNiche.categories,
+    targetAudience: customNiche.targetAudience,
+    competitionLevel: customNiche.competitionLevel,
+    profitabilityScore: customNiche.profitabilityScore,
+  });
+}
+
+async function createProductCategories(siteId: string, categories: string[]) {
+  const createdCategories = [];
+  for (let i = 0; i < categories.length; i++) {
+    const category = await productCategoryService.create({
+      site: { connect: { id: siteId } },
+      name: categories[i],
+      description: `Products in the ${categories[i]} category`,
+      slug: categories[i].toLowerCase().replace(/\s+/g, '-'),
+      displayOrder: i,
+    });
+    createdCategories.push(category);
+  }
+  return createdCategories;
+}
+
+async function generateInitialContent(siteConfig: any, contentConfig: any, siteId: string) {
+  const aiService = new AIService();
+  const content: any = {
     blogPosts: [],
     productReviews: [],
-    aboutPage: '',
-    contactPage: ''
+    aboutPage: null,
+    contactPage: null,
   };
 
+  // Generate blog posts
   if (contentConfig.generateBlogPosts) {
-    // Generate blog posts using AI
-    content.blogPosts = await generateBlogPosts(siteConfig.niche, contentConfig.blogPostCount);
+    const postTypes = contentConfig.autoBlogPostTypes || ['how_to', 'listicle', 'product_review'];
+    const keywords = siteConfig.customNiche?.keywords || [siteConfig.niche];
+    const targetAudience = siteConfig.customNiche?.targetAudience || 'general audience';
+
+    for (let i = 0; i < contentConfig.blogPostCount; i++) {
+      const postType = postTypes[i % postTypes.length];
+      try {
+        const blogPost = await aiService.generateAutoBlogPost({
+          siteId,
+          niche: siteConfig.niche,
+          postType,
+          keywords,
+          targetAudience,
+          tone: 'professional',
+          provider: 'openai',
+        });
+
+        content.blogPosts.push(blogPost);
+      } catch (error) {
+        console.error(`Failed to generate blog post ${i + 1}:`, error);
+      }
+    }
   }
 
+  // Generate product reviews
   if (contentConfig.generateProductReviews) {
-    // Generate product reviews using AI
-    content.productReviews = await generateProductReviews(siteConfig.niche, contentConfig.productReviewCount);
+    const productReviews = await generateProductReviews(siteConfig.niche, contentConfig.productReviewCount);
+    content.productReviews = productReviews;
   }
 
+  // Generate about page
   if (contentConfig.generateAboutPage) {
     content.aboutPage = await generateAboutPage(siteConfig);
   }
 
+  // Generate contact page
   if (contentConfig.generateContactPage) {
     content.contactPage = await generateContactPage(siteConfig);
   }
@@ -119,148 +198,134 @@ async function generateContent(siteConfig: any, contentConfig: any) {
   return content;
 }
 
-async function generateBlogPosts(niche: string, count: number) {
-  // This would use the AI service to generate blog posts
-  const topics = [
-    `Best ${niche} of 2024`,
-    `Top 10 ${niche} for Beginners`,
-    `${niche} Buying Guide`,
-    `How to Choose the Right ${niche}`,
-    `${niche} Comparison Guide`
-  ];
-
-  return topics.slice(0, count).map((topic, index) => ({
-    id: `post-${index + 1}`,
-    title: topic,
-    content: `This is a sample blog post about ${topic}. In a real implementation, this would be generated by AI with detailed, SEO-optimized content.`,
-    excerpt: `Learn everything you need to know about ${topic.toLowerCase()}.`,
-    slug: topic.toLowerCase().replace(/\s+/g, '-'),
-    publishedAt: new Date().toISOString(),
-    author: 'AI Content Generator',
-    tags: [niche, 'reviews', 'guide']
-  }));
-}
-
 async function generateProductReviews(niche: string, count: number) {
-  // This would use the AI service to generate product reviews
-  const products = [
-    { name: 'Premium Product A', category: niche },
-    { name: 'Budget Product B', category: niche },
-    { name: 'Professional Product C', category: niche },
-    { name: 'Beginner Product D', category: niche },
-    { name: 'Advanced Product E', category: niche }
-  ];
-
-  return products.slice(0, count).map((product, index) => ({
-    id: `review-${index + 1}`,
-    productName: product.name,
-    category: product.category,
-    rating: 4.5 + (Math.random() * 0.5),
-    review: `This is a comprehensive review of ${product.name}. In a real implementation, this would be a detailed AI-generated review with pros, cons, and recommendations.`,
-    pros: ['High quality', 'Good value', 'Easy to use'],
-    cons: ['Premium price', 'Limited features'],
-    affiliateLink: `https://amazon.com/dp/PRODUCT${index + 1}`,
-    price: 99.99 + (index * 50),
-    imageUrl: `/images/products/product-${index + 1}.jpg`
-  }));
+  const reviews = [];
+  const aiService = new AIService();
+  
+  for (let i = 0; i < count; i++) {
+    try {
+      const review = await aiService.generateAutoBlogPost({
+        siteId: 'temp',
+        niche,
+        postType: 'product_review',
+        keywords: [niche, 'review', 'best'],
+        targetAudience: 'shoppers looking for quality products',
+        tone: 'professional',
+        provider: 'openai',
+      });
+      reviews.push(review);
+    } catch (error) {
+      console.error(`Failed to generate product review ${i + 1}:`, error);
+    }
+  }
+  
+  return reviews;
 }
 
 async function generateAboutPage(siteConfig: any) {
-  return `
-    <h1>About ${siteConfig.name}</h1>
-    <p>Welcome to ${siteConfig.name}, your trusted source for ${siteConfig.niche} reviews and recommendations.</p>
-    <p>Our mission is to help you make informed decisions about ${siteConfig.niche} products by providing honest, detailed reviews and comparisons.</p>
-    <p>We work with leading brands and retailers to bring you the best deals and exclusive offers on quality ${siteConfig.niche} products.</p>
-  `;
+  return {
+    title: `About ${siteConfig.name}`,
+    content: `Welcome to ${siteConfig.name}, your trusted source for the best ${siteConfig.niche} products and reviews. We're passionate about helping you make informed purchasing decisions with our comprehensive product analysis and expert recommendations.`,
+    metaDescription: `Learn more about ${siteConfig.name} and our mission to provide the best ${siteConfig.niche} product reviews and recommendations.`
+  };
 }
 
 async function generateContactPage(siteConfig: any) {
-  return `
-    <h1>Contact Us</h1>
-    <p>Have questions about ${siteConfig.niche} products? We're here to help!</p>
-    <p>Email: contact@${siteConfig.domain}</p>
-    <p>Follow us on social media for the latest updates and deals.</p>
-  `;
+  return {
+    title: `Contact ${siteConfig.name}`,
+    content: `Get in touch with the team at ${siteConfig.name}. We're here to help with any questions about ${siteConfig.niche} products or our affiliate recommendations.`,
+    metaDescription: `Contact ${siteConfig.name} for questions about ${siteConfig.niche} products, reviews, or affiliate recommendations.`,
+    contactEmail: siteConfig.contactEmail || 'contact@' + siteConfig.domain
+  };
 }
 
-// Helper function for product import
-async function importProducts(siteConfig: any, productConfig: any) {
-  // This would integrate with Amazon Product Advertising API or other sources
-  const products = [
-    {
-      name: 'Sample Product 1',
-      category: siteConfig.niche,
-      price: 99.99,
-      affiliateLink: 'https://amazon.com/dp/SAMPLE1',
-      imageUrl: '/images/products/sample1.jpg',
-      description: 'High-quality product description'
-    },
-    {
-      name: 'Sample Product 2',
-      category: siteConfig.niche,
-      price: 149.99,
-      affiliateLink: 'https://amazon.com/dp/SAMPLE2',
-      imageUrl: '/images/products/sample2.jpg',
-      description: 'Premium product description'
-    }
-  ];
+async function saveGeneratedContent(content: any, siteId: string) {
+  // Save blog posts
+  for (const blogPost of content.blogPosts) {
+    await autoBlogPostService.create({
+      site: { connect: { id: siteId } },
+      title: blogPost.title,
+      content: blogPost.content,
+      summary: blogPost.summary,
+      keyTakeaways: blogPost.keyTakeaways,
+      status: 'published',
+      publishedAt: new Date(),
+      seoData: blogPost.seoData,
+      postType: blogPost.postType || 'blog_post',
+      wordCount: blogPost.wordCount,
+      readingTime: blogPost.readingTime,
+      aiProvider: 'openai',
+    });
+  }
 
+  // Save product reviews
+  for (const review of content.productReviews) {
+    await autoBlogPostService.create({
+      site: { connect: { id: siteId } },
+      title: review.title,
+      content: review.content,
+      summary: review.summary,
+      keyTakeaways: review.keyTakeaways,
+      status: 'published',
+      publishedAt: new Date(),
+      seoData: review.seoData,
+      postType: 'product_review',
+      wordCount: review.wordCount,
+      readingTime: review.readingTime,
+      aiProvider: 'openai',
+    });
+  }
+}
+
+async function setupContentSchedule(siteId: string, contentConfig: any, siteConfig: any) {
+  // Set up automated content generation every 3 days
+  const nextRunDate = new Date();
+  nextRunDate.setDate(nextRunDate.getDate() + 3);
+
+  await contentScheduleService.create({
+    site: { connect: { id: siteId } },
+    name: 'Auto Blog Schedule',
+    description: 'Automated blog post generation every 3 days',
+    frequency: 'daily',
+    interval: 3,
+    postTypes: contentConfig.autoBlogPostTypes,
+    categories: siteConfig.customNiche?.categories || [],
+    keywords: siteConfig.customNiche?.keywords || [siteConfig.niche],
+    isActive: true,
+    nextRunAt: nextRunDate,
+  });
+}
+
+async function importProducts(siteConfig: any, productConfig: any, siteId: string) {
+  // Placeholder for product import logic
+  // This would integrate with Amazon API or other product sources
+  const products: any[] = [];
+  
+  // For now, return empty array - this will be implemented with actual product import
   return products;
 }
 
-// Helper function for sitemap generation
-async function generateSitemap(domain: string) {
-  // This would generate an XML sitemap for the site
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://${domain}/</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://${domain}/products</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://${domain}/blog</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-</urlset>`;
-
-  // Save sitemap to public directory
-  // This would be implemented with file system operations
-  return sitemap;
+async function saveImportedProducts(products: any[], siteId: string) {
+  // Placeholder for saving imported products
+  // This would create SiteProduct records
+  console.log(`Saving ${products.length} imported products for site ${siteId}`);
 }
 
-// Helper function for robots.txt generation
-async function generateRobotsTxt(domain: string) {
-  const robotsTxt = `User-agent: *
-Allow: /
-
-Sitemap: https://${domain}/sitemap.xml
-
-Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/`;
-
-  // Save robots.txt to public directory
-  // This would be implemented with file system operations
-  return robotsTxt;
+async function configureSEO(siteId: string, seoConfig: any) {
+  // Update site with SEO configuration
+  await siteService.update(siteId, {
+    metaTitle: seoConfig.metaTitle,
+    metaDescription: seoConfig.metaDescription,
+    metaKeywords: seoConfig.metaKeywords?.join(', '),
+  });
 }
 
-// Helper function for Vercel deployment
 async function deployToVercel(siteConfig: any, deploymentConfig: any) {
-  // This would integrate with Vercel API to deploy the site
-  // For now, return a mock deployment result
+  // Placeholder for Vercel deployment
+  // This would integrate with Vercel API
   return {
-    id: `deploy_${Date.now()}`,
     url: `https://${siteConfig.domain}`,
-    status: 'ready'
+    status: 'deployed',
+    deploymentId: 'vercel-deployment-id',
   };
 } 

@@ -8,6 +8,16 @@ interface SiteConfig {
   name: string;
   domain: string;
   niche: string;
+  nicheType: 'predefined' | 'custom';
+  customNiche?: {
+    name: string;
+    description: string;
+    keywords: string[];
+    categories: string[];
+    targetAudience: string;
+    competitionLevel: 'low' | 'medium' | 'high';
+    profitabilityScore: number;
+  };
   description: string;
   logo: File | null;
   primaryColor: string;
@@ -32,14 +42,24 @@ interface ContentConfig {
   blogPostCount: number;
   productReviewCount: number;
   categories: string[];
+  autoBlogEnabled: boolean;
+  autoBlogFrequency: 'daily' | 'weekly' | 'biweekly' | 'monthly';
+  autoBlogPostTypes: string[];
+  autoBlogCategories: string[];
+  autoBlogKeywords: string[];
 }
 
 interface ProductConfig {
   importProducts: boolean;
   productSource: 'amazon' | 'manual' | 'csv';
   categories: string[];
-  affiliateProgram: string;
+  affiliateProgram: 'amazon' | 'walmart' | 'target' | 'bestbuy';
   commissionRate: number;
+  customCategories: Array<{
+    name: string;
+    description: string;
+    parentCategory?: string;
+  }>;
 }
 
 interface SEOConfig {
@@ -69,6 +89,7 @@ export default function DeployPage() {
     name: '',
     domain: '',
     niche: '',
+    nicheType: 'predefined',
     description: '',
     logo: null,
     primaryColor: '#3B82F6',
@@ -84,6 +105,11 @@ export default function DeployPage() {
     blogPostCount: 5,
     productReviewCount: 10,
     categories: [],
+    autoBlogEnabled: true,
+    autoBlogFrequency: 'weekly',
+    autoBlogPostTypes: ['how_to', 'product_review', 'listicle'],
+    autoBlogCategories: [],
+    autoBlogKeywords: [],
   });
 
   const [productConfig, setProductConfig] = useState<ProductConfig>({
@@ -92,6 +118,7 @@ export default function DeployPage() {
     categories: [],
     affiliateProgram: 'amazon',
     commissionRate: 4.0,
+    customCategories: [],
   });
 
   const [seoConfig, setSEOConfig] = useState<SEOConfig>({
@@ -110,7 +137,7 @@ export default function DeployPage() {
     cdnEnabled: true,
   });
 
-  const niches = [
+  const predefinedNiches = [
     { value: 'wearables', label: 'Wearables & Fitness', description: 'Smartwatches, fitness trackers, health monitoring' },
     { value: 'tech', label: 'Technology', description: 'Laptops, smartphones, gadgets' },
     { value: 'home', label: 'Home & Garden', description: 'Home improvement, gardening, decor' },
@@ -119,6 +146,15 @@ export default function DeployPage() {
     { value: 'automotive', label: 'Automotive', description: 'Car accessories, maintenance, parts' },
     { value: 'food', label: 'Food & Cooking', description: 'Kitchen appliances, cookware, ingredients' },
     { value: 'travel', label: 'Travel', description: 'Luggage, travel accessories, gear' },
+  ];
+
+  const blogPostTypes = [
+    { value: 'how_to', label: 'How-To Guide', description: 'Step-by-step tutorials and guides' },
+    { value: 'listicle', label: 'Listicle Post', description: 'Numbered lists and rankings' },
+    { value: 'product_review', label: 'Product Review', description: 'Detailed product reviews' },
+    { value: 'answer_post', label: 'Answer Post', description: 'Q&A style content' },
+    { value: 'roundup', label: 'Roundup Post', description: 'Product comparisons' },
+    { value: 'alternate', label: 'Alternative Post', description: 'Replacement options' },
   ];
 
   const addLog = (message: string) => {
@@ -140,7 +176,7 @@ export default function DeployPage() {
     setSiteConfig(prev => ({ ...prev, niche }));
     
     // Auto-populate based on niche
-    const selectedNiche = niches.find(n => n.value === niche);
+    const selectedNiche = predefinedNiches.find(n => n.value === niche);
     if (selectedNiche) {
       setSiteConfig(prev => ({
         ...prev,
@@ -151,50 +187,100 @@ export default function DeployPage() {
     }
   };
 
+  const handleCustomNicheChange = (field: keyof SiteConfig['customNiche'], value: any) => {
+    setSiteConfig(prev => ({
+      ...prev,
+      customNiche: {
+        ...prev.customNiche,
+        [field]: value,
+      } as SiteConfig['customNiche']
+    }));
+  };
+
+  const handleContentConfigChange = (field: keyof ContentConfig, value: any) => {
+    setContentConfig(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleProductConfigChange = (field: keyof ProductConfig, value: any) => {
+    setProductConfig(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSEOConfigChange = (field: keyof SEOConfig, value: any) => {
+    setSEOConfig(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleDeploymentConfigChange = (field: keyof DeploymentConfig, value: any) => {
+    setDeploymentConfig(prev => ({ ...prev, [field]: value }));
+  };
+
+  const addCustomCategory = () => {
+    setProductConfig(prev => ({
+      ...prev,
+      customCategories: [...prev.customCategories, {
+        name: '',
+        description: '',
+      }]
+    }));
+  };
+
+  const updateCustomCategory = (index: number, field: string, value: string) => {
+    setProductConfig(prev => ({
+      ...prev,
+      customCategories: prev.customCategories.map((cat, i) => 
+        i === index ? { ...cat, [field]: value } : cat
+      )
+    }));
+  };
+
+  const removeCustomCategory = (index: number) => {
+    setProductConfig(prev => ({
+      ...prev,
+      customCategories: prev.customCategories.filter((_, i) => i !== index)
+    }));
+  };
+
   const handleDeploy = async () => {
     setLoading(true);
     setDeploymentProgress(0);
     setDeploymentLogs([]);
 
     try {
-      addLog('🚀 Starting site deployment...');
+      addLog('Starting deployment process...');
       setDeploymentProgress(10);
 
-      // Call the deployment API
+      const deploymentData = {
+        siteConfig,
+        contentConfig,
+        productConfig,
+        seoConfig,
+        deploymentConfig,
+      };
+
+      addLog('Sending deployment request...');
+      setDeploymentProgress(20);
+
       const response = await fetch('/api/deploy', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          siteConfig,
-          contentConfig,
-          productConfig,
-          seoConfig,
-          deploymentConfig
-        }),
+        body: JSON.stringify(deploymentData),
       });
 
-      const result = await response.json();
-
-      if (result.success) {
-        addLog('✅ Site deployment completed successfully!');
-        setDeploymentProgress(100);
-        
-        if (result.data.deploymentUrl) {
-          addLog(`🌐 Site deployed at: ${result.data.deploymentUrl}`);
-        }
-        
-        // Show success message
-        setTimeout(() => {
-          alert(`🎉 Your site "${siteConfig.name}" has been deployed successfully!\n\nSite URL: ${result.data.deploymentUrl || 'Pending deployment'}\n\nYou can now manage your site from the Sites section.`);
-        }, 1000);
-      } else {
-        throw new Error(result.error || 'Deployment failed');
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Deployment failed');
       }
 
+      const result = await response.json();
+      addLog('Deployment completed successfully!');
+      setDeploymentProgress(100);
+
+      // Redirect to the new site or show success message
+      console.log('Deployment result:', result);
     } catch (error) {
-      addLog(`❌ Deployment failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      const errorMessage = error instanceof Error ? error.message : 'Deployment failed';
+      addLog(`Error: ${errorMessage}`);
       console.error('Deployment error:', error);
     } finally {
       setLoading(false);
@@ -208,42 +294,170 @@ export default function DeployPage() {
         <p className="text-apple-gray-600 mb-6">Configure your new affiliate site with basic information and branding.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="space-y-6">
+        {/* Niche Selection */}
         <div>
-          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Niche Selection</label>
-          <select
-            value={siteConfig.niche}
-            onChange={(e) => handleNicheChange(e.target.value)}
-            className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-          >
-            <option value="">Select a niche...</option>
-            {niches.map(niche => (
-              <option key={niche.value} value={niche.value}>
-                {niche.label} - {niche.description}
-              </option>
-            ))}
-          </select>
+          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Niche Type</label>
+          <div className="space-y-4">
+            <div className="flex items-center space-x-4">
+              <input
+                type="radio"
+                id="predefined"
+                name="nicheType"
+                value="predefined"
+                checked={siteConfig.nicheType === 'predefined'}
+                onChange={(e) => handleSiteConfigChange('nicheType', e.target.value)}
+                className="w-4 h-4 text-apple-blue border-apple-gray-300 focus:ring-apple-blue"
+              />
+              <label htmlFor="predefined" className="text-sm font-medium text-apple-gray-900">
+                Predefined Niche
+              </label>
+            </div>
+            <div className="flex items-center space-x-4">
+              <input
+                type="radio"
+                id="custom"
+                name="nicheType"
+                value="custom"
+                checked={siteConfig.nicheType === 'custom'}
+                onChange={(e) => handleSiteConfigChange('nicheType', e.target.value)}
+                className="w-4 h-4 text-apple-blue border-apple-gray-300 focus:ring-apple-blue"
+              />
+              <label htmlFor="custom" className="text-sm font-medium text-apple-gray-900">
+                Custom Niche
+              </label>
+            </div>
+          </div>
+        </div>
+
+        {siteConfig.nicheType === 'predefined' ? (
+          <div>
+            <label className="block text-sm font-medium text-apple-gray-700 mb-2">Niche Selection</label>
+            <select
+              value={siteConfig.niche}
+              onChange={(e) => handleNicheChange(e.target.value)}
+              className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+            >
+              <option value="">Select a niche...</option>
+              {predefinedNiches.map(niche => (
+                <option key={niche.value} value={niche.value}>
+                  {niche.label} - {niche.description}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-apple-gray-700 mb-2">Custom Niche Name</label>
+              <input
+                type="text"
+                value={siteConfig.customNiche?.name || ''}
+                onChange={(e) => handleCustomNicheChange('name', e.target.value)}
+                className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                placeholder="e.g., Hot Honey, Pet Tech, Sustainable Living"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-apple-gray-700 mb-2">Description</label>
+              <textarea
+                value={siteConfig.customNiche?.description || ''}
+                onChange={(e) => handleCustomNicheChange('description', e.target.value)}
+                className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                rows={3}
+                placeholder="Describe your niche and what products/content you'll focus on..."
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-apple-gray-700 mb-2">Target Keywords (comma-separated)</label>
+              <input
+                type="text"
+                value={siteConfig.customNiche?.keywords?.join(', ') || ''}
+                onChange={(e) => handleCustomNicheChange('keywords', e.target.value.split(',').map(k => k.trim()))}
+                className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                placeholder="e.g., hot honey, spicy honey, honey products"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-apple-gray-700 mb-2">Product Categories (comma-separated)</label>
+              <input
+                type="text"
+                value={siteConfig.customNiche?.categories?.join(', ') || ''}
+                onChange={(e) => handleCustomNicheChange('categories', e.target.value.split(',').map(k => k.trim()))}
+                className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                placeholder="e.g., hot honey brands, honey accessories, honey recipes"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-apple-gray-700 mb-2">Target Audience</label>
+              <input
+                type="text"
+                value={siteConfig.customNiche?.targetAudience || ''}
+                onChange={(e) => handleCustomNicheChange('targetAudience', e.target.value)}
+                className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                placeholder="e.g., Food enthusiasts, home cooks, spicy food lovers"
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-apple-gray-700 mb-2">Competition Level</label>
+                <select
+                  value={siteConfig.customNiche?.competitionLevel || 'medium'}
+                  onChange={(e) => handleCustomNicheChange('competitionLevel', e.target.value)}
+                  className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                >
+                  <option value="low">Low Competition</option>
+                  <option value="medium">Medium Competition</option>
+                  <option value="high">High Competition</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-apple-gray-700 mb-2">Profitability Score (1-10)</label>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  value={siteConfig.customNiche?.profitabilityScore || 5}
+                  onChange={(e) => handleCustomNicheChange('profitabilityScore', parseInt(e.target.value))}
+                  className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-apple-gray-700 mb-2">Site Name</label>
+            <input
+              type="text"
+              value={siteConfig.name}
+              onChange={(e) => handleSiteConfigChange('name', e.target.value)}
+              className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+              placeholder="Enter site name"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-apple-gray-700 mb-2">Domain</label>
+            <input
+              type="text"
+              value={siteConfig.domain}
+              onChange={(e) => handleSiteConfigChange('domain', e.target.value)}
+              className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+              placeholder="your-domain.com"
+            />
+          </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Site Name</label>
-          <input
-            type="text"
-            value={siteConfig.name}
-            onChange={(e) => handleSiteConfigChange('name', e.target.value)}
+          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Description</label>
+          <textarea
+            value={siteConfig.description}
+            onChange={(e) => handleSiteConfigChange('description', e.target.value)}
             className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-            placeholder="Enter site name"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Domain</label>
-          <input
-            type="text"
-            value={siteConfig.domain}
-            onChange={(e) => handleSiteConfigChange('domain', e.target.value)}
-            className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-            placeholder="example.com"
+            rows={3}
+            placeholder="Brief description of your site"
           />
         </div>
 
@@ -251,62 +465,32 @@ export default function DeployPage() {
           <label className="block text-sm font-medium text-apple-gray-700 mb-2">Logo</label>
           <input
             type="file"
-            accept="image/*"
             onChange={handleLogoUpload}
+            accept="image/*"
             className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Primary Color</label>
-          <input
-            type="color"
-            value={siteConfig.primaryColor}
-            onChange={(e) => handleSiteConfigChange('primaryColor', e.target.value)}
-            className="w-full h-12 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-          />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-apple-gray-700 mb-2">Primary Color</label>
+            <input
+              type="color"
+              value={siteConfig.primaryColor}
+              onChange={(e) => handleSiteConfigChange('primaryColor', e.target.value)}
+              className="w-full h-12 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+            />
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Secondary Color</label>
-          <input
-            type="color"
-            value={siteConfig.secondaryColor}
-            onChange={(e) => handleSiteConfigChange('secondaryColor', e.target.value)}
-            className="w-full h-12 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-apple-gray-700 mb-2">Site Description</label>
-        <textarea
-          value={siteConfig.description}
-          onChange={(e) => handleSiteConfigChange('description', e.target.value)}
-          rows={3}
-          className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-          placeholder="Describe your site's purpose and target audience..."
-        />
-      </div>
-
-      <div>
-        <h4 className="text-md font-semibold text-apple-gray-900 mb-3">Social Media Links</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {['facebook', 'twitter', 'instagram', 'youtube', 'linkedin'].map(platform => (
-            <div key={platform}>
-              <label className="block text-sm font-medium text-apple-gray-700 mb-2 capitalize">{platform}</label>
-              <input
-                type="url"
-                value={siteConfig.socialLinks[platform as keyof typeof siteConfig.socialLinks] || ''}
-                onChange={(e) => handleSiteConfigChange('socialLinks', {
-                  ...siteConfig.socialLinks,
-                  [platform]: e.target.value
-                })}
-                className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-                placeholder={`https://${platform}.com/your-account`}
-              />
-            </div>
-          ))}
+          <div>
+            <label className="block text-sm font-medium text-apple-gray-700 mb-2">Secondary Color</label>
+            <input
+              type="color"
+              value={siteConfig.secondaryColor}
+              onChange={(e) => handleSiteConfigChange('secondaryColor', e.target.value)}
+              className="w-full h-12 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -319,83 +503,144 @@ export default function DeployPage() {
         <p className="text-apple-gray-600 mb-6">Configure AI-powered content generation for your site.</p>
       </div>
 
-      <div className="space-y-4">
-        <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
-          <div>
-            <h4 className="font-semibold text-apple-gray-900">Generate Blog Posts</h4>
-            <p className="text-sm text-apple-gray-600">AI-powered blog posts about your niche</p>
+      <div className="space-y-6">
+        {/* Initial Content Generation */}
+        <div className="space-y-4">
+          <h4 className="font-semibold text-apple-gray-900">Initial Content Setup</h4>
+          
+          <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
+            <div>
+              <h5 className="font-semibold text-apple-gray-900">Generate Blog Posts</h5>
+              <p className="text-sm text-apple-gray-600">AI-powered blog posts about your niche</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={contentConfig.generateBlogPosts}
+              onChange={(e) => handleContentConfigChange('generateBlogPosts', e.target.checked)}
+              className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
+            />
           </div>
-          <input
-            type="checkbox"
-            checked={contentConfig.generateBlogPosts}
-            onChange={(e) => setContentConfig(prev => ({ ...prev, generateBlogPosts: e.target.checked }))}
-            className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
-          />
-        </div>
 
-        <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
-          <div>
-            <h4 className="font-semibold text-apple-gray-900">Generate Product Reviews</h4>
-            <p className="text-sm text-apple-gray-600">Detailed product reviews with affiliate links</p>
+          <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
+            <div>
+              <h5 className="font-semibold text-apple-gray-900">Generate Product Reviews</h5>
+              <p className="text-sm text-apple-gray-600">Detailed product reviews with affiliate links</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={contentConfig.generateProductReviews}
+              onChange={(e) => handleContentConfigChange('generateProductReviews', e.target.checked)}
+              className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
+            />
           </div>
-          <input
-            type="checkbox"
-            checked={contentConfig.generateProductReviews}
-            onChange={(e) => setContentConfig(prev => ({ ...prev, generateProductReviews: e.target.checked }))}
-            className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
-          />
-        </div>
 
-        <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
-          <div>
-            <h4 className="font-semibold text-apple-gray-900">Generate About Page</h4>
-            <p className="text-sm text-apple-gray-600">Professional about page content</p>
+          <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
+            <div>
+              <h5 className="font-semibold text-apple-gray-900">Generate About Page</h5>
+              <p className="text-sm text-apple-gray-600">Professional about page content</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={contentConfig.generateAboutPage}
+              onChange={(e) => handleContentConfigChange('generateAboutPage', e.target.checked)}
+              className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
+            />
           </div>
-          <input
-            type="checkbox"
-            checked={contentConfig.generateAboutPage}
-            onChange={(e) => setContentConfig(prev => ({ ...prev, generateAboutPage: e.target.checked }))}
-            className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
-          />
-        </div>
 
-        <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
-          <div>
-            <h4 className="font-semibold text-apple-gray-900">Generate Contact Page</h4>
-            <p className="text-sm text-apple-gray-600">Contact form and information page</p>
+          <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
+            <div>
+              <h5 className="font-semibold text-apple-gray-900">Generate Contact Page</h5>
+              <p className="text-sm text-apple-gray-600">Contact form and information</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={contentConfig.generateContactPage}
+              onChange={(e) => handleContentConfigChange('generateContactPage', e.target.checked)}
+              className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
+            />
           </div>
-          <input
-            type="checkbox"
-            checked={contentConfig.generateContactPage}
-            onChange={(e) => setContentConfig(prev => ({ ...prev, generateContactPage: e.target.checked }))}
-            className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Number of Blog Posts</label>
-          <input
-            type="number"
-            min="1"
-            max="20"
-            value={contentConfig.blogPostCount}
-            onChange={(e) => setContentConfig(prev => ({ ...prev, blogPostCount: parseInt(e.target.value) }))}
-            className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-          />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-apple-gray-700 mb-2">Number of Product Reviews</label>
-          <input
-            type="number"
-            min="1"
-            max="50"
-            value={contentConfig.productReviewCount}
-            onChange={(e) => setContentConfig(prev => ({ ...prev, productReviewCount: parseInt(e.target.value) }))}
-            className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
-          />
+        {/* Automated Blogging */}
+        <div className="space-y-4">
+          <h4 className="font-semibold text-apple-gray-900">Automated Blogging (Every 3 Days)</h4>
+          
+          <div className="flex items-center justify-between p-4 bg-apple-gray-50 rounded-2xl">
+            <div>
+              <h5 className="font-semibold text-apple-gray-900">Enable Auto-Blogger</h5>
+              <p className="text-sm text-apple-gray-600">Automatically generate new blog posts every 3 days</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={contentConfig.autoBlogEnabled}
+              onChange={(e) => handleContentConfigChange('autoBlogEnabled', e.target.checked)}
+              className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
+            />
+          </div>
+
+          {contentConfig.autoBlogEnabled && (
+            <div className="space-y-4 p-4 bg-apple-gray-50 rounded-2xl">
+              <div>
+                <label className="block text-sm font-medium text-apple-gray-700 mb-2">Blog Post Types</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {blogPostTypes.map(type => (
+                    <label key={type.value} className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        checked={contentConfig.autoBlogPostTypes.includes(type.value)}
+                        onChange={(e) => {
+                          const current = contentConfig.autoBlogPostTypes;
+                          const updated = e.target.checked
+                            ? [...current, type.value]
+                            : current.filter(t => t !== type.value);
+                          handleContentConfigChange('autoBlogPostTypes', updated);
+                        }}
+                        className="w-4 h-4 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
+                      />
+                      <span className="text-sm text-apple-gray-900">{type.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-apple-gray-700 mb-2">Target Keywords (comma-separated)</label>
+                <input
+                  type="text"
+                  value={contentConfig.autoBlogKeywords.join(', ')}
+                  onChange={(e) => handleContentConfigChange('autoBlogKeywords', e.target.value.split(',').map(k => k.trim()))}
+                  className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                  placeholder="e.g., best products, how to choose, reviews"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-apple-gray-700 mb-2">Blog Post Count</label>
+            <input
+              type="number"
+              min="1"
+              max="20"
+              value={contentConfig.blogPostCount}
+              onChange={(e) => handleContentConfigChange('blogPostCount', parseInt(e.target.value))}
+              className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-apple-gray-700 mb-2">Product Review Count</label>
+            <input
+              type="number"
+              min="1"
+              max="50"
+              value={contentConfig.productReviewCount}
+              onChange={(e) => handleContentConfigChange('productReviewCount', parseInt(e.target.value))}
+              className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -417,7 +662,7 @@ export default function DeployPage() {
           <input
             type="checkbox"
             checked={productConfig.importProducts}
-            onChange={(e) => setProductConfig(prev => ({ ...prev, importProducts: e.target.checked }))}
+            onChange={(e) => handleProductConfigChange('importProducts', e.target.checked)}
             className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
           />
         </div>
@@ -428,7 +673,7 @@ export default function DeployPage() {
           <label className="block text-sm font-medium text-apple-gray-700 mb-2">Product Source</label>
           <select
             value={productConfig.productSource}
-            onChange={(e) => setProductConfig(prev => ({ ...prev, productSource: e.target.value as any }))}
+            onChange={(e) => handleProductConfigChange('productSource', e.target.value as any)}
             className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
           >
             <option value="amazon">Amazon Product Advertising API</option>
@@ -441,7 +686,7 @@ export default function DeployPage() {
           <label className="block text-sm font-medium text-apple-gray-700 mb-2">Affiliate Program</label>
           <select
             value={productConfig.affiliateProgram}
-            onChange={(e) => setProductConfig(prev => ({ ...prev, affiliateProgram: e.target.value }))}
+            onChange={(e) => handleProductConfigChange('affiliateProgram', e.target.value as any)}
             className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
           >
             <option value="amazon">Amazon Associates</option>
@@ -459,9 +704,66 @@ export default function DeployPage() {
             min="0"
             max="20"
             value={productConfig.commissionRate}
-            onChange={(e) => setProductConfig(prev => ({ ...prev, commissionRate: parseFloat(e.target.value) }))}
+            onChange={(e) => handleProductConfigChange('commissionRate', parseFloat(e.target.value))}
             className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
           />
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-apple-gray-700 mb-2">Custom Product Categories</label>
+        <div className="space-y-4">
+          {productConfig.customCategories.map((category, index) => (
+            <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+              <div className="flex-1">
+                <label className="block text-sm font-medium text-apple-gray-700 mb-1">Category Name</label>
+                <input
+                  type="text"
+                  value={category.name}
+                  onChange={(e) => updateCustomCategory(index, 'name', e.target.value)}
+                  className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                  placeholder="e.g., Honey Brands, Honey Accessories"
+                />
+              </div>
+              <div className="flex-1">
+                <label className="block text-sm font-medium text-apple-gray-700 mb-1">Description</label>
+                <input
+                  type="text"
+                  value={category.description}
+                  onChange={(e) => updateCustomCategory(index, 'description', e.target.value)}
+                  className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                  placeholder="e.g., Top-rated honey brands, Unique honey accessories"
+                />
+              </div>
+              <div className="flex-1">
+                <label className="block text-sm font-medium text-apple-gray-700 mb-1">Parent Category</label>
+                <select
+                  value={category.parentCategory || ''}
+                  onChange={(e) => updateCustomCategory(index, 'parentCategory', e.target.value)}
+                  className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
+                >
+                  <option value="">No Parent</option>
+                  {productConfig.customCategories.map((parentCat, parentIndex) => (
+                    <option key={parentIndex} value={parentCat.name}>{parentCat.name}</option>
+                  ))}
+                </select>
+              </div>
+              <button
+                type="button"
+                onClick={() => removeCustomCategory(index)}
+                className="admin-button admin-button-danger"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addCustomCategory}
+            className="admin-button admin-button-secondary"
+          >
+            Add Custom Category
+          </button>
         </div>
       </div>
     </div>
@@ -480,7 +782,7 @@ export default function DeployPage() {
           <input
             type="text"
             value={seoConfig.metaTitle}
-            onChange={(e) => setSEOConfig(prev => ({ ...prev, metaTitle: e.target.value }))}
+            onChange={(e) => handleSEOConfigChange('metaTitle', e.target.value)}
             className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             placeholder="Best [Niche] Reviews & Comparisons"
           />
@@ -490,7 +792,7 @@ export default function DeployPage() {
           <label className="block text-sm font-medium text-apple-gray-700 mb-2">Meta Description</label>
           <textarea
             value={seoConfig.metaDescription}
-            onChange={(e) => setSEOConfig(prev => ({ ...prev, metaDescription: e.target.value }))}
+            onChange={(e) => handleSEOConfigChange('metaDescription', e.target.value)}
             rows={3}
             className="w-full px-4 py-3 rounded-2xl border border-apple-gray-200 focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             placeholder="Discover the best [niche] products with expert reviews, comparisons, and exclusive deals..."
@@ -529,7 +831,7 @@ export default function DeployPage() {
           <input
             type="checkbox"
             checked={seoConfig.generateSitemap}
-            onChange={(e) => setSEOConfig(prev => ({ ...prev, generateSitemap: e.target.checked }))}
+            onChange={(e) => handleSEOConfigChange('generateSitemap', e.target.checked)}
             className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
           />
         </div>
@@ -542,7 +844,7 @@ export default function DeployPage() {
           <input
             type="checkbox"
             checked={seoConfig.generateRobotsTxt}
-            onChange={(e) => setSEOConfig(prev => ({ ...prev, generateRobotsTxt: e.target.checked }))}
+            onChange={(e) => handleSEOConfigChange('generateRobotsTxt', e.target.checked)}
             className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
           />
         </div>
@@ -555,7 +857,7 @@ export default function DeployPage() {
           <input
             type="checkbox"
             checked={seoConfig.schemaMarkup}
-            onChange={(e) => setSEOConfig(prev => ({ ...prev, schemaMarkup: e.target.checked }))}
+            onChange={(e) => handleSEOConfigChange('schemaMarkup', e.target.checked)}
             className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
           />
         </div>
@@ -579,7 +881,7 @@ export default function DeployPage() {
           <input
             type="checkbox"
             checked={deploymentConfig.deployToVercel}
-            onChange={(e) => setDeploymentConfig(prev => ({ ...prev, deployToVercel: e.target.checked }))}
+            onChange={(e) => handleDeploymentConfigChange('deployToVercel', e.target.checked)}
             className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
           />
         </div>
@@ -592,7 +894,7 @@ export default function DeployPage() {
           <input
             type="checkbox"
             checked={deploymentConfig.customDomain}
-            onChange={(e) => setDeploymentConfig(prev => ({ ...prev, customDomain: e.target.checked }))}
+            onChange={(e) => handleDeploymentConfigChange('customDomain', e.target.checked)}
             className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
           />
         </div>
@@ -605,7 +907,7 @@ export default function DeployPage() {
           <input
             type="checkbox"
             checked={deploymentConfig.sslCertificate}
-            onChange={(e) => setDeploymentConfig(prev => ({ ...prev, sslCertificate: e.target.checked }))}
+            onChange={(e) => handleDeploymentConfigChange('sslCertificate', e.target.checked)}
             className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
           />
         </div>
@@ -618,7 +920,7 @@ export default function DeployPage() {
           <input
             type="checkbox"
             checked={deploymentConfig.cdnEnabled}
-            onChange={(e) => setDeploymentConfig(prev => ({ ...prev, cdnEnabled: e.target.checked }))}
+            onChange={(e) => handleDeploymentConfigChange('cdnEnabled', e.target.checked)}
             className="w-5 h-5 text-apple-blue border-apple-gray-300 rounded focus:ring-apple-blue"
           />
         </div>

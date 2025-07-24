@@ -107,6 +107,12 @@ model Site {
   primaryColor   String?   @map("primary_color")
   secondaryColor String?   @map("secondary_color")
   
+  // Niche Configuration
+  nicheType      String    @default("predefined") @map("niche_type") // predefined, custom
+  customNicheId  String?   @map("custom_niche_id") @db.Uuid
+  nicheKeywords  Json?     @default("[]") @map("niche_keywords")
+  targetAudience String?
+  
   // Site Configuration
   siteTitle      String?   @map("site_title")
   siteDescription String?  @map("site_description")
@@ -129,6 +135,12 @@ model Site {
   newsletterTitle String? @map("newsletter_title")
   newsletterSubtitle String? @map("newsletter_subtitle")
   
+  // Auto-blogger Configuration
+  autoBlogEnabled Boolean  @default(false) @map("auto_blog_enabled")
+  autoBlogFrequency String? @map("auto_blog_frequency") // daily, weekly, biweekly, monthly
+  autoBlogPostTypes Json?  @default("[]") @map("auto_blog_post_types")
+  autoBlogCategories Json? @default("[]") @map("auto_blog_categories")
+  
   // Footer Configuration
   footerText     String?   @map("footer_text")
   socialLinks    Json?     @map("social_links")
@@ -136,6 +148,7 @@ model Site {
   createdAt      DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt      DateTime? @default(now()) @map("updated_at") @db.Timestamptz(6)
 
+  customNiche    CustomNiche? @relation(fields: [customNicheId], references: [id])
   content        SiteContent[]
   media          SiteMedia[]
   products       SiteProduct[]
@@ -143,6 +156,9 @@ model Site {
   customFields   ProductCustomField[]
   quizzes        InteractiveQuiz[]
   priceAlerts    PriceAlert[]
+  autoBlogPosts  AutoBlogPost[]
+  contentSchedules ContentSchedule[]
+  productCategories ProductCategory[]
 
   @@map("sites")
 }
@@ -218,6 +234,8 @@ model SiteProduct {
 
   site      Site    @relation(fields: [siteId], references: [id])
   product   Product @relation(fields: [productId], references: [id])
+  category  ProductCategory? @relation(fields: [categoryId], references: [id])
+  categoryId String? @map("category_id") @db.Uuid
 
   @@id([siteId, productId])
   @@map("site_products")
@@ -640,24 +658,7 @@ model AIContentLog {
   @@map("ai_content_logs")
 }
 
-// Auto-blogger System
-model AutoBlogPost {
-  id          String    @id @default(uuid()) @db.Uuid
-  title       String
-  content     String
-  summary     String?
-  keyTakeaways Json?
-  featuredImage String? @map("featured_image")
-  status      String    @default("draft") // draft, published, scheduled
-  publishedAt DateTime? @map("published_at") @db.Timestamptz(6)
-  seoData     Json?     @default("{}") @map("seo_data")
-  tags        Json?
-  category    String?
-  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt   DateTime? @default(now()) @map("updated_at") @db.Timestamptz(6)
 
-  @@map("auto_blog_posts")
-}
 
 // Bulk Import System
 model BulkImport {
@@ -711,4 +712,100 @@ model AdSpace {
   updatedAt   DateTime? @default(now()) @map("updated_at") @db.Timestamptz(6)
 
   @@map("ad_spaces")
+}
+
+// Custom Niche Management
+model CustomNiche {
+  id          String    @id @default(uuid()) @db.Uuid
+  name        String
+  description String?
+  keywords    Json?     @default("[]")
+  categories  Json?     @default("[]")
+  targetAudience String?
+  competitionLevel String? @map("competition_level") // low, medium, high
+  profitabilityScore Int? @map("profitability_score") // 1-10
+  isActive    Boolean   @default(true) @map("is_active")
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime? @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  sites       Site[]
+
+  @@map("custom_niches")
+}
+
+// Enhanced Auto-blogger System with Scheduling
+model AutoBlogPost {
+  id          String    @id @default(uuid()) @db.Uuid
+  siteId      String    @map("site_id") @db.Uuid
+  title       String
+  content     String
+  summary     String?
+  keyTakeaways Json?    @map("key_takeaways")
+  featuredImage String? @map("featured_image")
+  status      String    @default("draft") // draft, published, scheduled, failed
+  publishedAt DateTime? @map("published_at") @db.Timestamptz(6)
+  scheduledAt DateTime? @map("scheduled_at") @db.Timestamptz(6)
+  seoData     Json?     @default("{}") @map("seo_data")
+  tags        Json?
+  category    String?
+  postType    String    @default("blog_post") @map("post_type") // blog_post, product_review, how_to, listicle, answer_post, roundup, alternate
+  wordCount   Int?      @map("word_count")
+  readingTime Int?      @map("reading_time") // in minutes
+  affiliateLinks Json?  @map("affiliate_links")
+  internalLinks Json?   @map("internal_links")
+  externalLinks Json?   @map("external_links")
+  aiProvider  String?   @map("ai_provider") // openai, claude
+  generationCost Decimal? @map("generation_cost") @db.Decimal(10, 6)
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime? @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  site        Site      @relation(fields: [siteId], references: [id])
+
+  @@map("auto_blog_posts")
+}
+
+// Automated Content Scheduling
+model ContentSchedule {
+  id          String    @id @default(uuid()) @db.Uuid
+  siteId      String    @map("site_id") @db.Uuid
+  name        String
+  description String?
+  frequency   String    // daily, weekly, biweekly, monthly
+  interval    Int       @default(1) // every X days/weeks/months
+  postTypes   Json      @default("[]") @map("post_types") // array of post types to generate
+  categories  Json      @default("[]") // array of categories to focus on
+  keywords    Json      @default("[]") // target keywords
+  isActive    Boolean   @default(true) @map("is_active")
+  lastRunAt   DateTime? @map("last_run_at") @db.Timestamptz(6)
+  nextRunAt   DateTime? @map("next_run_at") @db.Timestamptz(6)
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime? @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  site        Site      @relation(fields: [siteId], references: [id])
+
+  @@map("content_schedules")
+}
+
+// Product Categories for Custom Niches
+model ProductCategory {
+  id          String    @id @default(uuid()) @db.Uuid
+  siteId      String    @map("site_id") @db.Uuid
+  name        String
+  description String?
+  slug        String    @unique
+  parentId    String?   @map("parent_id") @db.Uuid
+  displayOrder Int      @default(0) @map("display_order")
+  isActive    Boolean   @default(true) @map("is_active")
+  seoTitle    String?   @map("seo_title")
+  seoDescription String? @map("seo_description")
+  seoKeywords String?   @map("seo_keywords")
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime? @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  site        Site      @relation(fields: [siteId], references: [id])
+  parent      ProductCategory? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    ProductCategory[] @relation("CategoryHierarchy")
+  products    SiteProduct[]
+
+  @@map("product_categories")
 }
