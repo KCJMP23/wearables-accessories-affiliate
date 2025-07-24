@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Apple Watch Series 9",
+    "description": "The latest Apple Watch with advanced health monitoring, faster performance, and new features.",
+    "manufacturer": "Apple",
+    "basePrice": 399,
+    "mainImageUrl": "/images/products/apple-watch-series-9.jpg",
+    "specifications": {
+      "display": "Always-On Retina display",
+      "battery": "Up to 18 hours",
+      "waterResistance": "Water resistant to 50m",
+      "connectivity": "GPS, Cellular optional",
+      "healthFeatures": [
+        "ECG",
+        "Blood Oxygen",
+        "Temperature Sensing",
+        "Crash Detection"
+      ]
+    }
+  },
+  {
+    "name": "Samsung Galaxy Watch 6",
+    "description": "Premium Android smartwatch with advanced health tracking and seamless Samsung ecosystem integration.",
+    "manufacturer": "Samsung",
+    "basePrice": 349.99,
+    "mainImageUrl": "/images/products/samsung-galaxy-watch-6.jpg",
+    "specifications": {
+      "display": "Super AMOLED",
+      "battery": "Up to 40 hours",
+      "waterResistance": "Water resistant to 50m",
+      "connectivity": "Bluetooth 5.2, Wi-Fi",
+      "healthFeatures": [
+        "Heart Rate",
+        "Blood Pressure",
+        "ECG",
+        "Sleep Tracking"
+      ]
+    }
+  },
+  {
+    "name": "Fitbit Charge 6",
+    "description": "Advanced fitness tracking with heart rate monitoring, sleep tracking, and Google apps integration.",
+    "manufacturer": "Fitbit",
+    "basePrice": 159.95,
+    "mainImageUrl": "/images/products/fitbit-charge-6.jpg",
+    "specifications": {
+      "display": "AMOLED touchscreen",
+      "battery": "Up to 7 days",
+      "waterResistance": "Water resistant to 50m",
+      "connectivity": "Bluetooth 5.0",
+      "healthFeatures": [
+        "Heart Rate",
+        "Sleep Tracking",
+        "Stress Management",
+        "SpO2"
+      ]
+    }
+  },
+  {
+    "name": "Garmin Fenix 7",
+    "description": "Premium multisport GPS watch with advanced training metrics and outdoor navigation.",
+    "manufacturer": "Garmin",
+    "basePrice": 699.99,
+    "mainImageUrl": "/images/products/garmin-fenix-7.jpg",
+    "specifications": {
+      "display": "Transflective MIP",
+      "battery": "Up to 18 days",
+      "waterResistance": "Water resistant to 100m",
+      "connectivity": "GPS, GLONASS, Galileo",
+      "healthFeatures": [
+        "Heart Rate",
+        "Pulse Ox",
+        "Training Load",
+        "Recovery Time"
+      ]
+    }
+  },
+  {
+    "name": "Oura Ring Gen 3",
+    "description": "Advanced sleep and recovery tracking in a sleek ring form factor.",
+    "manufacturer": "Oura",
+    "basePrice": 299,
+    "mainImageUrl": "/images/products/oura-ring-gen3.jpg",
+    "specifications": {
+      "battery": "Up to 7 days",
+      "waterResistance": "Water resistant to 100m",
+      "connectivity": "Bluetooth Low Energy",
+      "healthFeatures": [
+        "Sleep Tracking",
+        "Recovery Monitoring",
+        "Activity Tracking",
+        "Temperature Sensing"
+      ]
+    }
+  },
+  {
+    "name": "Whoop Strap 4.0",
+    "description": "Performance optimization through advanced recovery and strain tracking.",
+    "manufacturer": "Whoop",
+    "basePrice": 0,
+    "mainImageUrl": "/images/products/whoop-strap-4.jpg",
+    "specifications": {
+      "battery": "Up to 5 days",
+      "waterResistance": "Water resistant to 10m",
+      "connectivity": "Bluetooth Low Energy",
+      "healthFeatures": [
+        "Strain Score",
+        "Recovery Score",
+        "Sleep Coach",
+        "Cardiovascular Strain"
+      ]
+    }
+  },
+  {
+    "name": "Xiaomi Mi Band 8",
+    "description": "Affordable fitness tracking with comprehensive health monitoring features.",
+    "manufacturer": "Xiaomi",
+    "basePrice": 49.99,
+    "mainImageUrl": "/images/products/xiaomi-mi-band-8.jpg",
+    "specifications": {
+      "display": "AMOLED",
+      "battery": "Up to 16 days",
+      "waterResistance": "Water resistant to 50m",
+      "connectivity": "Bluetooth 5.1",
+      "healthFeatures": [
+        "Heart Rate",
+        "Sleep Tracking",
+        "Stress Monitoring",
+        "SpO2"
+      ]
+    }
+  },
+  {
+    "name": "Google Pixel Watch 2",
+    "description": "Google's latest smartwatch with advanced health features and seamless Android integration.",
+    "manufacturer": "Google",
+    "basePrice": 349.99,
+    "mainImageUrl": "/images/products/google-pixel-watch-2.jpg",
+    "specifications": {
+      "display": "AMOLED",
+      "battery": "Up to 24 hours",
+      "waterResistance": "Water resistant to 50m",
+      "connectivity": "Bluetooth 5.0, Wi-Fi",
+      "healthFeatures": [
+        "Heart Rate",
+        "ECG",
+        "Sleep Tracking",
+        "Stress Management"
+      ]
+    }
+  }
+]

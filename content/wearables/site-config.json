@@ -1,0 +1,30 @@
+{
+  "name": "Wearables Hub",
+  "domain": "wearables-hub.com",
+  "logoUrl": "/images/wearables-logo.png",
+  "primaryColor": "#3B82F6",
+  "secondaryColor": "#1E40AF",
+  "siteTitle": "Wearables Hub - Best Smartwatches & Fitness Trackers",
+  "siteDescription": "Discover the latest smartwatches, fitness trackers, and health monitoring devices. Expert reviews, comparisons, and deals on Apple Watch, Fitbit, Garmin, Oura Ring, and more.",
+  "heroTitle": "Your Ultimate Guide to Wearable Technology",
+  "heroSubtitle": "Find the perfect smartwatch, fitness tracker, or health monitor for your lifestyle",
+  "aboutTitle": "About Wearables Hub",
+  "aboutDescription": "We're passionate about wearable technology and helping you find the perfect device to track your fitness, monitor your health, and stay connected.",
+  "contactEmail": "hello@wearables-hub.com",
+  "metaTitle": "Wearables Hub - Best Smartwatches & Fitness Trackers 2025",
+  "metaDescription": "Expert reviews and comparisons of the latest smartwatches, fitness trackers, and health monitoring devices. Find your perfect wearable tech.",
+  "metaKeywords": "smartwatch, fitness tracker, apple watch, fitbit, garmin, oura ring, health monitor, wearable technology",
+  "featuredPostsTitle": "Latest Wearable Tech Reviews",
+  "featuredPostsSubtitle": "Stay updated with the newest smartwatches and fitness trackers",
+  "featuredProductsTitle": "Top-Rated Wearables",
+  "featuredProductsSubtitle": "Our picks for the best smartwatches and fitness trackers",
+  "newsletterTitle": "Stay Updated on Wearable Tech",
+  "newsletterSubtitle": "Get the latest reviews, deals, and tech news delivered to your inbox",
+  "footerText": "© 2025 Wearables Hub. All rights reserved. We may earn commissions from qualifying purchases.",
+  "socialLinks": {
+    "twitter": "https://twitter.com/wearableshub",
+    "facebook": "https://facebook.com/wearableshub",
+    "instagram": "https://instagram.com/wearableshub",
+    "youtube": "https://youtube.com/wearableshub"
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Smartwatches",
+    "description": "Advanced smartwatches with app support and comprehensive features",
+    "slug": "smartwatches"
+  },
+  {
+    "name": "Fitness Trackers",
+    "description": "Dedicated fitness tracking devices with health monitoring",
+    "slug": "fitness-trackers"
+  },
+  {
+    "name": "Health Monitoring",
+    "description": "Specialized devices for health and wellness tracking",
+    "slug": "health-monitoring"
+  },
+  {
+    "name": "Accessories",
+    "description": "Charging stands, bands, protectors, and other accessories",
+    "slug": "accessories"
+  }
+]
