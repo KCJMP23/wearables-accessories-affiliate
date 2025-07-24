@@ -185,3 +185,20 @@ web:dev:  GET / 200 in 94ms
 web:dev:  GET /icon-192.png 404 in 36ms
 admin:dev: [?25h
 web:dev: [?25h
+@affiliate/db:dev: [2J[3J[H5:47:30 PM - File change detected. Starting incremental compilation...
+@affiliate/db:dev: 
+@affiliate/db:dev: src/index.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/index.ts(4,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/seed.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/utils.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+@affiliate/db:dev: src/utils.ts(1,24): error TS2305: Module '"@prisma/client"' has no exported member 'Prisma'.
+@affiliate/db:dev: src/utils.ts(280,45): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(281,39): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(383,45): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(384,39): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(388,41): error TS7006: Parameter 'sum' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(388,46): error TS7006: Parameter 'click' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(423,31): error TS7006: Parameter 'stat' implicitly has an 'any' type.
+@affiliate/db:dev: src/utils.ts(437,28): error TS7006: Parameter 'p' implicitly has an 'any' type.
+@affiliate/db:dev: 
+@affiliate/db:dev: 5:47:31 PM - Found 13 errors. Watching for file changes.

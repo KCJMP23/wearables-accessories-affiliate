@@ -43,62 +43,27 @@ export default function SitesPage() {
   const fetchSites = async () => {
     try {
       setLoading(true);
-      // Mock data for now
-      const mockSites: Site[] = [
-        {
-          id: '1',
-          name: 'TechGear Reviews',
-          url: 'https://techgear-reviews.com',
-          created_at: '2024-01-15T10:00:00Z',
-          settings: {
-            logo: '/logo1.png',
-            theme: 'dark',
-            description: 'Comprehensive reviews of the latest tech gadgets and accessories'
-          },
-          stats: {
-            posts: 127,
-            products: 342,
-            clicks: 12470,
-            revenue: 2847
-          }
-        },
-        {
-          id: '2',
-          name: 'Audio Excellence',
-          url: 'https://audio-excellence.com',
-          created_at: '2024-01-10T14:30:00Z',
-          settings: {
-            logo: '/logo2.png',
-            theme: 'light',
-            description: 'Expert reviews of headphones, speakers, and audio equipment'
-          },
-          stats: {
-            posts: 89,
-            products: 156,
-            clicks: 8920,
-            revenue: 1650
-          }
-        },
-        {
-          id: '3',
-          name: 'Smart Home Hub',
-          url: 'https://smart-home-hub.com',
-          created_at: '2024-01-05T09:15:00Z',
-          settings: {
-            logo: '/logo3.png',
-            theme: 'dark',
-            description: 'Your guide to smart home technology and automation'
-          },
-          stats: {
-            posts: 64,
-            products: 98,
-            clicks: 5430,
-            revenue: 920
-          }
-        }
-      ];
       
-      setSites(mockSites);
+      // For now, show the wearables site we created
+      const wearablesSite: Site = {
+        id: '7d654e4e-897c-4fe7-9d5d-81f194af85b6',
+        name: 'Wearables Hub',
+        url: 'https://wearables-hub.com',
+        created_at: '2025-07-24T22:45:14.807Z',
+        settings: {
+          logo: '/images/wearables-logo.png',
+          theme: 'light',
+          description: 'Your Ultimate Guide to Smartwatches, Fitness Trackers & Health Monitoring Devices'
+        },
+        stats: {
+          posts: 0,
+          products: 0,
+          clicks: 0,
+          revenue: 0
+        }
+      };
+      
+      setSites([wearablesSite]);
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Failed to fetch sites');
     } finally {
@@ -108,7 +73,7 @@ export default function SitesPage() {
 
   const handleCreateSite = async () => {
     try {
-      // Mock API call
+      // Mock API call for now
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       const newSite: Site = {
@@ -117,6 +82,8 @@ export default function SitesPage() {
         url: formData.url,
         created_at: new Date().toISOString(),
         settings: {
+          logo: '/images/default-logo.png',
+          theme: 'light',
           description: formData.description
         },
         stats: {

@@ -6,15 +6,15 @@ export declare const ContentFilterSchema: z.ZodObject<{
     dateFrom: z.ZodOptional<z.ZodDate>;
     dateTo: z.ZodOptional<z.ZodDate>;
 }, "strip", z.ZodTypeAny, {
-    status?: string | undefined;
-    contentType?: number | undefined;
     search?: string | undefined;
+    contentType?: number | undefined;
+    status?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }, {
-    status?: string | undefined;
-    contentType?: number | undefined;
     search?: string | undefined;
+    contentType?: number | undefined;
+    status?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }>;
@@ -28,19 +28,19 @@ export declare const AffiliateLinkFilterSchema: z.ZodObject<{
     dateFrom: z.ZodOptional<z.ZodDate>;
     dateTo: z.ZodOptional<z.ZodDate>;
 }, "strip", z.ZodTypeAny, {
-    status?: string | undefined;
+    search?: string | undefined;
     site?: string | undefined;
     product?: string | undefined;
     merchant?: string | undefined;
-    search?: string | undefined;
+    status?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }, {
-    status?: string | undefined;
+    search?: string | undefined;
     site?: string | undefined;
     product?: string | undefined;
     merchant?: string | undefined;
-    search?: string | undefined;
+    status?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }>;

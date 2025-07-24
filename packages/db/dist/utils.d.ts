@@ -24,59 +24,6 @@ export declare const contentService: {
             description: string | null;
             schema: Prisma.JsonValue | null;
         };
-        categories: ({
-            category: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        media: ({
-            mediaAsset: {
-                id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                filename: string;
-                originalName: string;
-                mimeType: string;
-                size: number;
-                url: string;
-                altText: string | null;
-                metadata: Prisma.JsonValue | null;
-            };
-        } & {
-            contentId: string;
-            siteId: string;
-            mediaAssetId: string;
-        })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
         siteContent: ({
             site: {
                 id: string;
@@ -107,9 +54,62 @@ export declare const contentService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
         })[];
+        categories: ({
+            category: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
+        media: ({
+            mediaAsset: {
+                url: string;
+                id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                filename: string;
+                originalName: string;
+                mimeType: string;
+                size: number;
+                altText: string | null;
+                metadata: Prisma.JsonValue | null;
+            };
+        } & {
+            siteId: string;
+            contentId: string;
+            mediaAssetId: string;
+        })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
     } & {
         id: string;
         title: string;
@@ -133,59 +133,6 @@ export declare const contentService: {
             description: string | null;
             schema: Prisma.JsonValue | null;
         };
-        categories: ({
-            category: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        media: ({
-            mediaAsset: {
-                id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                filename: string;
-                originalName: string;
-                mimeType: string;
-                size: number;
-                url: string;
-                altText: string | null;
-                metadata: Prisma.JsonValue | null;
-            };
-        } & {
-            contentId: string;
-            siteId: string;
-            mediaAssetId: string;
-        })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
         siteContent: ({
             site: {
                 id: string;
@@ -216,9 +163,62 @@ export declare const contentService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
         })[];
+        categories: ({
+            category: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
+        media: ({
+            mediaAsset: {
+                url: string;
+                id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                filename: string;
+                originalName: string;
+                mimeType: string;
+                size: number;
+                altText: string | null;
+                metadata: Prisma.JsonValue | null;
+            };
+        } & {
+            siteId: string;
+            contentId: string;
+            mediaAssetId: string;
+        })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
     } & {
         id: string;
         title: string;
@@ -247,59 +247,6 @@ export declare const contentService: {
             description: string | null;
             schema: Prisma.JsonValue | null;
         };
-        categories: ({
-            category: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        media: ({
-            mediaAsset: {
-                id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                filename: string;
-                originalName: string;
-                mimeType: string;
-                size: number;
-                url: string;
-                altText: string | null;
-                metadata: Prisma.JsonValue | null;
-            };
-        } & {
-            contentId: string;
-            siteId: string;
-            mediaAssetId: string;
-        })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
         siteContent: ({
             site: {
                 id: string;
@@ -330,9 +277,62 @@ export declare const contentService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
         })[];
+        categories: ({
+            category: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
+        media: ({
+            mediaAsset: {
+                url: string;
+                id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                filename: string;
+                originalName: string;
+                mimeType: string;
+                size: number;
+                altText: string | null;
+                metadata: Prisma.JsonValue | null;
+            };
+        } & {
+            siteId: string;
+            contentId: string;
+            mediaAssetId: string;
+        })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
     } & {
         id: string;
         title: string;
@@ -356,59 +356,6 @@ export declare const contentService: {
             description: string | null;
             schema: Prisma.JsonValue | null;
         };
-        categories: ({
-            category: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        media: ({
-            mediaAsset: {
-                id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                filename: string;
-                originalName: string;
-                mimeType: string;
-                size: number;
-                url: string;
-                altText: string | null;
-                metadata: Prisma.JsonValue | null;
-            };
-        } & {
-            contentId: string;
-            siteId: string;
-            mediaAssetId: string;
-        })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
         siteContent: ({
             site: {
                 id: string;
@@ -439,9 +386,62 @@ export declare const contentService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
         })[];
+        categories: ({
+            category: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
+        media: ({
+            mediaAsset: {
+                url: string;
+                id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                filename: string;
+                originalName: string;
+                mimeType: string;
+                size: number;
+                altText: string | null;
+                metadata: Prisma.JsonValue | null;
+            };
+        } & {
+            siteId: string;
+            contentId: string;
+            mediaAssetId: string;
+        })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
     } & {
         id: string;
         title: string;
@@ -552,11 +552,12 @@ export declare const siteService: {
                 scheduledPublishAt: Date | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
         })[];
         media: ({
             mediaAsset: {
+                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
@@ -564,13 +565,12 @@ export declare const siteService: {
                 originalName: string;
                 mimeType: string;
                 size: number;
-                url: string;
                 altText: string | null;
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
             mediaAssetId: string;
         })[];
         products: ({
@@ -656,11 +656,12 @@ export declare const siteService: {
                 scheduledPublishAt: Date | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
         })[];
         media: ({
             mediaAsset: {
+                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
@@ -668,13 +669,12 @@ export declare const siteService: {
                 originalName: string;
                 mimeType: string;
                 size: number;
-                url: string;
                 altText: string | null;
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
             mediaAssetId: string;
         })[];
         products: ({
@@ -763,11 +763,12 @@ export declare const siteService: {
                 scheduledPublishAt: Date | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
         })[];
         media: ({
             mediaAsset: {
+                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
@@ -775,13 +776,12 @@ export declare const siteService: {
                 originalName: string;
                 mimeType: string;
                 size: number;
-                url: string;
                 altText: string | null;
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
             mediaAssetId: string;
         })[];
         products: ({
@@ -867,11 +867,12 @@ export declare const siteService: {
                 scheduledPublishAt: Date | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
         })[];
         media: ({
             mediaAsset: {
+                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
@@ -879,13 +880,12 @@ export declare const siteService: {
                 originalName: string;
                 mimeType: string;
                 size: number;
-                url: string;
                 altText: string | null;
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
             mediaAssetId: string;
         })[];
         products: ({
@@ -1046,8 +1046,8 @@ export declare const affiliateLinkService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            logoUrl: string | null;
             description: string | null;
+            logoUrl: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1126,8 +1126,8 @@ export declare const affiliateLinkService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            logoUrl: string | null;
             description: string | null;
+            logoUrl: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1206,8 +1206,8 @@ export declare const affiliateLinkService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            logoUrl: string | null;
             description: string | null;
+            logoUrl: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1282,8 +1282,8 @@ export declare const affiliateLinkService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            logoUrl: string | null;
             description: string | null;
+            logoUrl: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -2105,6 +2105,7 @@ export declare const tagService: {
 };
 export declare const mediaService: {
     create(data: Prisma.MediaAssetCreateInput): Promise<{
+        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -2112,7 +2113,6 @@ export declare const mediaService: {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         altText: string | null;
         metadata: Prisma.JsonValue | null;
     }>;
@@ -2161,11 +2161,12 @@ export declare const mediaService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
             mediaAssetId: string;
         })[];
     } & {
+        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -2173,7 +2174,6 @@ export declare const mediaService: {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         altText: string | null;
         metadata: Prisma.JsonValue | null;
     }) | null>;
@@ -2222,11 +2222,12 @@ export declare const mediaService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
             mediaAssetId: string;
         })[];
     } & {
+        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -2234,7 +2235,6 @@ export declare const mediaService: {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         altText: string | null;
         metadata: Prisma.JsonValue | null;
     }) | null>;
@@ -2287,11 +2287,12 @@ export declare const mediaService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
             mediaAssetId: string;
         })[];
     } & {
+        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -2299,7 +2300,6 @@ export declare const mediaService: {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         altText: string | null;
         metadata: Prisma.JsonValue | null;
     })[]>;
@@ -2348,11 +2348,12 @@ export declare const mediaService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            contentId: string;
             siteId: string;
+            contentId: string;
             mediaAssetId: string;
         })[];
     } & {
+        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -2360,11 +2361,11 @@ export declare const mediaService: {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         altText: string | null;
         metadata: Prisma.JsonValue | null;
     }>;
     delete(id: string): Promise<{
+        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -2372,7 +2373,6 @@ export declare const mediaService: {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         altText: string | null;
         metadata: Prisma.JsonValue | null;
     }>;
@@ -2383,8 +2383,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }>;
     findById(id: string): Promise<({
@@ -2410,8 +2410,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }) | null>;
     findByName(name: string): Promise<({
@@ -2437,8 +2437,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }) | null>;
     findAll(options?: {
@@ -2467,8 +2467,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     })[]>;
     update(id: string, data: Prisma.MerchantUpdateInput): Promise<{
@@ -2494,8 +2494,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }>;
     delete(id: string): Promise<{
@@ -2503,8 +2503,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }>;
 };
@@ -2777,24 +2777,24 @@ export declare const recipeService: {
 export declare const aiContentService: {
     log(data: Prisma.AIContentLogCreateInput): Promise<{
         error: string | null;
+        model: string;
         id: string;
         status: string;
         createdAt: Date | null;
         prompt: string;
         response: string;
-        model: string;
         tokensUsed: number;
         cost: Prisma.Decimal | null;
         duration: number | null;
     }>;
     findById(id: string): Promise<{
         error: string | null;
+        model: string;
         id: string;
         status: string;
         createdAt: Date | null;
         prompt: string;
         response: string;
-        model: string;
         tokensUsed: number;
         cost: Prisma.Decimal | null;
         duration: number | null;
@@ -2804,12 +2804,12 @@ export declare const aiContentService: {
         offset?: number;
     }): Promise<{
         error: string | null;
+        model: string;
         id: string;
         status: string;
         createdAt: Date | null;
         prompt: string;
         response: string;
-        model: string;
         tokensUsed: number;
         cost: Prisma.Decimal | null;
         duration: number | null;
@@ -2819,12 +2819,12 @@ export declare const aiContentService: {
         offset?: number;
     }): Promise<{
         error: string | null;
+        model: string;
         id: string;
         status: string;
         createdAt: Date | null;
         prompt: string;
         response: string;
-        model: string;
         tokensUsed: number;
         cost: Prisma.Decimal | null;
         duration: number | null;
