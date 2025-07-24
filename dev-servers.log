@@ -1,0 +1,317 @@
+
+> affiliate-template-72325@1.0.0 dev /Users/mhaniff/affiliate-template-72325
+> turbo run dev
+
+turbo 2.5.5
+
+• Packages in scope: @affiliate/ai, @affiliate/cms, @affiliate/db, @affiliate/eslint-config-custom, @affiliate/shared-types, @affiliate/ui, admin, web
+• Running dev in 8 packages
+• Remote caching disabled
+@affiliate/shared-types:dev: cache bypass, force executing a0277250ebbd2e7d
+@affiliate/cms:dev: cache bypass, force executing 5d6d7141ef36c22b
+@affiliate/ui:dev: cache bypass, force executing be8230ff3fe1f065
+web:dev: cache bypass, force executing 0266e101e722ef44
+admin:dev: cache bypass, force executing 0cc0e4550c82c4e0
+@affiliate/db:dev: cache bypass, force executing f00414ea4759c172
+@affiliate/ai:dev: cache bypass, force executing d164fad3cf46a0d2
+@affiliate/cms:dev: 
+@affiliate/cms:dev: > @affiliate/cms@0.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/cms
+@affiliate/cms:dev: > tsc --watch
+@affiliate/cms:dev: 
+@affiliate/shared-types:dev: 
+@affiliate/shared-types:dev: > @affiliate/shared-types@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/shared-types
+@affiliate/shared-types:dev: > tsc --watch
+@affiliate/shared-types:dev: 
+@affiliate/ai:dev: 
+@affiliate/ai:dev: > @affiliate/ai@0.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/ai
+@affiliate/ai:dev: > tsc --watch
+@affiliate/ai:dev: 
+web:dev: 
+web:dev: > web@0.1.0 dev /Users/mhaniff/affiliate-template-72325/apps/web
+web:dev: > next dev
+web:dev: 
+@affiliate/db:dev: 
+@affiliate/db:dev: > @affiliate/db@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/db
+@affiliate/db:dev: > tsc --watch
+@affiliate/db:dev: 
+admin:dev: 
+admin:dev: > admin@0.1.0 dev /Users/mhaniff/affiliate-template-72325/apps/admin
+admin:dev: > next dev
+admin:dev: 
+@affiliate/ui:dev: 
+@affiliate/ui:dev: > @affiliate/ui@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/ui
+@affiliate/ui:dev: > tsc --watch
+@affiliate/ui:dev: 
+@affiliate/cms:dev: [2J[3J[H7:36:50 AM - Starting compilation in watch mode...
+@affiliate/cms:dev: 
+@affiliate/shared-types:dev: [2J[3J[H7:36:50 AM - Starting compilation in watch mode...
+@affiliate/shared-types:dev: 
+@affiliate/ai:dev: [2J[3J[H7:36:50 AM - Starting compilation in watch mode...
+@affiliate/ai:dev: 
+@affiliate/db:dev: [2J[3J[H7:36:50 AM - Starting compilation in watch mode...
+@affiliate/db:dev: 
+web:dev:  ⚠ Warning: Found multiple lockfiles. Selecting /Users/mhaniff/pnpm-lock.yaml.
+web:dev:    Consider removing the lockfiles at:
+web:dev:    * /Users/mhaniff/affiliate-template-72325/pnpm-lock.yaml
+web:dev: 
+@affiliate/ui:dev: [2J[3J[H7:36:50 AM - Starting compilation in watch mode...
+@affiliate/ui:dev: 
+admin:dev:   ▲ Next.js 14.2.30
+admin:dev:   - Local:        http://localhost:3000
+admin:dev:   - Environments: .env.local
+admin:dev: 
+admin:dev:  ✓ Starting...
+@affiliate/shared-types:dev: 
+@affiliate/shared-types:dev: 7:36:51 AM - Found 0 errors. Watching for file changes.
+@affiliate/ai:dev: 
+@affiliate/ai:dev: 7:36:51 AM - Found 0 errors. Watching for file changes.
+web:dev:  ⚠ Port 3000 is in use by process 32958, using available port 3001 instead.
+@affiliate/cms:dev: 
+@affiliate/cms:dev: 7:36:51 AM - Found 0 errors. Watching for file changes.
+@affiliate/ui:dev: 
+@affiliate/ui:dev: 7:36:51 AM - Found 0 errors. Watching for file changes.
+web:dev:    ▲ Next.js 15.4.3
+web:dev:    - Local:        http://localhost:3001
+web:dev:    - Network:      http://192.168.1.249:3001
+web:dev:    - Environments: .env.local
+web:dev: 
+web:dev:  ✓ Starting...
+@affiliate/db:dev: 
+@affiliate/db:dev: 7:36:51 AM - Found 0 errors. Watching for file changes.
+admin:dev:  ✓ Ready in 1193ms
+admin:dev:  ⚠ Your project has `@next/font` installed as a dependency, please use the built-in `next/font` instead. The `@next/font` package will be removed in Next.js 14. You can migrate by running `pnpm dlx @next/codemod@latest built-in-next-font .`. Read more: https://nextjs.org/docs/messages/built-in-next-font
+web:dev:  ✓ Ready in 1428ms
+web:dev:  ○ Compiling / ...
+web:dev: 
+web:dev: 
+web:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/web/src/app/globals.css
+web:dev: Setting up new context...
+web:dev: Finding changed files: 3.777ms
+web:dev: Reading changed files: 16.279ms
+web:dev: Sorting candidates: 1.21ms
+web:dev: Generate rules: 29.739ms
+web:dev: Build stylesheet: 0.945ms
+web:dev: Potential classes:  3135
+web:dev: Active contexts:  1
+web:dev: JIT TOTAL: 135.472ms
+web:dev: 
+web:dev: 
+web:dev:  ✓ Compiled / in 1096ms (610 modules)
+web:dev:  ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+web:dev:  GET / 200 in 1354ms
+web:dev: 
+web:dev: 
+web:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/web/src/app/globals.css
+web:dev: Finding changed files: 1.251ms
+web:dev: Reading changed files: 0.003ms
+web:dev: Sorting candidates: 0.002ms
+web:dev: Generate rules: 0.073ms
+web:dev: Build stylesheet: 0.001ms
+web:dev: Potential classes:  1
+web:dev: Active contexts:  1
+web:dev: JIT TOTAL: 9.085ms
+web:dev: 
+web:dev: 
+web:dev:  ✓ Compiled in 364ms (234 modules)
+web:dev:  GET / 200 in 107ms
+web:dev:  GET /_next/static/webpack/df99aa8d150f26b6.webpack.hot-update.json 404 in 1502ms
+web:dev:  ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+web:dev:  GET / 200 in 22ms
+web:dev:  GET /_next/static/webpack/df99aa8d150f26b6.webpack.hot-update.json 404 in 77ms
+web:dev:  GET / 200 in 61ms
+web:dev:  ✓ Compiled /favicon.ico in 141ms (613 modules)
+web:dev:  GET /favicon.ico 200 in 285ms
+web:dev:  GET /icon-192.png 404 in 263ms
+web:dev:  GET / 200 in 57ms
+web:dev:  GET /icon.svg 404 in 22ms
+web:dev:  GET /favicon.ico 200 in 23ms
+web:dev:  GET /icon-192.png 404 in 25ms
+admin:dev:  ○ Compiling /auth/signin ...
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Setting up new context...
+admin:dev: Finding changed files: 4.709ms
+admin:dev: Reading changed files: 56.469ms
+admin:dev: Sorting candidates: 1.192ms
+admin:dev: Generate rules: 28.531ms
+admin:dev: Build stylesheet: 0.891ms
+admin:dev: Potential classes:  3493
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 180.105ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled /auth/signin in 1688ms (629 modules)
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 1.566ms
+admin:dev: Reading changed files: 0.075ms
+admin:dev: Sorting candidates: 0.002ms
+admin:dev: Generate rules: 0.071ms
+admin:dev: Build stylesheet: 0.001ms
+admin:dev: Potential classes:  1
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 24.182ms
+admin:dev: 
+admin:dev: 
+admin:dev:  GET /auth/signin 200 in 1954ms
+admin:dev:  ✓ Compiled in 236ms (304 modules)
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Setting up new context...
+admin:dev: Finding changed files: 2.888ms
+admin:dev: Reading changed files: 24.776ms
+admin:dev: Sorting candidates: 1.288ms
+admin:dev: Generate rules: 18.505ms
+admin:dev: Build stylesheet: 0.482ms
+admin:dev: Potential classes:  3493
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 100.085ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 277ms (620 modules)
+admin:dev:  ⨯ ./src/app/globals.css:203:1
+admin:dev: Syntax error: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css Unexpected }
+admin:dev: 
+admin:dev:   201 | 
+admin:dev:   202 |   background-color: rgb(0 122 255 / 0.05);
+admin:dev: > 203 | }
+admin:dev:       | ^
+admin:dev:   204 | 
+admin:dev:   205 | .admin-nav-link.active {
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Setting up new context...
+admin:dev: Finding changed files: 2.414ms
+admin:dev: Reading changed files: 23.977ms
+admin:dev: Sorting candidates: 1.125ms
+admin:dev: Generate rules: 16.636ms
+admin:dev: Build stylesheet: 0.388ms
+admin:dev: Potential classes:  3493
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 89.086ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 156ms (304 modules)
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 1.853ms
+admin:dev: Reading changed files: 0.003ms
+admin:dev: Sorting candidates: 0.002ms
+admin:dev: Generate rules: 0.018ms
+admin:dev: Build stylesheet: 0.001ms
+admin:dev: Potential classes:  1
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 19.633ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 78ms (304 modules)
+web:dev:  GET / 200 in 47ms
+admin:dev:  ✓ Compiled /auth/signin in 87ms (316 modules)
+web:dev:  GET /icon.svg 404 in 43ms
+web:dev:  GET /icon-192.png 404 in 22ms
+web:dev:  GET /favicon.ico 200 in 3ms
+admin:dev:  ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+admin:dev:     at Object.__webpack_require__ [as require] (/Users/mhaniff/affiliate-template-72325/apps/admin/.next/server/webpack-runtime.js:33:42)
+admin:dev: digest: "1574283991"
+admin:dev: TypeError: __webpack_modules__[moduleId] is not a function
+admin:dev:     at Object.__webpack_require__ [as require] (/Users/mhaniff/affiliate-template-72325/apps/admin/.next/server/webpack-runtime.js:33:42)
+admin:dev:     at require (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:20088)
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108280
+admin:dev:     at eo (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108465)
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:110694
+admin:dev:     at Object._fromJSON (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:111250)
+admin:dev:     at JSON.parse (<anonymous>)
+admin:dev:     at eu (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108959)
+admin:dev:     at en (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108027)
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115169
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115186
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115219
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115236
+admin:dev:     at t (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115459)
+admin:dev:  ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+admin:dev:     at Object.__webpack_require__ [as require] (/Users/mhaniff/affiliate-template-72325/apps/admin/.next/server/webpack-runtime.js:33:42)
+admin:dev:     at require (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:39:20088)
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108280
+admin:dev:     at eo (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108465)
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:110694
+admin:dev:     at Object._fromJSON (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:111250)
+admin:dev:     at JSON.parse (<anonymous>)
+admin:dev:     at eu (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108959)
+admin:dev:     at en (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:108027)
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115169
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115186
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115219
+admin:dev:     at /Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115236
+admin:dev:     at t (/Users/mhaniff/affiliate-template-72325/node_modules/.pnpm/next@14.2.30_@babel+core@7.28.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1_sass@1.69.4/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:35:115459) {
+admin:dev:   page: '/auth/signin'
+admin:dev: }
+admin:dev:  ○ Compiling /_error ...
+admin:dev:  ✓ Compiled /_error in 562ms (832 modules)
+admin:dev:  GET /auth/signin 500 in 849ms
+admin:dev:  ✓ Compiled /favicon.ico in 165ms (388 modules)
+web:dev:  ○ Compiling /_error ...
+web:dev:  ✓ Compiled /_error in 905ms (923 modules)
+web:dev:  ⨯ [Error: ENOENT: no such file or directory, open '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js'] {
+web:dev:   errno: -2,
+web:dev:   code: 'ENOENT',
+web:dev:   syscall: 'open',
+web:dev:   path: '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js',
+web:dev:   page: '/'
+web:dev: }
+web:dev:  GET / 404 in 1261ms
+web:dev:  GET / 500 in 742ms
+web:dev:  ⨯ [Error: ENOENT: no such file or directory, open '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js'] {
+web:dev:   errno: -2,
+web:dev:   code: 'ENOENT',
+web:dev:   syscall: 'open',
+web:dev:   path: '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js',
+web:dev:   page: '/'
+web:dev: }
+web:dev:  GET / 500 in 222ms
+web:dev:  ⨯ [Error: ENOENT: no such file or directory, open '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js'] {
+web:dev:   errno: -2,
+web:dev:   code: 'ENOENT',
+web:dev:   syscall: 'open',
+web:dev:   path: '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js',
+web:dev:   page: '/'
+web:dev: }
+web:dev:  GET / 500 in 220ms
+web:dev:  ⨯ [Error: ENOENT: no such file or directory, open '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js'] {
+web:dev:   errno: -2,
+web:dev:   code: 'ENOENT',
+web:dev:   syscall: 'open',
+web:dev:   path: '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js',
+web:dev:   page: '/'
+web:dev: }
+web:dev:  GET / 500 in 222ms
+web:dev:  ⨯ [Error: ENOENT: no such file or directory, open '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js'] {
+web:dev:   errno: -2,
+web:dev:   code: 'ENOENT',
+web:dev:   syscall: 'open',
+web:dev:   path: '/Users/mhaniff/affiliate-template-72325/apps/web/.next/server/app/page.js',
+web:dev:   page: '/'
+web:dev: }
+web:dev:  GET / 500 in 237ms
+admin:dev: [?25h
+web:dev: [?25h
+@affiliate/ui:dev:  ELIFECYCLE  Command failed.
+@affiliate/cms:dev:  ELIFECYCLE  Command failed.
+@affiliate/shared-types:dev:  ELIFECYCLE  Command failed.
+@affiliate/db:dev:  ELIFECYCLE  Command failed.
+@affiliate/ai:dev:  ELIFECYCLE  Command failed.
+  x Internal errors encountered: external process killed a task
+
+ ELIFECYCLE  Command failed with exit code 1.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @affiliate/cms:dev:  ELIFECYCLE  Command failed.
+@affiliate/ui:dev:  ELIFECYCLE  Command failed.
+@affiliate/ai:dev:  ELIFECYCLE  Command failed.
+@affiliate/shared-types:dev:  ELIFECYCLE  Command failed.
+@affiliate/db:dev:  ELIFECYCLE  Command failed.
+  x Internal errors encountered: external process killed a task
+
+ ELIFECYCLE  Command failed with exit code 1.

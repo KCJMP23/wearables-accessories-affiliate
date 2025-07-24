@@ -1,0 +1,126 @@
+
+> affiliate-template-72325@1.0.0 dev
+> turbo run dev
+
+turbo 2.5.5
+
+• Packages in scope: @affiliate/ai, @affiliate/cms, @affiliate/db, @affiliate/eslint-config-custom, @affiliate/shared-types, @affiliate/ui, admin, web
+• Running dev in 8 packages
+• Remote caching disabled
+@affiliate/ui:dev: cache bypass, force executing 007f3607c1fe5d74
+@affiliate/cms:dev: cache bypass, force executing 5d6d7141ef36c22b
+web:dev: cache bypass, force executing 272641daf4d5d741
+admin:dev: cache bypass, force executing 542c6cb6e469a7d4
+@affiliate/db:dev: cache bypass, force executing f00414ea4759c172
+@affiliate/shared-types:dev: cache bypass, force executing a0277250ebbd2e7d
+@affiliate/ai:dev: cache bypass, force executing d164fad3cf46a0d2
+@affiliate/shared-types:dev: 
+@affiliate/shared-types:dev: > @affiliate/shared-types@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/shared-types
+@affiliate/shared-types:dev: > tsc --watch
+@affiliate/shared-types:dev: 
+@affiliate/ai:dev: 
+@affiliate/ai:dev: > @affiliate/ai@0.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/ai
+@affiliate/ai:dev: > tsc --watch
+@affiliate/ai:dev: 
+@affiliate/db:dev: 
+@affiliate/db:dev: > @affiliate/db@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/db
+@affiliate/db:dev: > tsc --watch
+@affiliate/db:dev: 
+@affiliate/cms:dev: 
+@affiliate/cms:dev: > @affiliate/cms@0.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/cms
+@affiliate/cms:dev: > tsc --watch
+@affiliate/cms:dev: 
+web:dev: 
+web:dev: > web@0.1.0 dev /Users/mhaniff/affiliate-template-72325/apps/web
+web:dev: > next dev
+web:dev: 
+admin:dev: 
+admin:dev: > admin@0.1.0 dev /Users/mhaniff/affiliate-template-72325/apps/admin
+admin:dev: > next dev
+admin:dev: 
+@affiliate/ui:dev: 
+@affiliate/ui:dev: > @affiliate/ui@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/ui
+@affiliate/ui:dev: > tsc --watch
+@affiliate/ui:dev: 
+@affiliate/shared-types:dev: [2J[3J[H10:06:08 AM - Starting compilation in watch mode...
+@affiliate/shared-types:dev: 
+@affiliate/ai:dev: [2J[3J[H10:06:08 AM - Starting compilation in watch mode...
+@affiliate/ai:dev: 
+@affiliate/cms:dev: [2J[3J[H10:06:08 AM - Starting compilation in watch mode...
+@affiliate/cms:dev: 
+@affiliate/db:dev: [2J[3J[H10:06:08 AM - Starting compilation in watch mode...
+@affiliate/db:dev: 
+@affiliate/ui:dev: [2J[3J[H10:06:08 AM - Starting compilation in watch mode...
+@affiliate/ui:dev: 
+web:dev:  ⚠ Warning: Found multiple lockfiles. Selecting /Users/mhaniff/pnpm-lock.yaml.
+web:dev:    Consider removing the lockfiles at:
+web:dev:    * /Users/mhaniff/affiliate-template-72325/pnpm-lock.yaml
+web:dev: 
+admin:dev:   ▲ Next.js 14.2.30
+admin:dev:   - Local:        http://localhost:3000
+admin:dev:   - Environments: .env.local
+admin:dev: 
+admin:dev:  ✓ Starting...
+web:dev:  ⚠ Port 3000 is in use by process 34831, using available port 3001 instead.
+@affiliate/shared-types:dev: 
+@affiliate/shared-types:dev: 10:06:08 AM - Found 0 errors. Watching for file changes.
+@affiliate/ui:dev: 
+@affiliate/ui:dev: 10:06:09 AM - Found 0 errors. Watching for file changes.
+@affiliate/db:dev: 
+@affiliate/db:dev: 10:06:09 AM - Found 0 errors. Watching for file changes.
+@affiliate/ai:dev: 
+@affiliate/ai:dev: 10:06:09 AM - Found 0 errors. Watching for file changes.
+web:dev:    ▲ Next.js 15.4.3
+web:dev:    - Local:        http://localhost:3001
+web:dev:    - Network:      http://192.168.1.249:3001
+web:dev:    - Environments: .env.local
+web:dev: 
+web:dev:  ✓ Starting...
+admin:dev:  ✓ Ready in 1307ms
+admin:dev:  ⚠ Your project has `@next/font` installed as a dependency, please use the built-in `next/font` instead. The `@next/font` package will be removed in Next.js 14. You can migrate by running `pnpm dlx @next/codemod@latest built-in-next-font .`. Read more: https://nextjs.org/docs/messages/built-in-next-font
+@affiliate/cms:dev: 
+@affiliate/cms:dev: 10:06:09 AM - Found 0 errors. Watching for file changes.
+web:dev:  ✓ Ready in 1427ms
+admin:dev:  ○ Compiling /sites ...
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Setting up new context...
+admin:dev: Finding changed files: 4.288ms
+admin:dev: Reading changed files: 60.373ms
+admin:dev: Sorting candidates: 1.199ms
+admin:dev: Generate rules: 26.139ms
+admin:dev: Build stylesheet: 1.007ms
+admin:dev: Potential classes:  3493
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 179.285ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled /sites in 1629ms (629 modules)
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 1.521ms
+admin:dev: Reading changed files: 0.061ms
+admin:dev: Sorting candidates: 0.002ms
+admin:dev: Generate rules: 0.064ms
+admin:dev: Build stylesheet: 0.001ms
+admin:dev: Potential classes:  1
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 22.158ms
+admin:dev: 
+admin:dev: 
+admin:dev:  GET /sites 200 in 1904ms
+admin:dev:  ✓ Compiled in 230ms (304 modules)
+admin:dev:  ○ Compiling /favicon.ico ...
+admin:dev:  ✓ Compiled /favicon.ico in 609ms (348 modules)
+admin:dev:  GET /favicon.ico 200 in 643ms
+admin:dev:  GET /sites 200 in 67ms
+admin:dev:  GET /favicon.ico 200 in 4ms
+admin:dev:  ✓ Compiled /api/auth/[...nextauth] in 313ms (584 modules)
+admin:dev:  GET /api/auth/session 200 in 646ms
+admin:dev:  GET /api/auth/session 200 in 4ms
+admin:dev:  GET /sites 200 in 39ms
+admin:dev:  GET /favicon.ico 200 in 9ms
+admin:dev:  GET /api/auth/session 200 in 10ms
+admin:dev:  GET /api/auth/session 200 in 5ms

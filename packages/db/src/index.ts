@@ -8,7 +8,15 @@ declare global {
   var __prisma: PrismaClient | undefined;
 }
 
-export const prisma = globalThis.__prisma || new PrismaClient();
+export const prisma = globalThis.__prisma || new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL,
+    },
+  },
+  // Add connection pooling configuration
+  log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+});
 
 if (process.env.NODE_ENV !== 'production') {
   globalThis.__prisma = prisma;
@@ -29,3 +37,15 @@ export type {
 
 // Export site configuration
 export * from './site-config';
+
+// Add connection cleanup function
+export async function cleanupPrisma() {
+  if (prisma) {
+    await prisma.$disconnect();
+  }
+}
+
+// Handle process termination
+process.on('beforeExit', async () => {
+  await cleanupPrisma();
+});

@@ -3,7 +3,6 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { LoadingSpinner } from '@affiliate/ui';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -23,10 +22,10 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <LoadingSpinner size="lg" />
-          <p className="mt-4 text-gray-600">Loading...</p>
+      <div className="min-h-screen flex items-center justify-center bg-apple-gray-50">
+        <div className="text-center animate-fade-in-up">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-apple-blue mx-auto"></div>
+          <p className="mt-4 text-apple-gray-600">Loading...</p>
         </div>
       </div>
     );

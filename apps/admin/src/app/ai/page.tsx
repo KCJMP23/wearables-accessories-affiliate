@@ -68,128 +68,147 @@ export default function AIDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">AI Services Dashboard</h1>
-          <p className="mt-2 text-gray-600">
-            Generate content and images using AI services
-          </p>
-        </div>
-
-        {/* Connection Status */}
-        <div className="mb-6 bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Service Connections</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {['openai', 'claude', 'leonardo'].map((provider) => (
-              <div key={provider} className="flex items-center justify-between p-3 border rounded-lg">
-                <div className="flex items-center space-x-2">
-                  <div
-                    className={`w-3 h-3 rounded-full ${
-                      connectionStatus[provider] === true
-                        ? 'bg-green-500'
-                        : connectionStatus[provider] === false
-                        ? 'bg-red-500'
-                        : 'bg-gray-300'
-                    }`}
-                  />
-                  <span className="font-medium capitalize">{provider}</span>
-                </div>
-                <button
-                  onClick={() => testConnection(provider)}
-                  disabled={isTestingConnection}
-                  className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400"
-                >
-                  Test
-                </button>
-              </div>
-            ))}
+    <div className="min-h-screen">
+      {/* Header */}
+      <header className="admin-header">
+        <div className="px-6 py-6">
+          <div className="flex items-center justify-between">
+            <div className="animate-fade-in-left">
+              <h1 className="text-3xl font-bold text-apple-gray-900">AI Services</h1>
+              <p className="text-apple-gray-600 mt-1">Generate content and images using AI services</p>
+            </div>
           </div>
-          <button
-            onClick={testAllConnections}
-            disabled={isTestingConnection}
-            className="mt-4 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:bg-gray-400"
-          >
-            {isTestingConnection ? 'Testing...' : 'Test All Connections'}
-          </button>
         </div>
+      </header>
 
-        {/* Tab Navigation */}
-        <div className="mb-6">
-          <nav className="flex space-x-8">
-            {[
-              { id: 'content', label: 'Content Generation' },
-              { id: 'image', label: 'Image Generation' },
-              { id: 'settings', label: 'Settings' },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as 'content' | 'image' | 'settings')}
-                className={`py-2 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === tab.id
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-                type="button"
-              >
-                {tab.label}
-              </button>
-            ))}
-          </nav>
-        </div>
-
-        {/* Tab Content */}
-        <div className="bg-white rounded-lg shadow-md">
-          {activeTab === 'content' && (
-            <div className="p-6">
-              <ContentGenerator
-                onContentGenerated={handleContentGenerated}
-                onError={handleError}
-              />
+      {/* Main Content */}
+      <main className="px-6 py-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Connection Status */}
+          <div className="admin-action-card animate-fade-in-up mb-8">
+            <h2 className="text-xl font-bold text-apple-gray-900 mb-6">Service Connections</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              {['openai', 'claude', 'leonardo'].map((provider) => (
+                <div key={provider} className="flex items-center justify-between p-4 border border-apple-gray-200 rounded-2xl bg-white">
+                  <div className="flex items-center space-x-3">
+                    <div
+                      className={`w-3 h-3 rounded-full ${
+                        connectionStatus[provider] === true
+                          ? 'bg-apple-green'
+                          : connectionStatus[provider] === false
+                          ? 'bg-apple-red'
+                          : 'bg-apple-gray-300'
+                      }`}
+                    />
+                    <span className="font-medium capitalize text-apple-gray-900">{provider}</span>
+                  </div>
+                  <button
+                    onClick={() => testConnection(provider)}
+                    disabled={isTestingConnection}
+                    className="admin-button admin-button-secondary text-sm"
+                  >
+                    Test
+                  </button>
+                </div>
+              ))}
             </div>
-          )}
+            <button
+              onClick={testAllConnections}
+              disabled={isTestingConnection}
+              className="admin-button admin-button-primary"
+            >
+              {isTestingConnection ? 'Testing...' : 'Test All Connections'}
+            </button>
+          </div>
 
-          {activeTab === 'image' && (
-            <div className="p-6">
-              <ImageGenerator
-                onImageGenerated={handleImageGenerated}
-                onError={handleError}
-              />
+          {/* Tab Navigation */}
+          <div className="mb-8">
+            <div className="flex space-x-1 bg-apple-gray-100 p-1 rounded-2xl">
+              {[
+                { id: 'content', name: 'Content Generation' },
+                { id: 'image', name: 'Image Generation' },
+                { id: 'settings', name: 'Settings' },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as 'content' | 'image' | 'settings')}
+                  className={`flex-1 px-4 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                    activeTab === tab.id
+                      ? 'bg-white text-apple-gray-900 shadow-apple-sm'
+                      : 'text-apple-gray-600 hover:text-apple-gray-900'
+                  }`}
+                >
+                  {tab.name}
+                </button>
+              ))}
             </div>
-          )}
+          </div>
 
-          {activeTab === 'settings' && (
-            <div className="p-6">
-              <h2 className="text-2xl font-bold mb-6">AI Service Settings</h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">Environment Variables</h3>
-                  <p className="text-gray-600 mb-4">
-                    Make sure the following environment variables are set in your .env file:
-                  </p>
-                  <div className="bg-gray-100 p-4 rounded-lg">
-                    <pre className="text-sm">
+          {/* Tab Content */}
+          <div className="admin-action-card animate-fade-in-up animation-delay-200">
+            {activeTab === 'content' && (
+              <div className="p-6">
+                <ContentGenerator
+                  onContentGenerated={handleContentGenerated}
+                  onError={handleError}
+                />
+              </div>
+            )}
+
+            {activeTab === 'image' && (
+              <div className="p-6">
+                <ImageGenerator
+                  onImageGenerated={handleImageGenerated}
+                  onError={handleError}
+                />
+              </div>
+            )}
+
+            {activeTab === 'settings' && (
+              <div className="p-6">
+                <h2 className="text-2xl font-bold text-apple-gray-900 mb-6">AI Service Settings</h2>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-apple-gray-900 mb-3">Environment Variables</h3>
+                    <p className="text-apple-gray-600 mb-4">
+                      Make sure the following environment variables are set in your .env file:
+                    </p>
+                    <div className="bg-apple-gray-50 p-4 rounded-2xl border border-apple-gray-200">
+                      <pre className="text-sm text-apple-gray-700">
 {`OPENAI_API_KEY=your_openai_api_key
 CLAUDE_API_KEY=your_claude_api_key
 LEONARDO_API_KEY=your_leonardo_api_key`}
-                    </pre>
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-apple-gray-900 mb-3">Usage Guidelines</h3>
+                    <ul className="space-y-2 text-apple-gray-600">
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-apple-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Always review generated content before publishing</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-apple-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Ensure FTC compliance for affiliate marketing</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-apple-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Monitor API usage and costs</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-apple-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Test connections before generating content</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">Usage Guidelines</h3>
-                  <ul className="list-disc list-inside space-y-2 text-gray-600">
-                    <li>Always review generated content before publishing</li>
-                    <li>Ensure FTC compliance for affiliate marketing</li>
-                    <li>Monitor API usage and costs</li>
-                    <li>Test connections before generating content</li>
-                  </ul>
-                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 } 

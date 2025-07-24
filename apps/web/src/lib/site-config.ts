@@ -4,7 +4,7 @@ export interface SiteConfig {
   id: string;
   name: string;
   domain: string;
-  logoUrl?: string;
+  logoUrl?: string | null;
   primaryColor?: string;
   secondaryColor?: string;
   
@@ -64,7 +64,7 @@ export async function getCurrentSiteConfig(): Promise<SiteConfig> {
     const siteConfig = await getSiteConfig(domain);
     
     if (siteConfig) {
-      return siteConfig;
+      return siteConfig as SiteConfig;
     }
     
     // Fallback to default config

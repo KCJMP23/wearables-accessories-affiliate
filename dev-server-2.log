@@ -1,0 +1,448 @@
+
+> affiliate-template-72325@1.0.0 dev
+> turbo run dev
+
+turbo 2.5.5
+
+• Packages in scope: @affiliate/ai, @affiliate/cms, @affiliate/db, @affiliate/eslint-config-custom, @affiliate/shared-types, @affiliate/ui, admin, web
+• Running dev in 8 packages
+• Remote caching disabled
+admin:dev: cache bypass, force executing 5b3a5ee70410afef
+web:dev: cache bypass, force executing 272641daf4d5d741
+@affiliate/ui:dev: cache bypass, force executing 007f3607c1fe5d74
+@affiliate/ai:dev: cache bypass, force executing d164fad3cf46a0d2
+@affiliate/cms:dev: cache bypass, force executing 5d6d7141ef36c22b
+@affiliate/shared-types:dev: cache bypass, force executing a0277250ebbd2e7d
+@affiliate/db:dev: cache bypass, force executing f00414ea4759c172
+@affiliate/cms:dev: 
+@affiliate/cms:dev: > @affiliate/cms@0.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/cms
+@affiliate/cms:dev: > tsc --watch
+@affiliate/cms:dev: 
+@affiliate/ai:dev: 
+@affiliate/ai:dev: > @affiliate/ai@0.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/ai
+@affiliate/ai:dev: > tsc --watch
+@affiliate/ai:dev: 
+@affiliate/db:dev: 
+@affiliate/db:dev: > @affiliate/db@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/db
+@affiliate/db:dev: > tsc --watch
+@affiliate/db:dev: 
+@affiliate/shared-types:dev: 
+@affiliate/shared-types:dev: > @affiliate/shared-types@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/shared-types
+@affiliate/shared-types:dev: > tsc --watch
+@affiliate/shared-types:dev: 
+@affiliate/ui:dev: 
+@affiliate/ui:dev: > @affiliate/ui@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/ui
+@affiliate/ui:dev: > tsc --watch
+@affiliate/ui:dev: 
+web:dev: 
+web:dev: > web@0.1.0 dev /Users/mhaniff/affiliate-template-72325/apps/web
+web:dev: > next dev
+web:dev: 
+admin:dev: 
+admin:dev: > admin@0.1.0 dev /Users/mhaniff/affiliate-template-72325/apps/admin
+admin:dev: > next dev
+admin:dev: 
+@affiliate/ai:dev: [2J[3J[H10:12:50 AM - Starting compilation in watch mode...
+@affiliate/ai:dev: 
+@affiliate/shared-types:dev: [2J[3J[H10:12:50 AM - Starting compilation in watch mode...
+@affiliate/shared-types:dev: 
+@affiliate/cms:dev: [2J[3J[H10:12:50 AM - Starting compilation in watch mode...
+@affiliate/cms:dev: 
+@affiliate/db:dev: [2J[3J[H10:12:50 AM - Starting compilation in watch mode...
+@affiliate/db:dev: 
+@affiliate/ui:dev: [2J[3J[H10:12:50 AM - Starting compilation in watch mode...
+@affiliate/ui:dev: 
+admin:dev:   ▲ Next.js 14.2.30
+admin:dev:   - Local:        http://localhost:3000
+admin:dev:   - Environments: .env.local
+admin:dev: 
+admin:dev:  ✓ Starting...
+web:dev:  ⚠ Warning: Found multiple lockfiles. Selecting /Users/mhaniff/pnpm-lock.yaml.
+web:dev:    Consider removing the lockfiles at:
+web:dev:    * /Users/mhaniff/affiliate-template-72325/pnpm-lock.yaml
+web:dev: 
+@affiliate/shared-types:dev: 
+@affiliate/shared-types:dev: 10:12:51 AM - Found 0 errors. Watching for file changes.
+@affiliate/db:dev: 
+@affiliate/db:dev: 10:12:51 AM - Found 0 errors. Watching for file changes.
+@affiliate/ui:dev: 
+@affiliate/ui:dev: 10:12:51 AM - Found 0 errors. Watching for file changes.
+@affiliate/ai:dev: 
+@affiliate/ai:dev: 10:12:51 AM - Found 0 errors. Watching for file changes.
+web:dev:  ⚠ Port 3000 is in use by process 51065, using available port 3001 instead.
+web:dev:    ▲ Next.js 15.4.3
+web:dev:    - Local:        http://localhost:3001
+web:dev:    - Network:      http://192.168.1.249:3001
+web:dev:    - Environments: .env.local
+web:dev: 
+web:dev:  ✓ Starting...
+@affiliate/cms:dev: 
+@affiliate/cms:dev: 10:12:51 AM - Found 0 errors. Watching for file changes.
+admin:dev:  ✓ Ready in 1352ms
+admin:dev:  ⚠ Your project has `@next/font` installed as a dependency, please use the built-in `next/font` instead. The `@next/font` package will be removed in Next.js 14. You can migrate by running `pnpm dlx @next/codemod@latest built-in-next-font .`. Read more: https://nextjs.org/docs/messages/built-in-next-font
+web:dev:  ✓ Ready in 1363ms
+admin:dev:  ○ Compiling /sites ...
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Setting up new context...
+admin:dev: Finding changed files: 4.736ms
+admin:dev: Reading changed files: 56.849ms
+admin:dev: Sorting candidates: 1.355ms
+admin:dev: Generate rules: 31.34ms
+admin:dev: Build stylesheet: 1.448ms
+admin:dev: Potential classes:  3538
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 184.348ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled /sites in 1832ms (629 modules)
+admin:dev:  HEAD /sites 200 in 1968ms
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 4.567ms
+admin:dev: Reading changed files: 0.066ms
+admin:dev: Sorting candidates: 0.004ms
+admin:dev: Generate rules: 0.085ms
+admin:dev: Build stylesheet: 0.001ms
+admin:dev: Potential classes:  1
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 33.501ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 251ms (304 modules)
+admin:dev:  GET /sites 200 in 22ms
+admin:dev:  ✓ Compiled /favicon.ico in 397ms (554 modules)
+admin:dev:  ✓ Compiled (584 modules)
+admin:dev:  GET /favicon.ico 200 in 606ms
+admin:dev:  GET /api/auth/session 200 in 876ms
+admin:dev:  GET /api/auth/session 200 in 5ms
+web:dev: 
+web:dev: 
+web:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/web/src/app/globals.css
+web:dev: Setting up new context...
+web:dev: Finding changed files: 4.13ms
+web:dev:  ○ Compiling /blog ...
+web:dev: Reading changed files: 25.352ms
+web:dev: Sorting candidates: 1.132ms
+web:dev: Generate rules: 30.159ms
+web:dev: Build stylesheet: 0.944ms
+web:dev: Potential classes:  3066
+web:dev: Active contexts:  1
+web:dev: JIT TOTAL: 136.141ms
+web:dev: 
+web:dev: 
+web:dev:  ✓ Compiled /blog in 1012ms (616 modules)
+web:dev: 
+web:dev: 
+web:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/web/src/app/globals.css
+web:dev: Finding changed files: 1.341ms
+web:dev: Reading changed files: 0.003ms
+web:dev: Sorting candidates: 0.002ms
+web:dev: Generate rules: 0.062ms
+web:dev: Build stylesheet: 0.001ms
+web:dev: Potential classes:  1
+web:dev: Active contexts:  1
+web:dev: JIT TOTAL: 10.26ms
+web:dev: 
+web:dev: 
+web:dev:  ✓ Compiled in 194ms (236 modules)
+web:dev:  GET /blog 200 in 1534ms
+web:dev:  ✓ Compiled /_not-found in 132ms (607 modules)
+web:dev:  GET /icon-192.png 404 in 249ms
+web:dev:  GET /blog 200 in 63ms
+web:dev:  GET /icon-192.png 404 in 26ms
+web:dev:  GET /blog/best-gaming-headsets 404 in 12ms
+web:dev:  GET /blog/best-gaming-headsets 404 in 29ms
+web:dev:  GET /icon-192.png 404 in 22ms
+web:dev:  GET /blog 200 in 58ms
+web:dev:  GET /icon-192.png 404 in 29ms
+admin:dev:  GET /sites 200 in 66ms
+admin:dev:  GET /api/auth/session 200 in 10ms
+admin:dev:  GET /favicon.ico 200 in 13ms
+admin:dev:  GET /api/auth/session 200 in 7ms
+admin:dev:  GET /sites 200 in 17ms
+admin:dev:  GET /api/auth/session 200 in 6ms
+admin:dev:  GET /api/auth/session 200 in 4ms
+web:dev:  ✓ Compiled /about in 217ms (653 modules)
+web:dev:  GET /about 200 in 363ms
+web:dev:  GET /placeholder-product-1.jpg 404 in 168ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-1.jpg 404 in 168ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-2.jpg 404 in 169ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-2.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-3.jpg 404 in 169ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-3.jpg received text/html; charset=utf-8
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 6.249ms
+admin:dev: Reading changed files: 4.874ms
+admin:dev: Sorting candidates: 0.093ms
+admin:dev: Generate rules: 1.395ms
+admin:dev: Build stylesheet: 0.523ms
+admin:dev: Potential classes:  278
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 42.304ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 271ms (888 modules)
+web:dev:  ✓ Compiled /contact in 116ms (658 modules)
+web:dev:  GET /contact 200 in 191ms
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 1.494ms
+admin:dev: Reading changed files: 2.633ms
+admin:dev: Sorting candidates: 0.016ms
+admin:dev: Generate rules: 0.138ms
+admin:dev: Build stylesheet: 0.381ms
+admin:dev: Potential classes:  62
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 23.294ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 124ms (888 modules)
+web:dev:  ✓ Compiled /products in 146ms (665 modules)
+web:dev:  GET /products?category=toys 200 in 194ms
+web:dev:  GET /products?category=books 200 in 7ms
+web:dev:  GET /products?category=fashion 200 in 13ms
+web:dev:  GET /products?category=home 200 in 14ms
+web:dev:  GET /products?category=electronics 200 in 6ms
+web:dev:  GET /products?category=fashion 200 in 8ms
+admin:dev:  GET /sites 200 in 56ms
+admin:dev:  GET /api/auth/session 200 in 29ms
+admin:dev:  GET /favicon.ico 200 in 10ms
+admin:dev:  GET /api/auth/session 200 in 10ms
+web:dev:  GET /products?category=sports 200 in 5ms
+admin:dev:  GET /sites 200 in 13ms
+web:dev:  GET /products?category=electronics 200 in 6ms
+admin:dev:  GET /api/auth/session 200 in 5ms
+admin:dev:  GET /api/auth/session 200 in 3ms
+web:dev:  GET /contact 200 in 23ms
+web:dev:  GET /about 200 in 20ms
+web:dev:  GET /placeholder-product-1.jpg 404 in 151ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-1.jpg 404 in 152ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-2.jpg 404 in 153ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-2.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-3.jpg 404 in 153ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-3.jpg received text/html; charset=utf-8
+web:dev:  GET /blog 200 in 20ms
+web:dev:  GET /products 200 in 13ms
+web:dev:  ✓ Compiled / in 291ms (670 modules)
+web:dev:  GET / 200 in 370ms
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Setting up new context...
+admin:dev: Finding changed files: 2.543ms
+admin:dev: Reading changed files: 35.028ms
+admin:dev: Sorting candidates: 1.487ms
+admin:dev: Generate rules: 25.22ms
+admin:dev: Build stylesheet: 0.513ms
+admin:dev: Potential classes:  3540
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 123.722ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 236ms (888 modules)
+admin:dev:  GET /sites 200 in 36ms
+admin:dev:  GET /api/auth/session 200 in 19ms
+admin:dev:  GET /favicon.ico 200 in 9ms
+admin:dev:  GET /api/auth/session 200 in 10ms
+admin:dev:  GET /sites 200 in 16ms
+admin:dev:  GET /api/auth/session 200 in 4ms
+admin:dev:  GET /api/auth/session 200 in 3ms
+admin:dev:  GET /sites 200 in 14ms
+admin:dev:  GET /api/auth/session 200 in 4ms
+admin:dev:  GET /api/auth/session 200 in 3ms
+admin:dev:  GET /favicon.ico 200 in 4ms
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 2.132ms
+admin:dev: Reading changed files: 3.196ms
+admin:dev: Sorting candidates: 0.066ms
+admin:dev: Generate rules: 1.151ms
+admin:dev: Build stylesheet: 0.401ms
+admin:dev: Potential classes:  278
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 26.535ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 156ms (888 modules)
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 2.097ms
+admin:dev: Reading changed files: 4.571ms
+admin:dev: Sorting candidates: 0.076ms
+admin:dev: Generate rules: 0.864ms
+admin:dev: Build stylesheet: 0.411ms
+admin:dev: Potential classes:  279
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 28.836ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 160ms (888 modules)
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 1.531ms
+admin:dev: Reading changed files: 3.05ms
+admin:dev: Sorting candidates: 0.114ms
+admin:dev: Generate rules: 0.63ms
+admin:dev: Build stylesheet: 0.001ms
+admin:dev: Potential classes:  278
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 25.838ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 133ms (888 modules)
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 1.71ms
+admin:dev: Reading changed files: 12.79ms
+admin:dev: Sorting candidates: 0.234ms
+admin:dev: Generate rules: 2.316ms
+admin:dev: Build stylesheet: 0.476ms
+admin:dev: Potential classes:  540
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 45.833ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 288ms (888 modules)
+admin:dev:  GET /sites 200 in 61ms
+admin:dev:  GET /api/auth/session 200 in 27ms
+admin:dev:  GET /favicon.ico 200 in 10ms
+admin:dev:  GET /api/auth/session 200 in 9ms
+admin:dev:  GET /sites 200 in 14ms
+admin:dev:  GET /api/auth/session 200 in 4ms
+admin:dev:  GET /api/auth/session 200 in 4ms
+web:dev:  GET / 200 in 122ms
+web:dev:  GET /icon.svg 404 in 32ms
+web:dev:  GET /icon-192.png 404 in 61ms
+web:dev:  ✓ Compiled /favicon.ico in 210ms (437 modules)
+web:dev:  GET /favicon.ico 200 in 311ms
+web:dev:  ✓ Compiled /products in 96ms (442 modules)
+web:dev:  GET /products 200 in 263ms
+web:dev:  GET /icon-192.png 404 in 32ms
+web:dev:  GET /blog 200 in 53ms
+web:dev:  GET /icon-192.png 404 in 20ms
+web:dev:  GET /about 200 in 54ms
+web:dev:  GET /placeholder-product-1.jpg 404 in 75ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-1.jpg 404 in 76ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-2.jpg 404 in 77ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-2.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-3.jpg 404 in 77ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-3.jpg received text/html; charset=utf-8
+web:dev:  GET /icon-192.png 404 in 22ms
+web:dev:  GET /contact 200 in 54ms
+web:dev:  GET /icon-192.png 404 in 26ms
+web:dev:  ✓ Compiled /privacy in 290ms (689 modules)
+web:dev:  ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+web:dev:  GET /privacy 200 in 480ms
+web:dev:  GET /blog 200 in 59ms
+web:dev:  GET /icon-192.png 404 in 30ms
+web:dev:  GET /icon-192.png 404 in 25ms
+web:dev:  ✓ Compiled /terms in 171ms (691 modules)
+web:dev:  GET /terms 200 in 290ms
+web:dev:  GET /icon-192.png 404 in 31ms
+web:dev:  ✓ Compiled /disclosure in 169ms (693 modules)
+web:dev:  GET /disclosure 200 in 293ms
+web:dev:  GET /icon-192.png 404 in 31ms
+web:dev:  GET / 200 in 54ms
+web:dev:  GET /icon-192.png 404 in 25ms
+web:dev:  GET /products 200 in 54ms
+web:dev:  GET /icon-192.png 404 in 23ms
+web:dev:  GET /blog 200 in 41ms
+web:dev:  GET /icon-192.png 404 in 22ms
+web:dev:  GET /about 200 in 48ms
+web:dev:  GET /placeholder-product-1.jpg 404 in 71ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-1.jpg 404 in 71ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-2.jpg 404 in 71ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-2.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-3.jpg 404 in 72ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-3.jpg received text/html; charset=utf-8
+web:dev:  GET /icon-192.png 404 in 21ms
+web:dev:  GET /contact 200 in 49ms
+web:dev:  GET /icon-192.png 404 in 26ms
+web:dev:  GET /privacy 200 in 47ms
+web:dev:  GET /icon-192.png 404 in 26ms
+web:dev:  GET /terms 200 in 46ms
+web:dev:  GET /icon-192.png 404 in 25ms
+web:dev:  GET /disclosure 200 in 39ms
+web:dev:  GET /icon-192.png 404 in 26ms
+web:dev:  GET / 200 in 45ms
+web:dev:  GET /icon-192.png 404 in 23ms
+web:dev:  GET /products 200 in 40ms
+web:dev:  GET /icon-192.png 404 in 22ms
+web:dev:  GET /blog 200 in 38ms
+web:dev:  GET /icon-192.png 404 in 20ms
+web:dev:  GET /about 200 in 45ms
+web:dev:  GET /placeholder-product-1.jpg 404 in 87ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-1.jpg 404 in 87ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-2.jpg 404 in 88ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-2.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-3.jpg 404 in 88ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-3.jpg received text/html; charset=utf-8
+web:dev:  GET /icon-192.png 404 in 24ms
+web:dev:  GET /contact 200 in 38ms
+web:dev:  GET /icon-192.png 404 in 24ms
+web:dev:  GET /privacy 200 in 39ms
+web:dev:  GET /icon-192.png 404 in 25ms
+web:dev:  GET /terms 200 in 36ms
+web:dev:  GET /icon-192.png 404 in 25ms
+web:dev:  GET /disclosure 200 in 37ms
+web:dev:  GET /icon-192.png 404 in 20ms
+web:dev:  GET / 200 in 39ms
+web:dev:  GET /icon-192.png 404 in 22ms
+web:dev:  GET /products 200 in 42ms
+web:dev:  GET /icon-192.png 404 in 19ms
+web:dev:  GET /blog 200 in 38ms
+web:dev:  GET /icon-192.png 404 in 22ms
+web:dev:  GET /about 200 in 35ms
+web:dev:  GET /placeholder-product-1.jpg 404 in 20ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /icon-192.png 404 in 21ms
+web:dev:  GET /contact 200 in 35ms
+web:dev:  GET /icon-192.png 404 in 20ms
+web:dev:  GET /privacy 200 in 35ms
+web:dev:  GET /icon-192.png 404 in 23ms
+web:dev:  GET /terms 200 in 33ms
+web:dev:  GET /icon-192.png 404 in 21ms
+web:dev:  GET /disclosure 200 in 36ms
+web:dev:  GET /icon-192.png 404 in 23ms
+web:dev: 
+web:dev: 
+web:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/web/src/app/globals.css
+web:dev: Finding changed files: 2.717ms
+web:dev: Reading changed files: 6.256ms
+web:dev: Sorting candidates: 0.232ms
+web:dev: Generate rules: 10.457ms
+web:dev: Build stylesheet: 1.522ms
+web:dev: Potential classes:  583
+web:dev: Active contexts:  1
+web:dev: JIT TOTAL: 32.589ms
+web:dev: 
+web:dev: 
+web:dev:  ✓ Compiled in 349ms (660 modules)
+admin:dev:  ✓ Compiled / in 260ms (612 modules)
+admin:dev:  GET / 200 in 337ms
+admin:dev:  GET / 200 in 36ms
+admin:dev:  ✓ Compiled /api/auth/[...nextauth] in 131ms (559 modules)
+admin:dev:  GET /api/auth/session 200 in 177ms
+admin:dev:  GET /api/auth/session 200 in 4ms
+admin:dev: [?25h
+web:dev: [?25h

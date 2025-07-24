@@ -3,19 +3,54 @@ declare const prisma: PrismaClient<Prisma.PrismaClientOptions, never, import("@p
 export declare const contentService: {
     create(data: Prisma.ContentCreateInput): Promise<{
         id: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-        data: Prisma.JsonValue;
         title: string;
         slug: string;
         contentTypeId: number;
+        data: Prisma.JsonValue;
         status: string;
         createdBy: string | null;
         updatedBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         version: number | null;
         scheduledPublishAt: Date | null;
     }>;
     findById(id: string): Promise<({
+        contentType: {
+            id: number;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
+            description: string | null;
+            schema: Prisma.JsonValue | null;
+        };
+        categories: ({
+            category: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
         media: ({
             mediaAsset: {
                 id: string;
@@ -34,17 +69,19 @@ export declare const contentService: {
             siteId: string;
             mediaAssetId: string;
         })[];
-        contentType: {
-            id: number;
-            name: string;
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
             createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            schema: Prisma.JsonValue | null;
-        };
+            version: number;
+            contentId: string;
+        }[];
         siteContent: ({
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -68,63 +105,61 @@ export declare const contentService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
             };
         } & {
             contentId: string;
             siteId: string;
         })[];
-        categories: ({
-            category: {
-                id: number;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                slug: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                slug: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        versions: {
-            id: string;
-            createdAt: Date | null;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            version: number;
-            contentId: string;
-        }[];
     } & {
         id: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-        data: Prisma.JsonValue;
         title: string;
         slug: string;
         contentTypeId: number;
+        data: Prisma.JsonValue;
         status: string;
         createdBy: string | null;
         updatedBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         version: number | null;
         scheduledPublishAt: Date | null;
     }) | null>;
     findBySlug(slug: string): Promise<({
+        contentType: {
+            id: number;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
+            description: string | null;
+            schema: Prisma.JsonValue | null;
+        };
+        categories: ({
+            category: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
         media: ({
             mediaAsset: {
                 id: string;
@@ -143,17 +178,19 @@ export declare const contentService: {
             siteId: string;
             mediaAssetId: string;
         })[];
-        contentType: {
-            id: number;
-            name: string;
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
             createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            schema: Prisma.JsonValue | null;
-        };
+            version: number;
+            contentId: string;
+        }[];
         siteContent: ({
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -177,59 +214,22 @@ export declare const contentService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
             };
         } & {
             contentId: string;
             siteId: string;
         })[];
-        categories: ({
-            category: {
-                id: number;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                slug: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                slug: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        versions: {
-            id: string;
-            createdAt: Date | null;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            version: number;
-            contentId: string;
-        }[];
     } & {
         id: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-        data: Prisma.JsonValue;
         title: string;
         slug: string;
         contentTypeId: number;
+        data: Prisma.JsonValue;
         status: string;
         createdBy: string | null;
         updatedBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         version: number | null;
         scheduledPublishAt: Date | null;
     }) | null>;
@@ -239,6 +239,41 @@ export declare const contentService: {
         limit?: number;
         offset?: number;
     }): Promise<({
+        contentType: {
+            id: number;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
+            description: string | null;
+            schema: Prisma.JsonValue | null;
+        };
+        categories: ({
+            category: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
         media: ({
             mediaAsset: {
                 id: string;
@@ -257,17 +292,19 @@ export declare const contentService: {
             siteId: string;
             mediaAssetId: string;
         })[];
-        contentType: {
-            id: number;
-            name: string;
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
             createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            schema: Prisma.JsonValue | null;
-        };
+            version: number;
+            contentId: string;
+        }[];
         siteContent: ({
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -291,63 +328,61 @@ export declare const contentService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
             };
         } & {
             contentId: string;
             siteId: string;
         })[];
-        categories: ({
-            category: {
-                id: number;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                slug: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                slug: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        versions: {
-            id: string;
-            createdAt: Date | null;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            version: number;
-            contentId: string;
-        }[];
     } & {
         id: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-        data: Prisma.JsonValue;
         title: string;
         slug: string;
         contentTypeId: number;
+        data: Prisma.JsonValue;
         status: string;
         createdBy: string | null;
         updatedBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         version: number | null;
         scheduledPublishAt: Date | null;
     })[]>;
     update(id: string, data: Prisma.ContentUpdateInput): Promise<{
+        contentType: {
+            id: number;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
+            description: string | null;
+            schema: Prisma.JsonValue | null;
+        };
+        categories: ({
+            category: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
         media: ({
             mediaAsset: {
                 id: string;
@@ -366,17 +401,19 @@ export declare const contentService: {
             siteId: string;
             mediaAssetId: string;
         })[];
-        contentType: {
-            id: number;
-            name: string;
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
             createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            schema: Prisma.JsonValue | null;
-        };
+            version: number;
+            contentId: string;
+        }[];
         siteContent: ({
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -400,83 +437,46 @@ export declare const contentService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
             };
         } & {
             contentId: string;
             siteId: string;
         })[];
-        categories: ({
-            category: {
-                id: number;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                slug: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                slug: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        versions: {
-            id: string;
-            createdAt: Date | null;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            version: number;
-            contentId: string;
-        }[];
     } & {
         id: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-        data: Prisma.JsonValue;
         title: string;
         slug: string;
         contentTypeId: number;
+        data: Prisma.JsonValue;
         status: string;
         createdBy: string | null;
         updatedBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         version: number | null;
         scheduledPublishAt: Date | null;
     }>;
     delete(id: string): Promise<{
         id: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-        data: Prisma.JsonValue;
         title: string;
         slug: string;
         contentTypeId: number;
+        data: Prisma.JsonValue;
         status: string;
         createdBy: string | null;
         updatedBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         version: number | null;
         scheduledPublishAt: Date | null;
     }>;
     addCategory(contentId: string, categoryId: number): Promise<{
         category: {
             id: number;
-            name: string;
+            slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            slug: string;
+            name: string;
             description: string | null;
             parentId: number | null;
         };
@@ -491,10 +491,10 @@ export declare const contentService: {
     addTag(contentId: string, tagId: number): Promise<{
         tag: {
             id: number;
-            name: string;
+            slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            slug: string;
+            name: string;
             description: string | null;
         };
     } & {
@@ -509,6 +509,8 @@ export declare const contentService: {
 export declare const siteService: {
     create(data: Prisma.SiteCreateInput): Promise<{
         id: string;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         name: string;
         domain: string;
         logoUrl: string | null;
@@ -532,22 +534,20 @@ export declare const siteService: {
         newsletterSubtitle: string | null;
         footerText: string | null;
         socialLinks: Prisma.JsonValue | null;
-        createdAt: Date | null;
-        updatedAt: Date | null;
     }>;
     findById(id: string): Promise<({
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -576,9 +576,9 @@ export declare const siteService: {
         products: ({
             product: {
                 id: string;
-                name: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -596,11 +596,11 @@ export declare const siteService: {
         })[];
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -613,6 +613,8 @@ export declare const siteService: {
         }[];
     } & {
         id: string;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         name: string;
         domain: string;
         logoUrl: string | null;
@@ -636,22 +638,20 @@ export declare const siteService: {
         newsletterSubtitle: string | null;
         footerText: string | null;
         socialLinks: Prisma.JsonValue | null;
-        createdAt: Date | null;
-        updatedAt: Date | null;
     }) | null>;
     findByDomain(domain: string): Promise<({
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -680,9 +680,9 @@ export declare const siteService: {
         products: ({
             product: {
                 id: string;
-                name: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -700,11 +700,11 @@ export declare const siteService: {
         })[];
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -717,6 +717,8 @@ export declare const siteService: {
         }[];
     } & {
         id: string;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         name: string;
         domain: string;
         logoUrl: string | null;
@@ -740,8 +742,6 @@ export declare const siteService: {
         newsletterSubtitle: string | null;
         footerText: string | null;
         socialLinks: Prisma.JsonValue | null;
-        createdAt: Date | null;
-        updatedAt: Date | null;
     }) | null>;
     findAll(options?: {
         limit?: number;
@@ -750,15 +750,15 @@ export declare const siteService: {
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -787,9 +787,9 @@ export declare const siteService: {
         products: ({
             product: {
                 id: string;
-                name: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -807,11 +807,11 @@ export declare const siteService: {
         })[];
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -824,6 +824,8 @@ export declare const siteService: {
         }[];
     } & {
         id: string;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         name: string;
         domain: string;
         logoUrl: string | null;
@@ -847,22 +849,20 @@ export declare const siteService: {
         newsletterSubtitle: string | null;
         footerText: string | null;
         socialLinks: Prisma.JsonValue | null;
-        createdAt: Date | null;
-        updatedAt: Date | null;
     })[]>;
     update(id: string, data: Prisma.SiteUpdateInput): Promise<{
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -891,9 +891,9 @@ export declare const siteService: {
         products: ({
             product: {
                 id: string;
-                name: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -911,11 +911,11 @@ export declare const siteService: {
         })[];
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -928,6 +928,8 @@ export declare const siteService: {
         }[];
     } & {
         id: string;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         name: string;
         domain: string;
         logoUrl: string | null;
@@ -951,11 +953,11 @@ export declare const siteService: {
         newsletterSubtitle: string | null;
         footerText: string | null;
         socialLinks: Prisma.JsonValue | null;
-        createdAt: Date | null;
-        updatedAt: Date | null;
     }>;
     delete(id: string): Promise<{
         id: string;
+        createdAt: Date | null;
+        updatedAt: Date | null;
         name: string;
         domain: string;
         logoUrl: string | null;
@@ -979,18 +981,16 @@ export declare const siteService: {
         newsletterSubtitle: string | null;
         footerText: string | null;
         socialLinks: Prisma.JsonValue | null;
-        createdAt: Date | null;
-        updatedAt: Date | null;
     }>;
 };
 export declare const affiliateLinkService: {
     create(data: Prisma.AffiliateLinkCreateInput): Promise<{
         id: string;
-        name: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
         status: string;
         createdBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
+        name: string;
         siteId: string;
         productId: string | null;
         originalUrl: string;
@@ -1004,6 +1004,8 @@ export declare const affiliateLinkService: {
     findById(id: string): Promise<({
         site: {
             id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
             name: string;
             domain: string;
             logoUrl: string | null;
@@ -1027,14 +1029,12 @@ export declare const affiliateLinkService: {
             newsletterSubtitle: string | null;
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
-            createdAt: Date | null;
-            updatedAt: Date | null;
         };
         product: {
             id: string;
-            name: string;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1043,10 +1043,10 @@ export declare const affiliateLinkService: {
         } | null;
         merchant: {
             id: string;
-            name: string;
-            logoUrl: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
+            logoUrl: string | null;
             description: string | null;
             website: string | null;
         } | null;
@@ -1062,11 +1062,11 @@ export declare const affiliateLinkService: {
         }[];
     } & {
         id: string;
-        name: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
         status: string;
         createdBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
+        name: string;
         siteId: string;
         productId: string | null;
         originalUrl: string;
@@ -1084,6 +1084,8 @@ export declare const affiliateLinkService: {
     }): Promise<({
         site: {
             id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
             name: string;
             domain: string;
             logoUrl: string | null;
@@ -1107,14 +1109,12 @@ export declare const affiliateLinkService: {
             newsletterSubtitle: string | null;
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
-            createdAt: Date | null;
-            updatedAt: Date | null;
         };
         product: {
             id: string;
-            name: string;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1123,10 +1123,10 @@ export declare const affiliateLinkService: {
         } | null;
         merchant: {
             id: string;
-            name: string;
-            logoUrl: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
+            logoUrl: string | null;
             description: string | null;
             website: string | null;
         } | null;
@@ -1142,11 +1142,11 @@ export declare const affiliateLinkService: {
         }[];
     } & {
         id: string;
-        name: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
         status: string;
         createdBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
+        name: string;
         siteId: string;
         productId: string | null;
         originalUrl: string;
@@ -1164,6 +1164,8 @@ export declare const affiliateLinkService: {
     }): Promise<({
         site: {
             id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
             name: string;
             domain: string;
             logoUrl: string | null;
@@ -1187,14 +1189,12 @@ export declare const affiliateLinkService: {
             newsletterSubtitle: string | null;
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
-            createdAt: Date | null;
-            updatedAt: Date | null;
         };
         product: {
             id: string;
-            name: string;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1203,10 +1203,10 @@ export declare const affiliateLinkService: {
         } | null;
         merchant: {
             id: string;
-            name: string;
-            logoUrl: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
+            logoUrl: string | null;
             description: string | null;
             website: string | null;
         } | null;
@@ -1222,11 +1222,11 @@ export declare const affiliateLinkService: {
         }[];
     } & {
         id: string;
-        name: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
         status: string;
         createdBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
+        name: string;
         siteId: string;
         productId: string | null;
         originalUrl: string;
@@ -1240,6 +1240,8 @@ export declare const affiliateLinkService: {
     update(id: string, data: Prisma.AffiliateLinkUpdateInput): Promise<{
         site: {
             id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
             name: string;
             domain: string;
             logoUrl: string | null;
@@ -1263,14 +1265,12 @@ export declare const affiliateLinkService: {
             newsletterSubtitle: string | null;
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
-            createdAt: Date | null;
-            updatedAt: Date | null;
         };
         product: {
             id: string;
-            name: string;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1279,10 +1279,10 @@ export declare const affiliateLinkService: {
         } | null;
         merchant: {
             id: string;
-            name: string;
-            logoUrl: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
+            logoUrl: string | null;
             description: string | null;
             website: string | null;
         } | null;
@@ -1298,11 +1298,11 @@ export declare const affiliateLinkService: {
         }[];
     } & {
         id: string;
-        name: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
         status: string;
         createdBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
+        name: string;
         siteId: string;
         productId: string | null;
         originalUrl: string;
@@ -1315,11 +1315,11 @@ export declare const affiliateLinkService: {
     }>;
     delete(id: string): Promise<{
         id: string;
-        name: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
         status: string;
         createdBy: string | null;
+        createdAt: Date | null;
+        updatedAt: Date | null;
+        name: string;
         siteId: string;
         productId: string | null;
         originalUrl: string;
@@ -1359,9 +1359,9 @@ export declare const affiliateLinkService: {
 export declare const productService: {
     create(data: Prisma.ProductCreateInput): Promise<{
         id: string;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1371,11 +1371,11 @@ export declare const productService: {
     findById(id: string): Promise<({
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -1389,6 +1389,8 @@ export declare const productService: {
         siteProducts: ({
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -1412,8 +1414,6 @@ export declare const productService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
             };
         } & {
             createdAt: Date | null;
@@ -1426,9 +1426,9 @@ export declare const productService: {
         })[];
     } & {
         id: string;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1441,11 +1441,11 @@ export declare const productService: {
     }): Promise<({
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -1459,6 +1459,8 @@ export declare const productService: {
         siteProducts: ({
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -1482,8 +1484,6 @@ export declare const productService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
             };
         } & {
             createdAt: Date | null;
@@ -1496,9 +1496,9 @@ export declare const productService: {
         })[];
     } & {
         id: string;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1511,11 +1511,11 @@ export declare const productService: {
     }): Promise<({
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -1529,6 +1529,8 @@ export declare const productService: {
         siteProducts: ({
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -1552,8 +1554,6 @@ export declare const productService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
             };
         } & {
             createdAt: Date | null;
@@ -1566,9 +1566,9 @@ export declare const productService: {
         })[];
     } & {
         id: string;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1578,11 +1578,11 @@ export declare const productService: {
     update(id: string, data: Prisma.ProductUpdateInput): Promise<{
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -1596,6 +1596,8 @@ export declare const productService: {
         siteProducts: ({
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -1619,8 +1621,6 @@ export declare const productService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
             };
         } & {
             createdAt: Date | null;
@@ -1633,9 +1633,9 @@ export declare const productService: {
         })[];
     } & {
         id: string;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1644,9 +1644,9 @@ export declare const productService: {
     }>;
     delete(id: string): Promise<{
         id: string;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1668,9 +1668,9 @@ export declare const analyticsService: {
             affiliateLink: {
                 product: {
                     id: string;
-                    name: string;
                     createdAt: Date | null;
                     updatedAt: Date | null;
+                    name: string;
                     description: string | null;
                     manufacturer: string | null;
                     basePrice: Prisma.Decimal;
@@ -1679,11 +1679,11 @@ export declare const analyticsService: {
                 } | null;
             } & {
                 id: string;
-                name: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
                 status: string;
                 createdBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                name: string;
                 siteId: string;
                 productId: string | null;
                 originalUrl: string;
@@ -1708,9 +1708,9 @@ export declare const analyticsService: {
     getTopProducts(siteId: string, limit?: number): Promise<{
         product: {
             id: string;
-            name: string;
             createdAt: Date | null;
             updatedAt: Date | null;
+            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1777,12 +1777,12 @@ export declare const newsletterService: {
         preferences: Prisma.JsonValue | null;
     }[]>;
     createCampaign(data: Prisma.NewsletterCampaignCreateInput): Promise<{
+        content: string;
         id: string;
-        name: string;
+        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        content: string;
-        status: string;
+        name: string;
         subject: string;
         sentAt: Date | null;
         sentCount: number;
@@ -1790,12 +1790,12 @@ export declare const newsletterService: {
         clickCount: number;
     }>;
     findCampaign(id: string): Promise<{
+        content: string;
         id: string;
-        name: string;
+        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        content: string;
-        status: string;
+        name: string;
         subject: string;
         sentAt: Date | null;
         sentCount: number;
@@ -1803,12 +1803,12 @@ export declare const newsletterService: {
         clickCount: number;
     } | null>;
     updateCampaign(id: string, data: Prisma.NewsletterCampaignUpdateInput): Promise<{
+        content: string;
         id: string;
-        name: string;
+        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        content: string;
-        status: string;
+        name: string;
         subject: string;
         sentAt: Date | null;
         sentCount: number;
@@ -1820,12 +1820,12 @@ export declare const newsletterService: {
         limit?: number;
         offset?: number;
     }): Promise<{
+        content: string;
         id: string;
-        name: string;
+        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        content: string;
-        status: string;
+        name: string;
         subject: string;
         sentAt: Date | null;
         sentCount: number;
@@ -1836,10 +1836,10 @@ export declare const newsletterService: {
 export declare const categoryService: {
     create(data: Prisma.CategoryCreateInput): Promise<{
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
         parentId: number | null;
     }>;
@@ -1847,15 +1847,15 @@ export declare const categoryService: {
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -1865,28 +1865,28 @@ export declare const categoryService: {
         })[];
         parent: {
             id: number;
-            name: string;
+            slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            slug: string;
+            name: string;
             description: string | null;
             parentId: number | null;
         } | null;
         children: {
             id: number;
-            name: string;
+            slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            slug: string;
+            name: string;
             description: string | null;
             parentId: number | null;
         }[];
     } & {
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
         parentId: number | null;
     }) | null>;
@@ -1898,15 +1898,15 @@ export declare const categoryService: {
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -1916,28 +1916,28 @@ export declare const categoryService: {
         })[];
         parent: {
             id: number;
-            name: string;
+            slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            slug: string;
+            name: string;
             description: string | null;
             parentId: number | null;
         } | null;
         children: {
             id: number;
-            name: string;
+            slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            slug: string;
+            name: string;
             description: string | null;
             parentId: number | null;
         }[];
     } & {
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
         parentId: number | null;
     })[]>;
@@ -1945,15 +1945,15 @@ export declare const categoryService: {
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -1963,37 +1963,37 @@ export declare const categoryService: {
         })[];
         parent: {
             id: number;
-            name: string;
+            slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            slug: string;
+            name: string;
             description: string | null;
             parentId: number | null;
         } | null;
         children: {
             id: number;
-            name: string;
+            slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            slug: string;
+            name: string;
             description: string | null;
             parentId: number | null;
         }[];
     } & {
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
         parentId: number | null;
     }>;
     delete(id: number): Promise<{
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
         parentId: number | null;
     }>;
@@ -2001,25 +2001,25 @@ export declare const categoryService: {
 export declare const tagService: {
     create(data: Prisma.TagCreateInput): Promise<{
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
     }>;
     findById(id: number): Promise<({
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -2029,10 +2029,10 @@ export declare const tagService: {
         })[];
     } & {
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
     }) | null>;
     findAll(options?: {
@@ -2042,15 +2042,15 @@ export declare const tagService: {
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -2060,25 +2060,25 @@ export declare const tagService: {
         })[];
     } & {
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
     })[]>;
     update(id: number, data: Prisma.TagUpdateInput): Promise<{
         content: ({
             content: {
                 id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
                 title: string;
                 slug: string;
                 contentTypeId: number;
+                data: Prisma.JsonValue;
                 status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 version: number | null;
                 scheduledPublishAt: Date | null;
             };
@@ -2088,18 +2088,18 @@ export declare const tagService: {
         })[];
     } & {
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
     }>;
     delete(id: number): Promise<{
         id: number;
-        name: string;
+        slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        slug: string;
+        name: string;
         description: string | null;
     }>;
 };
@@ -2118,8 +2118,24 @@ export declare const mediaService: {
     }>;
     findById(id: string): Promise<({
         siteMedia: ({
+            content: {
+                id: string;
+                title: string;
+                slug: string;
+                contentTypeId: number;
+                data: Prisma.JsonValue;
+                status: string;
+                createdBy: string | null;
+                updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                version: number | null;
+                scheduledPublishAt: Date | null;
+            };
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -2143,22 +2159,6 @@ export declare const mediaService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-            };
-            content: {
-                id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
-                title: string;
-                slug: string;
-                contentTypeId: number;
-                status: string;
-                createdBy: string | null;
-                updatedBy: string | null;
-                version: number | null;
-                scheduledPublishAt: Date | null;
             };
         } & {
             contentId: string;
@@ -2179,8 +2179,24 @@ export declare const mediaService: {
     }) | null>;
     findByFilename(filename: string): Promise<({
         siteMedia: ({
+            content: {
+                id: string;
+                title: string;
+                slug: string;
+                contentTypeId: number;
+                data: Prisma.JsonValue;
+                status: string;
+                createdBy: string | null;
+                updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                version: number | null;
+                scheduledPublishAt: Date | null;
+            };
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -2204,22 +2220,6 @@ export declare const mediaService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-            };
-            content: {
-                id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
-                title: string;
-                slug: string;
-                contentTypeId: number;
-                status: string;
-                createdBy: string | null;
-                updatedBy: string | null;
-                version: number | null;
-                scheduledPublishAt: Date | null;
             };
         } & {
             contentId: string;
@@ -2244,8 +2244,24 @@ export declare const mediaService: {
         offset?: number;
     }): Promise<({
         siteMedia: ({
+            content: {
+                id: string;
+                title: string;
+                slug: string;
+                contentTypeId: number;
+                data: Prisma.JsonValue;
+                status: string;
+                createdBy: string | null;
+                updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                version: number | null;
+                scheduledPublishAt: Date | null;
+            };
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -2269,22 +2285,6 @@ export declare const mediaService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-            };
-            content: {
-                id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
-                title: string;
-                slug: string;
-                contentTypeId: number;
-                status: string;
-                createdBy: string | null;
-                updatedBy: string | null;
-                version: number | null;
-                scheduledPublishAt: Date | null;
             };
         } & {
             contentId: string;
@@ -2305,8 +2305,24 @@ export declare const mediaService: {
     })[]>;
     update(id: string, data: Prisma.MediaAssetUpdateInput): Promise<{
         siteMedia: ({
+            content: {
+                id: string;
+                title: string;
+                slug: string;
+                contentTypeId: number;
+                data: Prisma.JsonValue;
+                status: string;
+                createdBy: string | null;
+                updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                version: number | null;
+                scheduledPublishAt: Date | null;
+            };
             site: {
                 id: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
                 name: string;
                 domain: string;
                 logoUrl: string | null;
@@ -2330,22 +2346,6 @@ export declare const mediaService: {
                 newsletterSubtitle: string | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-            };
-            content: {
-                id: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                data: Prisma.JsonValue;
-                title: string;
-                slug: string;
-                contentTypeId: number;
-                status: string;
-                createdBy: string | null;
-                updatedBy: string | null;
-                version: number | null;
-                scheduledPublishAt: Date | null;
             };
         } & {
             contentId: string;
@@ -2380,21 +2380,21 @@ export declare const mediaService: {
 export declare const merchantService: {
     create(data: Prisma.MerchantCreateInput): Promise<{
         id: string;
-        name: string;
-        logoUrl: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
+        logoUrl: string | null;
         description: string | null;
         website: string | null;
     }>;
     findById(id: string): Promise<({
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -2407,21 +2407,21 @@ export declare const merchantService: {
         }[];
     } & {
         id: string;
-        name: string;
-        logoUrl: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
+        logoUrl: string | null;
         description: string | null;
         website: string | null;
     }) | null>;
     findByName(name: string): Promise<({
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -2434,10 +2434,10 @@ export declare const merchantService: {
         }[];
     } & {
         id: string;
-        name: string;
-        logoUrl: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
+        logoUrl: string | null;
         description: string | null;
         website: string | null;
     }) | null>;
@@ -2447,11 +2447,11 @@ export declare const merchantService: {
     }): Promise<({
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -2464,21 +2464,21 @@ export declare const merchantService: {
         }[];
     } & {
         id: string;
-        name: string;
-        logoUrl: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
+        logoUrl: string | null;
         description: string | null;
         website: string | null;
     })[]>;
     update(id: string, data: Prisma.MerchantUpdateInput): Promise<{
         affiliateLinks: {
             id: string;
-            name: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
             status: string;
             createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
             siteId: string;
             productId: string | null;
             originalUrl: string;
@@ -2491,19 +2491,19 @@ export declare const merchantService: {
         }[];
     } & {
         id: string;
-        name: string;
-        logoUrl: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
+        logoUrl: string | null;
         description: string | null;
         website: string | null;
     }>;
     delete(id: string): Promise<{
         id: string;
-        name: string;
-        logoUrl: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
+        logoUrl: string | null;
         description: string | null;
         website: string | null;
     }>;
@@ -2562,9 +2562,9 @@ export declare const auditService: {
 export declare const recipeService: {
     create(data: Prisma.RecipeCreateInput): Promise<{
         id: string;
+        title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        title: string;
         tags: Prisma.JsonValue | null;
         description: string | null;
         prepTime: number | null;
@@ -2576,8 +2576,8 @@ export declare const recipeService: {
     findById(id: string): Promise<({
         ingredients: {
             id: string;
-            name: string;
             createdAt: Date | null;
+            name: string;
             amount: Prisma.Decimal;
             unit: string;
             notes: string | null;
@@ -2594,9 +2594,9 @@ export declare const recipeService: {
         }[];
     } & {
         id: string;
+        title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        title: string;
         tags: Prisma.JsonValue | null;
         description: string | null;
         prepTime: number | null;
@@ -2608,8 +2608,8 @@ export declare const recipeService: {
     findByTitle(title: string): Promise<({
         ingredients: {
             id: string;
-            name: string;
             createdAt: Date | null;
+            name: string;
             amount: Prisma.Decimal;
             unit: string;
             notes: string | null;
@@ -2626,9 +2626,9 @@ export declare const recipeService: {
         }[];
     } & {
         id: string;
+        title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        title: string;
         tags: Prisma.JsonValue | null;
         description: string | null;
         prepTime: number | null;
@@ -2645,8 +2645,8 @@ export declare const recipeService: {
     }): Promise<({
         ingredients: {
             id: string;
-            name: string;
             createdAt: Date | null;
+            name: string;
             amount: Prisma.Decimal;
             unit: string;
             notes: string | null;
@@ -2663,9 +2663,9 @@ export declare const recipeService: {
         }[];
     } & {
         id: string;
+        title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        title: string;
         tags: Prisma.JsonValue | null;
         description: string | null;
         prepTime: number | null;
@@ -2677,8 +2677,8 @@ export declare const recipeService: {
     update(id: string, data: Prisma.RecipeUpdateInput): Promise<{
         ingredients: {
             id: string;
-            name: string;
             createdAt: Date | null;
+            name: string;
             amount: Prisma.Decimal;
             unit: string;
             notes: string | null;
@@ -2695,9 +2695,9 @@ export declare const recipeService: {
         }[];
     } & {
         id: string;
+        title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        title: string;
         tags: Prisma.JsonValue | null;
         description: string | null;
         prepTime: number | null;
@@ -2708,9 +2708,9 @@ export declare const recipeService: {
     }>;
     delete(id: string): Promise<{
         id: string;
+        title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        title: string;
         tags: Prisma.JsonValue | null;
         description: string | null;
         prepTime: number | null;
@@ -2721,8 +2721,8 @@ export declare const recipeService: {
     }>;
     addIngredient(data: Prisma.RecipeIngredientCreateInput): Promise<{
         id: string;
-        name: string;
         createdAt: Date | null;
+        name: string;
         amount: Prisma.Decimal;
         unit: string;
         notes: string | null;
@@ -2731,8 +2731,8 @@ export declare const recipeService: {
     }>;
     updateIngredient(id: string, data: Prisma.RecipeIngredientUpdateInput): Promise<{
         id: string;
-        name: string;
         createdAt: Date | null;
+        name: string;
         amount: Prisma.Decimal;
         unit: string;
         notes: string | null;
@@ -2741,8 +2741,8 @@ export declare const recipeService: {
     }>;
     deleteIngredient(id: string): Promise<{
         id: string;
-        name: string;
         createdAt: Date | null;
+        name: string;
         amount: Prisma.Decimal;
         unit: string;
         notes: string | null;
@@ -2778,11 +2778,11 @@ export declare const aiContentService: {
     log(data: Prisma.AIContentLogCreateInput): Promise<{
         error: string | null;
         id: string;
-        createdAt: Date | null;
-        model: string;
         status: string;
+        createdAt: Date | null;
         prompt: string;
         response: string;
+        model: string;
         tokensUsed: number;
         cost: Prisma.Decimal | null;
         duration: number | null;
@@ -2790,11 +2790,11 @@ export declare const aiContentService: {
     findById(id: string): Promise<{
         error: string | null;
         id: string;
-        createdAt: Date | null;
-        model: string;
         status: string;
+        createdAt: Date | null;
         prompt: string;
         response: string;
+        model: string;
         tokensUsed: number;
         cost: Prisma.Decimal | null;
         duration: number | null;
@@ -2805,11 +2805,11 @@ export declare const aiContentService: {
     }): Promise<{
         error: string | null;
         id: string;
-        createdAt: Date | null;
-        model: string;
         status: string;
+        createdAt: Date | null;
         prompt: string;
         response: string;
+        model: string;
         tokensUsed: number;
         cost: Prisma.Decimal | null;
         duration: number | null;
@@ -2820,11 +2820,11 @@ export declare const aiContentService: {
     }): Promise<{
         error: string | null;
         id: string;
-        createdAt: Date | null;
-        model: string;
         status: string;
+        createdAt: Date | null;
         prompt: string;
         response: string;
+        model: string;
         tokensUsed: number;
         cost: Prisma.Decimal | null;
         duration: number | null;
@@ -2840,8 +2840,8 @@ export declare const aiContentService: {
 export declare const notificationService: {
     create(data: Prisma.RealTimeNotificationCreateInput): Promise<{
         id: string;
-        createdAt: Date | null;
         title: string;
+        createdAt: Date | null;
         userId: string;
         type: string;
         message: string;
@@ -2849,8 +2849,8 @@ export declare const notificationService: {
     }>;
     findById(id: string): Promise<{
         id: string;
-        createdAt: Date | null;
         title: string;
+        createdAt: Date | null;
         userId: string;
         type: string;
         message: string;
@@ -2862,8 +2862,8 @@ export declare const notificationService: {
         offset?: number;
     }): Promise<{
         id: string;
-        createdAt: Date | null;
         title: string;
+        createdAt: Date | null;
         userId: string;
         type: string;
         message: string;
@@ -2871,8 +2871,8 @@ export declare const notificationService: {
     }[]>;
     markAsRead(id: string): Promise<{
         id: string;
-        createdAt: Date | null;
         title: string;
+        createdAt: Date | null;
         userId: string;
         type: string;
         message: string;
@@ -2881,8 +2881,8 @@ export declare const notificationService: {
     markAllAsRead(userId: string): Promise<Prisma.BatchPayload>;
     delete(id: string): Promise<{
         id: string;
-        createdAt: Date | null;
         title: string;
+        createdAt: Date | null;
         userId: string;
         type: string;
         message: string;
@@ -2892,55 +2892,55 @@ export declare const notificationService: {
 export declare const contentTypeService: {
     create(data: Prisma.ContentTypeCreateInput): Promise<{
         id: number;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }>;
     findById(id: number): Promise<({
         content: {
             id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            data: Prisma.JsonValue;
             title: string;
             slug: string;
             contentTypeId: number;
+            data: Prisma.JsonValue;
             status: string;
             createdBy: string | null;
             updatedBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
             version: number | null;
             scheduledPublishAt: Date | null;
         }[];
     } & {
         id: number;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }) | null>;
     findByName(name: string): Promise<({
         content: {
             id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            data: Prisma.JsonValue;
             title: string;
             slug: string;
             contentTypeId: number;
+            data: Prisma.JsonValue;
             status: string;
             createdBy: string | null;
             updatedBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
             version: number | null;
             scheduledPublishAt: Date | null;
         }[];
     } & {
         id: number;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }) | null>;
@@ -2950,54 +2950,54 @@ export declare const contentTypeService: {
     }): Promise<({
         content: {
             id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            data: Prisma.JsonValue;
             title: string;
             slug: string;
             contentTypeId: number;
+            data: Prisma.JsonValue;
             status: string;
             createdBy: string | null;
             updatedBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
             version: number | null;
             scheduledPublishAt: Date | null;
         }[];
     } & {
         id: number;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     })[]>;
     update(id: number, data: Prisma.ContentTypeUpdateInput): Promise<{
         content: {
             id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            data: Prisma.JsonValue;
             title: string;
             slug: string;
             contentTypeId: number;
+            data: Prisma.JsonValue;
             status: string;
             createdBy: string | null;
             updatedBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
             version: number | null;
             scheduledPublishAt: Date | null;
         }[];
     } & {
         id: number;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }>;
     delete(id: number): Promise<{
         id: number;
-        name: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }>;

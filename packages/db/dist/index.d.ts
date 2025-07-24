@@ -7,4 +7,5 @@ export declare const prisma: PrismaClient<import("@prisma/client").Prisma.Prisma
 export * from './utils';
 export type { ContentFilter, AffiliateLinkFilter, AnalyticsPeriod, ClickAnalytics, Pagination, ApiResponse } from './types';
 export * from './site-config';
+export declare function cleanupPrisma(): Promise<void>;
 //# sourceMappingURL=index.d.ts.map

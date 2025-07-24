@@ -79,8 +79,16 @@ Use web search for:
 - Use Next.js 14.2.x with TypeScript 5.4.x
 - Implement tRPC for type-safe API communication
 - Use Prisma 5.x for database operations
-- Implement Tailwind CSS 3.4.x with Shadcn/UI
+- Implement Tailwind CSS 3.4.x with Shadcn/UI (NEVER use Tailwind v4)
 - Use Zustand 4.x for state management
+
+### CSS/Tailwind Requirements (CRITICAL)
+- **MUST use Tailwind CSS v3.4.1** - Do NOT use v4
+- **PostCSS config MUST use v3 syntax**: `tailwindcss: {}` not `"@tailwindcss/postcss": {}`
+- **Check ALL package.json files** for consistent Tailwind versions
+- **Use proper @tailwind directives**: `@tailwind base/components/utilities`
+- **Clean build cache** when CSS issues occur: `rm -rf .next node_modules`
+- **Never mix v3 and v4 syntax** - causes compilation errors
 
 ### User Stories Implementation
 Focus on implementing these user stories from the PRD:

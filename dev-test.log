@@ -1,0 +1,187 @@
+
+> affiliate-template-72325@1.0.0 dev /Users/mhaniff/affiliate-template-72325
+> turbo run dev
+
+turbo 2.5.5
+
+• Packages in scope: @affiliate/ai, @affiliate/cms, @affiliate/db, @affiliate/eslint-config-custom, @affiliate/shared-types, @affiliate/ui, admin, web
+• Running dev in 8 packages
+• Remote caching disabled
+@affiliate/ai:dev: cache bypass, force executing d164fad3cf46a0d2
+@affiliate/db:dev: cache bypass, force executing f00414ea4759c172
+admin:dev: cache bypass, force executing 542c6cb6e469a7d4
+@affiliate/shared-types:dev: cache bypass, force executing a0277250ebbd2e7d
+@affiliate/cms:dev: cache bypass, force executing 5d6d7141ef36c22b
+@affiliate/ui:dev: cache bypass, force executing 007f3607c1fe5d74
+web:dev: cache bypass, force executing 272641daf4d5d741
+@affiliate/db:dev: 
+@affiliate/db:dev: > @affiliate/db@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/db
+@affiliate/db:dev: > tsc --watch
+@affiliate/db:dev: 
+@affiliate/ai:dev: 
+@affiliate/ai:dev: > @affiliate/ai@0.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/ai
+@affiliate/ai:dev: > tsc --watch
+@affiliate/ai:dev: 
+admin:dev: 
+admin:dev: > admin@0.1.0 dev /Users/mhaniff/affiliate-template-72325/apps/admin
+admin:dev: > next dev
+admin:dev: 
+@affiliate/shared-types:dev: 
+@affiliate/shared-types:dev: > @affiliate/shared-types@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/shared-types
+@affiliate/shared-types:dev: > tsc --watch
+@affiliate/shared-types:dev: 
+web:dev: 
+web:dev: > web@0.1.0 dev /Users/mhaniff/affiliate-template-72325/apps/web
+web:dev: > next dev
+web:dev: 
+@affiliate/cms:dev: 
+@affiliate/cms:dev: > @affiliate/cms@0.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/cms
+@affiliate/cms:dev: > tsc --watch
+@affiliate/cms:dev: 
+@affiliate/ui:dev: 
+@affiliate/ui:dev: > @affiliate/ui@1.0.0 dev /Users/mhaniff/affiliate-template-72325/packages/ui
+@affiliate/ui:dev: > tsc --watch
+@affiliate/ui:dev: 
+@affiliate/db:dev: [2J[3J[H9:37:52 AM - Starting compilation in watch mode...
+@affiliate/db:dev: 
+@affiliate/shared-types:dev: [2J[3J[H9:37:52 AM - Starting compilation in watch mode...
+@affiliate/shared-types:dev: 
+@affiliate/ai:dev: [2J[3J[H9:37:53 AM - Starting compilation in watch mode...
+@affiliate/ai:dev: 
+@affiliate/ui:dev: [2J[3J[H9:37:53 AM - Starting compilation in watch mode...
+@affiliate/ui:dev: 
+@affiliate/cms:dev: [2J[3J[H9:37:53 AM - Starting compilation in watch mode...
+@affiliate/cms:dev: 
+admin:dev:   ▲ Next.js 14.2.30
+admin:dev:   - Local:        http://localhost:3000
+admin:dev:   - Environments: .env.local
+admin:dev: 
+admin:dev:  ✓ Starting...
+@affiliate/db:dev: 
+@affiliate/db:dev: 9:37:53 AM - Found 0 errors. Watching for file changes.
+@affiliate/shared-types:dev: 
+@affiliate/shared-types:dev: 9:37:53 AM - Found 0 errors. Watching for file changes.
+@affiliate/ai:dev: 
+@affiliate/ai:dev: 9:37:53 AM - Found 0 errors. Watching for file changes.
+@affiliate/ui:dev: 
+@affiliate/ui:dev: 9:37:54 AM - Found 0 errors. Watching for file changes.
+web:dev:  ⚠ Warning: Found multiple lockfiles. Selecting /Users/mhaniff/pnpm-lock.yaml.
+web:dev:    Consider removing the lockfiles at:
+web:dev:    * /Users/mhaniff/affiliate-template-72325/pnpm-lock.yaml
+web:dev: 
+web:dev:  ⚠ Port 3000 is in use by process 62853
+web:dev: 98472, using available port 3001 instead.
+@affiliate/cms:dev: 
+@affiliate/cms:dev: 9:37:55 AM - Found 0 errors. Watching for file changes.
+web:dev:    ▲ Next.js 15.4.3
+web:dev:    - Local:        http://localhost:3001
+web:dev:    - Network:      http://192.168.1.249:3001
+web:dev:    - Environments: .env.local
+web:dev: 
+web:dev:  ✓ Starting...
+admin:dev:  ✓ Ready in 2.6s
+admin:dev:  ⚠ Your project has `@next/font` installed as a dependency, please use the built-in `next/font` instead. The `@next/font` package will be removed in Next.js 14. You can migrate by running `pnpm dlx @next/codemod@latest built-in-next-font .`. Read more: https://nextjs.org/docs/messages/built-in-next-font
+web:dev:  ✓ Ready in 1201ms
+admin:dev:  ○ Compiling / ...
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Setting up new context...
+admin:dev: Finding changed files: 4.228ms
+admin:dev: Reading changed files: 61.53ms
+admin:dev: Sorting candidates: 1.293ms
+admin:dev: Generate rules: 28.039ms
+admin:dev: Build stylesheet: 0.861ms
+admin:dev: Potential classes:  3493
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 176.292ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled / in 1968ms (629 modules)
+admin:dev:  GET / 200 in 2146ms
+admin:dev: 
+admin:dev: 
+admin:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/admin/src/app/globals.css
+admin:dev: Finding changed files: 1.369ms
+admin:dev: Reading changed files: 0.065ms
+admin:dev: Sorting candidates: 0.001ms
+admin:dev: Generate rules: 0.052ms
+admin:dev: Build stylesheet: 0.001ms
+admin:dev: Potential classes:  1
+admin:dev: Active contexts:  1
+admin:dev: JIT TOTAL: 21.783ms
+admin:dev: 
+admin:dev: 
+admin:dev:  ✓ Compiled in 208ms (303 modules)
+web:dev:  ○ Compiling / ...
+web:dev: 
+web:dev: 
+web:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/web/src/app/globals.css
+web:dev: Setting up new context...
+web:dev: Finding changed files: 4.861ms
+web:dev: Reading changed files: 49.373ms
+web:dev: Sorting candidates: 1.155ms
+web:dev: Generate rules: 31.678ms
+web:dev: Build stylesheet: 1.186ms
+web:dev: Potential classes:  3066
+web:dev: Active contexts:  1
+web:dev: JIT TOTAL: 165.916ms
+web:dev: 
+web:dev: 
+web:dev:  ✓ Compiled / in 1910ms (623 modules)
+web:dev:  GET / 200 in 2245ms
+web:dev: 
+web:dev: 
+web:dev: Source path: /Users/mhaniff/affiliate-template-72325/apps/web/src/app/globals.css
+web:dev: Finding changed files: 1.011ms
+web:dev: Reading changed files: 0.006ms
+web:dev: Sorting candidates: 0.002ms
+web:dev: Generate rules: 0.071ms
+web:dev: Build stylesheet: 0.003ms
+web:dev: Potential classes:  1
+web:dev: Active contexts:  1
+web:dev: JIT TOTAL: 9.434ms
+web:dev: 
+web:dev: 
+web:dev:  ✓ Compiled in 84ms (235 modules)
+web:dev:  GET / 200 in 60ms
+admin:dev:  ✓ Compiled /auth/signin in 193ms (612 modules)
+admin:dev:  GET /auth/signin 200 in 246ms
+web:dev:  ✓ Compiled /favicon.ico in 189ms (605 modules)
+web:dev:  ✓ Compiled (622 modules)
+admin:dev:  GET / 200 in 38ms
+admin:dev:  ✓ Compiled /api/auth/[...nextauth] in 138ms (349 modules)
+admin:dev:  ✓ Compiled (585 modules)
+admin:dev:  GET /favicon.ico 200 in 526ms
+admin:dev:  GET /api/auth/session 200 in 769ms
+admin:dev:  GET /api/auth/session 200 in 4ms
+web:dev:  ✓ Compiled /blog in 183ms (603 modules)
+web:dev:  GET /blog 200 in 360ms
+web:dev:  ✓ Compiled /_not-found in 73ms (608 modules)
+web:dev:  GET /icon-192.png 404 in 177ms
+web:dev:  ✓ Compiled / in 155ms (385 modules)
+web:dev:  GET / 200 in 245ms
+web:dev:  GET /icon-192.png 404 in 36ms
+web:dev:  ✓ Compiled /products in 160ms (619 modules)
+web:dev:  GET /products 200 in 202ms
+web:dev:  GET /blog 200 in 17ms
+web:dev:  ✓ Compiled /about in 306ms (665 modules)
+web:dev:  GET /about 200 in 387ms
+web:dev:  GET /placeholder-product-1.jpg 404 in 141ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-1.jpg 404 in 143ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-1.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-2.jpg 404 in 143ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-2.jpg received text/html; charset=utf-8
+web:dev:  GET /placeholder-product-3.jpg 404 in 143ms
+web:dev:  ⨯ The requested resource isn't a valid image for /placeholder-product-3.jpg received text/html; charset=utf-8
+web:dev:  ✓ Compiled /contact in 152ms (670 modules)
+web:dev:  GET /contact 200 in 230ms
+web:dev:  GET /products?category=electronics 200 in 18ms
+web:dev:  GET / 200 in 26ms
+web:dev:  GET /blog 200 in 22ms
+web:dev:  GET / 200 in 7ms
+web:dev:  GET / 200 in 94ms
+web:dev:  GET /icon-192.png 404 in 36ms
+admin:dev: [?25h
+web:dev: [?25h

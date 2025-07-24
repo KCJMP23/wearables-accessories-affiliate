@@ -1,185 +1,298 @@
 'use client';
 
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { getActiveProducts, getCategories } from '@/lib/payload';
 
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  originalPrice?: number;
-  rating?: number;
-  reviewCount?: number;
-  affiliateUrl: string;
-  image?: {
-    url: string;
-  };
-  category?: {
-    name: string;
-  };
-}
+export default function ProductsPage() {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortBy, setSortBy] = useState('featured');
 
-interface Category {
-  id: string;
-  name: string;
-}
+  // Products Data with multiple retailers
+  const products = [
+    {
+      id: 1,
+      name: "Apple iPhone 15 Pro",
+      description: "Latest A17 Pro chip, 48MP camera, Titanium design",
+      price: 999.99,
+      originalPrice: 1099.99,
+      rating: 4.9,
+      reviewCount: 2847,
+      category: "Phones",
+      image: "/products/iphone-15-pro.jpg",
+      retailers: [
+        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
+        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
+        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" },
+        { name: "Best Buy", url: "#", logo: "💙", color: "bg-blue-600" }
+      ]
+    },
+    {
+      id: 2,
+      name: "Samsung Galaxy S24 Ultra",
+      description: "200MP camera, S Pen, AI features",
+      price: 1199.99,
+      originalPrice: 1299.99,
+      rating: 4.8,
+      reviewCount: 1567,
+      category: "Phones",
+      image: "/products/samsung-s24.jpg",
+      retailers: [
+        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
+        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
+        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" }
+      ]
+    },
+    {
+      id: 3,
+      name: "MacBook Air M2",
+      description: "13.6-inch Retina display, M2 chip, 18-hour battery",
+      price: 1199.99,
+      originalPrice: 1299.99,
+      rating: 4.9,
+      reviewCount: 892,
+      category: "Laptops",
+      image: "/products/macbook-air.jpg",
+      retailers: [
+        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
+        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
+        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" },
+        { name: "Best Buy", url: "#", logo: "💙", color: "bg-blue-600" }
+      ]
+    },
+    {
+      id: 4,
+      name: "Dell XPS 13 Plus",
+      description: "13.4-inch OLED, Intel i7, 16GB RAM",
+      price: 1499.99,
+      originalPrice: 1699.99,
+      rating: 4.7,
+      reviewCount: 445,
+      category: "Laptops",
+      image: "/products/dell-xps.jpg",
+      retailers: [
+        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
+        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
+        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" }
+      ]
+    },
+    {
+      id: 5,
+      name: "Sony WH-1000XM5",
+      description: "Industry-leading noise cancellation, 30-hour battery",
+      price: 349.99,
+      originalPrice: 399.99,
+      rating: 4.9,
+      reviewCount: 2341,
+      category: "Audio",
+      image: "/products/sony-headphones.jpg",
+      retailers: [
+        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
+        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
+        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" },
+        { name: "Best Buy", url: "#", logo: "💙", color: "bg-blue-600" }
+      ]
+    },
+    {
+      id: 6,
+      name: "AirPods Pro 2nd Gen",
+      description: "Active noise cancellation, Spatial audio",
+      price: 249.99,
+      originalPrice: 279.99,
+      rating: 4.8,
+      reviewCount: 1892,
+      category: "Audio",
+      image: "/products/airpods-pro.jpg",
+      retailers: [
+        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
+        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
+        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" },
+        { name: "Best Buy", url: "#", logo: "💙", color: "bg-blue-600" }
+      ]
+    },
+    {
+      id: 7,
+      name: "Samsung 65-inch QLED",
+      description: "4K Ultra HD, Quantum HDR, Smart TV",
+      price: 1299.99,
+      originalPrice: 1499.99,
+      rating: 4.7,
+      reviewCount: 567,
+      category: "TVs",
+      image: "/products/samsung-tv.jpg",
+      retailers: [
+        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
+        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
+        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" },
+        { name: "Best Buy", url: "#", logo: "💙", color: "bg-blue-600" }
+      ]
+    },
+    {
+      id: 8,
+      name: "LG C3 55-inch OLED",
+      description: "4K OLED, AI-powered, Gaming features",
+      price: 1499.99,
+      originalPrice: 1799.99,
+      rating: 4.8,
+      reviewCount: 334,
+      category: "TVs",
+      image: "/products/lg-oled.jpg",
+      retailers: [
+        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
+        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
+        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" },
+        { name: "Best Buy", url: "#", logo: "💙", color: "bg-blue-600" }
+      ]
+    }
+  ];
 
-export default async function ProductsPage() {
-  // Fetch data from Payload CMS
-  const products = await getActiveProducts(20);
-  const categories = await getCategories();
+  const categories = [
+    { name: 'all', label: 'All Products', count: products.length },
+    { name: 'phones', label: 'Phones', count: products.filter(p => p.category === 'Phones').length },
+    { name: 'laptops', label: 'Laptops', count: products.filter(p => p.category === 'Laptops').length },
+    { name: 'audio', label: 'Audio', count: products.filter(p => p.category === 'Audio').length },
+    { name: 'tvs', label: 'TVs', count: products.filter(p => p.category === 'TVs').length },
+  ];
+
+  const sortOptions = [
+    { value: 'featured', label: 'Featured' },
+    { value: 'price-low', label: 'Price: Low to High' },
+    { value: 'price-high', label: 'Price: High to Low' },
+    { value: 'rating', label: 'Highest Rated' },
+    { value: 'newest', label: 'Newest' },
+  ];
+
+  const filteredAndSortedProducts = useMemo(() => {
+    let filtered = products;
+    
+    if (selectedCategory !== 'all') {
+      filtered = products.filter(product => 
+        product.category.toLowerCase() === selectedCategory
+      );
+    }
+
+    switch (sortBy) {
+      case 'price-low':
+        return filtered.sort((a, b) => a.price - b.price);
+      case 'price-high':
+        return filtered.sort((a, b) => b.price - a.price);
+      case 'rating':
+        return filtered.sort((a, b) => b.rating - a.rating);
+      case 'newest':
+        return filtered.sort((a, b) => b.id - a.id);
+      default:
+        return filtered;
+    }
+  }, [selectedCategory, sortBy]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Products</h1>
-          <p className="text-lg text-gray-600">
-            Discover the best products with our comprehensive reviews and recommendations
-          </p>
-        </div>
+      <div className="mb-8">
+        <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          All Products
+        </h1>
+        <p className="text-lg text-gray-600">
+          Discover amazing products with the best prices and reviews
+        </p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Filters */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <div className="flex flex-col sm:flex-row gap-4">
-            {/* Search */}
-            <div className="flex-1">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search products..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <svg className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Category Filter */}
-            <div className="sm:w-48">
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <option value="">All Categories</option>
-                {categories.docs.map((category: Category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Sort */}
-            <div className="sm:w-48">
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <option value="newest">Newest First</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.docs.map((product: Product) => (
-            <div key={product.id} className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-              {/* Product Image */}
-              <div className="aspect-square bg-gray-100">
-                {product.image?.url ? (
-                  <img 
-                    src={product.image.url} 
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-4xl">
-                    📦
-                  </div>
-                )}
-              </div>
-
-              {/* Product Info */}
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-blue-600 font-medium">
-                    {product.category?.name || 'Uncategorized'}
-                  </span>
-                  <div className="flex items-center">
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className={`w-3 h-3 ${i < Math.floor(product.rating || 0) ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <span className="ml-1 text-xs text-gray-600">
-                      ({product.reviewCount || 0})
-                    </span>
-                  </div>
-                </div>
-
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-                  {product.name}
-                </h3>
-
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                  {product.description}
-                </p>
-
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl font-bold text-gray-900">
-                      ${product.price}
-                    </span>
-                    {product.originalPrice && product.originalPrice > product.price && (
-                      <>
-                        <span className="text-sm text-gray-500 line-through">
-                          ${product.originalPrice}
-                        </span>
-                        <span className="text-xs text-green-600 font-medium">
-                          {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
-                        </span>
-                      </>
-                    )}
-                  </div>
-                </div>
-
-                <a 
-                  href={product.affiliateUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full bg-blue-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Check Price
-                </a>
-              </div>
-            </div>
+      {/* Filters and Sort */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div className="flex flex-wrap gap-2">
+          {categories.map((category) => (
+            <button
+              key={category.name}
+              onClick={() => setSelectedCategory(category.name)}
+              className={`
+                px-4 py-2 rounded-lg text-sm font-medium transition-colors
+                ${selectedCategory === category.name
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }
+              `}
+            >
+              {category.label} ({category.count})
+            </button>
           ))}
         </div>
 
-        {/* Empty State */}
-        {products.docs.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-400 text-6xl mb-4">📦</div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
-            <p className="text-gray-600">Try adjusting your search or filter criteria.</p>
-          </div>
-        )}
-
-        {/* Load More */}
-        {products.docs.length > 0 && products.totalDocs > products.docs.length && (
-          <div className="text-center mt-8">
-            <button className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-              Load More Products
-            </button>
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          <label htmlFor="sort" className="text-sm font-medium text-gray-700">
+            Sort by:
+          </label>
+          <select
+            id="sort"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            {sortOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+
+      {/* Products Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {filteredAndSortedProducts.map((product) => (
+          <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div className="aspect-w-16 aspect-h-9 bg-gray-200">
+              <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+                <span className="text-4xl">📦</span>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-500">{product.category}</span>
+                <div className="flex items-center">
+                  <span className="text-yellow-400">★</span>
+                  <span className="text-sm text-gray-600 ml-1">{product.rating}</span>
+                  <span className="text-xs text-gray-400 ml-1">({product.reviewCount})</span>
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                {product.name}
+              </h3>
+              <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                {product.description}
+              </p>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <span className="text-2xl font-bold text-gray-900">${product.price}</span>
+                  {product.originalPrice > product.price && (
+                    <span className="text-lg text-gray-400 line-through ml-2">${product.originalPrice}</span>
+                  )}
+                </div>
+              </div>
+              
+              {/* Retailer Buttons */}
+              <div className="grid grid-cols-2 gap-2">
+                {product.retailers.map((retailer) => (
+                  <button
+                    key={retailer.name}
+                    className={`${retailer.color} text-white px-3 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity flex items-center justify-center`}
+                  >
+                    <span className="mr-1">{retailer.logo}</span>
+                    {retailer.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* No Results */}
+      {filteredAndSortedProducts.length === 0 && (
+        <div className="text-center py-12">
+          <div className="text-6xl mb-4">🔍</div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
+          <p className="text-gray-600">Try adjusting your filters or search terms.</p>
+        </div>
+      )}
     </div>
   );
 } 

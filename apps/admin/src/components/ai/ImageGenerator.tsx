@@ -66,33 +66,33 @@ export function ImageGenerator({ onImageGenerated, onError }: ImageGeneratorProp
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6">AI Image Generator</h2>
+    <div>
+      <h2 className="text-2xl font-bold text-apple-gray-900 mb-6">AI Image Generator</h2>
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
             Image Description/Prompt *
           </label>
           <textarea
             value={formData.prompt}
             onChange={(e) => handleInputChange('prompt', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             rows={3}
             placeholder="Describe the image you want to generate..."
             required
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
               AI Provider
             </label>
             <select
               value={formData.provider}
               onChange={(e) => handleInputChange('provider', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             >
               <option value="leonardo">Leonardo.AI</option>
               <option value="openai">OpenAI (DALL-E)</option>
@@ -100,13 +100,13 @@ export function ImageGenerator({ onImageGenerated, onError }: ImageGeneratorProp
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
               Image Size
             </label>
             <select
               value={formData.size}
               onChange={(e) => handleInputChange('size', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             >
               <option value="1024x1024">1024x1024 (Square)</option>
               <option value="1792x1024">1792x1024 (Landscape)</option>
@@ -116,28 +116,28 @@ export function ImageGenerator({ onImageGenerated, onError }: ImageGeneratorProp
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
               Style (Optional)
             </label>
             <input
               type="text"
               value={formData.style}
               onChange={(e) => handleInputChange('style', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
               placeholder="e.g., photorealistic, artistic, minimalist"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
               Quality
             </label>
             <select
               value={formData.quality}
               onChange={(e) => handleInputChange('quality', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             >
               <option value="standard">Standard</option>
               <option value="hd">HD</option>
@@ -148,22 +148,31 @@ export function ImageGenerator({ onImageGenerated, onError }: ImageGeneratorProp
         <button
           type="submit"
           disabled={isGenerating || !formData.prompt}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+          className={`w-full admin-button admin-button-primary ${
+            isGenerating || !formData.prompt ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         >
-          {isGenerating ? 'Generating Image...' : 'Generate Image'}
+          {isGenerating ? (
+            <div className="flex items-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+              Generating Image...
+            </div>
+          ) : (
+            'Generate Image'
+          )}
         </button>
       </form>
 
       {generatedImage && (
-        <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-3">Generated Image</h3>
-          <div className="border rounded-lg p-4 bg-gray-50">
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold text-apple-gray-900 mb-4">Generated Image</h3>
+          <div className="border border-apple-gray-200 rounded-2xl p-6 bg-apple-gray-50">
             <img
               src={generatedImage}
               alt="Generated image"
-              className="w-full h-auto rounded-lg shadow-sm"
+              className="w-full h-auto rounded-2xl shadow-apple-sm"
             />
-            <div className="mt-3 flex gap-2">
+            <div className="mt-4 flex gap-3">
               <button
                 onClick={() => {
                   const link = document.createElement('a');
@@ -171,14 +180,20 @@ export function ImageGenerator({ onImageGenerated, onError }: ImageGeneratorProp
                   link.download = 'generated-image.png';
                   link.click();
                 }}
-                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+                className="admin-button admin-button-primary"
               >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
                 Download
               </button>
               <button
                 onClick={() => setGeneratedImage(null)}
-                className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
+                className="admin-button admin-button-secondary"
               >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
                 Clear
               </button>
             </div>

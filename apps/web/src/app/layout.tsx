@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import Sidebar from '@/components/Sidebar'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -83,48 +84,19 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen bg-white">
-          {/* Header */}
-          <header className="bg-white shadow-sm border-b border-gray-200">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center py-6">
-                <div className="flex items-center">
-                  <h1 className="text-2xl font-bold text-gray-900">
-                    Affiliate Template
-                  </h1>
-                </div>
-                <nav className="hidden md:flex space-x-8">
-                  <Link href="/" className="text-gray-500 hover:text-gray-900 transition-colors">
-                    Home
-                  </Link>
-                  <Link href="/products" className="text-gray-500 hover:text-gray-900 transition-colors">
-                    Products
-                  </Link>
-                  <Link href="/blog" className="text-gray-500 hover:text-gray-900 transition-colors">
-                    Blog
-                  </Link>
-                  <Link href="/about" className="text-gray-500 hover:text-gray-900 transition-colors">
-                    About
-                  </Link>
-                </nav>
-                <div className="md:hidden">
-                  <button className="text-gray-500 hover:text-gray-900">
-                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </header>
-
+        <div className="min-h-screen bg-gray-50 overflow-x-hidden">
+          {/* Sidebar */}
+          <Sidebar currentPage="home" />
+          
           {/* Main Content */}
-          <main className="flex-1">
-            {children}
+          <main className="lg:ml-64 min-h-screen overflow-x-hidden">
+            <div className="p-4 lg:p-8 max-w-full">
+              {children}
+            </div>
           </main>
 
           {/* Footer */}
-          <footer className="bg-gray-900 text-white">
+          <footer className="bg-gray-900 text-white lg:ml-64 overflow-x-hidden">
             <div className="max-w-7xl mx-auto px-4 py-12">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="col-span-1 md:col-span-2">

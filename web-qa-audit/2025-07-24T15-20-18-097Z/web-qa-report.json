@@ -1,0 +1,299 @@
+{
+  "timestamp": "2025-07-24T15:21:30.716Z",
+  "totalIssues": 0,
+  "summary": {
+    "pagesWithSidebar": 0,
+    "pagesWithIssues": 0,
+    "totalTests": 32
+  },
+  "results": [
+    {
+      "page": "home",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/home-desktop.png"
+    },
+    {
+      "page": "products",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/products",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/products-desktop.png"
+    },
+    {
+      "page": "blog",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/blog",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/blog-desktop.png"
+    },
+    {
+      "page": "about",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/about",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/about-desktop.png"
+    },
+    {
+      "page": "contact",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/contact",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/contact-desktop.png"
+    },
+    {
+      "page": "privacy",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/privacy",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/privacy-desktop.png"
+    },
+    {
+      "page": "terms",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/terms",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/terms-desktop.png"
+    },
+    {
+      "page": "disclosure",
+      "viewport": "desktop",
+      "url": "http://localhost:3001/disclosure",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/disclosure-desktop.png"
+    },
+    {
+      "page": "home",
+      "viewport": "laptop",
+      "url": "http://localhost:3001/",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/home-laptop.png"
+    },
+    {
+      "page": "products",
+      "viewport": "laptop",
+      "url": "http://localhost:3001/products",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/products-laptop.png"
+    },
+    {
+      "page": "blog",
+      "viewport": "laptop",
+      "url": "http://localhost:3001/blog",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/blog-laptop.png"
+    },
+    {
+      "page": "about",
+      "viewport": "laptop",
+      "url": "http://localhost:3001/about",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/about-laptop.png"
+    },
+    {
+      "page": "contact",
+      "viewport": "laptop",
+      "url": "http://localhost:3001/contact",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/contact-laptop.png"
+    },
+    {
+      "page": "privacy",
+      "viewport": "laptop",
+      "url": "http://localhost:3001/privacy",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/privacy-laptop.png"
+    },
+    {
+      "page": "terms",
+      "viewport": "laptop",
+      "url": "http://localhost:3001/terms",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/terms-laptop.png"
+    },
+    {
+      "page": "disclosure",
+      "viewport": "laptop",
+      "url": "http://localhost:3001/disclosure",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/disclosure-laptop.png"
+    },
+    {
+      "page": "home",
+      "viewport": "tablet",
+      "url": "http://localhost:3001/",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/home-tablet.png"
+    },
+    {
+      "page": "products",
+      "viewport": "tablet",
+      "url": "http://localhost:3001/products",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/products-tablet.png"
+    },
+    {
+      "page": "blog",
+      "viewport": "tablet",
+      "url": "http://localhost:3001/blog",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/blog-tablet.png"
+    },
+    {
+      "page": "about",
+      "viewport": "tablet",
+      "url": "http://localhost:3001/about",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/about-tablet.png"
+    },
+    {
+      "page": "contact",
+      "viewport": "tablet",
+      "url": "http://localhost:3001/contact",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/contact-tablet.png"
+    },
+    {
+      "page": "privacy",
+      "viewport": "tablet",
+      "url": "http://localhost:3001/privacy",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/privacy-tablet.png"
+    },
+    {
+      "page": "terms",
+      "viewport": "tablet",
+      "url": "http://localhost:3001/terms",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/terms-tablet.png"
+    },
+    {
+      "page": "disclosure",
+      "viewport": "tablet",
+      "url": "http://localhost:3001/disclosure",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/disclosure-tablet.png"
+    },
+    {
+      "page": "home",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/home-mobile.png"
+    },
+    {
+      "page": "products",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/products",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/products-mobile.png"
+    },
+    {
+      "page": "blog",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/blog",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/blog-mobile.png"
+    },
+    {
+      "page": "about",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/about",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/about-mobile.png"
+    },
+    {
+      "page": "contact",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/contact",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/contact-mobile.png"
+    },
+    {
+      "page": "privacy",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/privacy",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/privacy-mobile.png"
+    },
+    {
+      "page": "terms",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/terms",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/terms-mobile.png"
+    },
+    {
+      "page": "disclosure",
+      "viewport": "mobile",
+      "url": "http://localhost:3001/disclosure",
+      "hasSidebar": false,
+      "hasMainContent": true,
+      "issues": [],
+      "screenshot": "/Users/mhaniff/affiliate-template-72325/web-qa-audit/2025-07-24T15-20-18-097Z/disclosure-mobile.png"
+    }
+  ]
+}

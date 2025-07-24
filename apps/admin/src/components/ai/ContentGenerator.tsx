@@ -65,33 +65,33 @@ export function ContentGenerator({ onContentGenerated, onError }: ContentGenerat
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6">AI Content Generator</h2>
+    <div>
+      <h2 className="text-2xl font-bold text-apple-gray-900 mb-6">AI Content Generator</h2>
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
             Content Topic/Prompt *
           </label>
           <textarea
             value={formData.prompt}
             onChange={(e) => handleInputChange('prompt', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             rows={3}
             placeholder="Describe the content you want to generate..."
             required
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
               AI Provider
             </label>
             <select
               value={formData.provider}
               onChange={(e) => handleInputChange('provider', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             >
               <option value="openai">OpenAI (GPT-4)</option>
               <option value="claude">Claude (Anthropic)</option>
@@ -99,13 +99,13 @@ export function ContentGenerator({ onContentGenerated, onError }: ContentGenerat
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
               Content Type
             </label>
             <select
               value={formData.contentType}
               onChange={(e) => handleInputChange('contentType', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             >
               <option value="blog_post">Blog Post</option>
               <option value="product_description">Product Description</option>
@@ -115,15 +115,15 @@ export function ContentGenerator({ onContentGenerated, onError }: ContentGenerat
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
               Tone
             </label>
             <select
               value={formData.tone}
               onChange={(e) => handleInputChange('tone', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             >
               <option value="professional">Professional</option>
               <option value="casual">Casual</option>
@@ -133,13 +133,13 @@ export function ContentGenerator({ onContentGenerated, onError }: ContentGenerat
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
               Length
             </label>
             <select
               value={formData.length}
               onChange={(e) => handleInputChange('length', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             >
               <option value="short">Short</option>
               <option value="medium">Medium</option>
@@ -149,27 +149,27 @@ export function ContentGenerator({ onContentGenerated, onError }: ContentGenerat
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
             Keywords (comma-separated)
           </label>
           <input
             type="text"
             value={formData.keywords}
             onChange={(e) => handleInputChange('keywords', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             placeholder="seo, marketing, affiliate"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-apple-gray-900 mb-3">
             Target Audience
           </label>
           <input
             type="text"
             value={formData.targetAudience}
             onChange={(e) => handleInputChange('targetAudience', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-apple-gray-200 rounded-2xl focus:border-apple-blue focus:ring-2 focus:ring-apple-blue/20 transition-all duration-300"
             placeholder="e.g., tech-savvy professionals aged 25-40"
           />
         </div>
@@ -177,9 +177,18 @@ export function ContentGenerator({ onContentGenerated, onError }: ContentGenerat
         <button
           type="submit"
           disabled={isGenerating || !formData.prompt}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+          className={`w-full admin-button admin-button-primary ${
+            isGenerating || !formData.prompt ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         >
-          {isGenerating ? 'Generating Content...' : 'Generate Content'}
+          {isGenerating ? (
+            <div className="flex items-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+              Generating Content...
+            </div>
+          ) : (
+            'Generate Content'
+          )}
         </button>
       </form>
     </div>
