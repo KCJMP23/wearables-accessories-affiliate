@@ -251,3 +251,5 @@ admin:dev:  GET /api/auth/session 200 in 5ms
 @affiliate/db:dev: src/utils.ts(1363,24): error TS7006: Parameter 'category' implicitly has an 'any' type.
 @affiliate/db:dev: 
 @affiliate/db:dev: 6:18:18 PM - Found 15 errors. Watching for file changes.
+  x Internal errors encountered: external process killed a task
+

@@ -62,8 +62,8 @@ export declare const contentService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
         })[];
         categories: ({
             category: {
@@ -92,6 +92,14 @@ export declare const contentService: {
             contentId: string;
             tagId: number;
         })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
         media: ({
             mediaAsset: {
                 url: string;
@@ -106,18 +114,10 @@ export declare const contentService: {
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
     } & {
         id: string;
         title: string;
@@ -179,8 +179,8 @@ export declare const contentService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
         })[];
         categories: ({
             category: {
@@ -209,6 +209,14 @@ export declare const contentService: {
             contentId: string;
             tagId: number;
         })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
         media: ({
             mediaAsset: {
                 url: string;
@@ -223,18 +231,10 @@ export declare const contentService: {
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
     } & {
         id: string;
         title: string;
@@ -301,8 +301,8 @@ export declare const contentService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
         })[];
         categories: ({
             category: {
@@ -331,6 +331,14 @@ export declare const contentService: {
             contentId: string;
             tagId: number;
         })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
         media: ({
             mediaAsset: {
                 url: string;
@@ -345,18 +353,10 @@ export declare const contentService: {
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
     } & {
         id: string;
         title: string;
@@ -418,8 +418,8 @@ export declare const contentService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
         })[];
         categories: ({
             category: {
@@ -448,6 +448,14 @@ export declare const contentService: {
             contentId: string;
             tagId: number;
         })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
         media: ({
             mediaAsset: {
                 url: string;
@@ -462,18 +470,10 @@ export declare const contentService: {
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
     } & {
         id: string;
         title: string;
@@ -592,8 +592,8 @@ export declare const siteService: {
                 scheduledPublishAt: Date | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
         })[];
         media: ({
             mediaAsset: {
@@ -609,10 +609,27 @@ export declare const siteService: {
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
+        affiliateLinks: {
+            id: string;
+            status: string;
+            createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
+            originalUrl: string;
+            affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
+            merchantId: string | null;
+            displayText: string | null;
+            trackingId: string | null;
+            commissionInfo: Prisma.JsonValue | null;
+            expirationDate: Date | null;
+        }[];
         products: ({
             product: {
                 id: string;
@@ -628,30 +645,13 @@ export declare const siteService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        affiliateLinks: {
-            id: string;
-            status: string;
-            createdBy: string | null;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            productId: string | null;
-            originalUrl: string;
-            affiliateUrl: string;
-            merchantId: string | null;
-            displayText: string | null;
-            trackingId: string | null;
-            commissionInfo: Prisma.JsonValue | null;
-            expirationDate: Date | null;
-        }[];
     } & {
         id: string;
         createdAt: Date | null;
@@ -705,8 +705,8 @@ export declare const siteService: {
                 scheduledPublishAt: Date | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
         })[];
         media: ({
             mediaAsset: {
@@ -722,10 +722,27 @@ export declare const siteService: {
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
+        affiliateLinks: {
+            id: string;
+            status: string;
+            createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
+            originalUrl: string;
+            affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
+            merchantId: string | null;
+            displayText: string | null;
+            trackingId: string | null;
+            commissionInfo: Prisma.JsonValue | null;
+            expirationDate: Date | null;
+        }[];
         products: ({
             product: {
                 id: string;
@@ -741,30 +758,13 @@ export declare const siteService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        affiliateLinks: {
-            id: string;
-            status: string;
-            createdBy: string | null;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            productId: string | null;
-            originalUrl: string;
-            affiliateUrl: string;
-            merchantId: string | null;
-            displayText: string | null;
-            trackingId: string | null;
-            commissionInfo: Prisma.JsonValue | null;
-            expirationDate: Date | null;
-        }[];
     } & {
         id: string;
         createdAt: Date | null;
@@ -821,8 +821,8 @@ export declare const siteService: {
                 scheduledPublishAt: Date | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
         })[];
         media: ({
             mediaAsset: {
@@ -838,10 +838,27 @@ export declare const siteService: {
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
+        affiliateLinks: {
+            id: string;
+            status: string;
+            createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
+            originalUrl: string;
+            affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
+            merchantId: string | null;
+            displayText: string | null;
+            trackingId: string | null;
+            commissionInfo: Prisma.JsonValue | null;
+            expirationDate: Date | null;
+        }[];
         products: ({
             product: {
                 id: string;
@@ -857,30 +874,13 @@ export declare const siteService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        affiliateLinks: {
-            id: string;
-            status: string;
-            createdBy: string | null;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            productId: string | null;
-            originalUrl: string;
-            affiliateUrl: string;
-            merchantId: string | null;
-            displayText: string | null;
-            trackingId: string | null;
-            commissionInfo: Prisma.JsonValue | null;
-            expirationDate: Date | null;
-        }[];
     } & {
         id: string;
         createdAt: Date | null;
@@ -934,8 +934,8 @@ export declare const siteService: {
                 scheduledPublishAt: Date | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
         })[];
         media: ({
             mediaAsset: {
@@ -951,10 +951,27 @@ export declare const siteService: {
                 metadata: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
+        affiliateLinks: {
+            id: string;
+            status: string;
+            createdBy: string | null;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            name: string;
+            originalUrl: string;
+            affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
+            merchantId: string | null;
+            displayText: string | null;
+            trackingId: string | null;
+            commissionInfo: Prisma.JsonValue | null;
+            expirationDate: Date | null;
+        }[];
         products: ({
             product: {
                 id: string;
@@ -970,30 +987,13 @@ export declare const siteService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        affiliateLinks: {
-            id: string;
-            status: string;
-            createdBy: string | null;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            productId: string | null;
-            originalUrl: string;
-            affiliateUrl: string;
-            merchantId: string | null;
-            displayText: string | null;
-            trackingId: string | null;
-            commissionInfo: Prisma.JsonValue | null;
-            expirationDate: Date | null;
-        }[];
     } & {
         id: string;
         createdAt: Date | null;
@@ -1075,10 +1075,10 @@ export declare const affiliateLinkService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        siteId: string;
-        productId: string | null;
         originalUrl: string;
         affiliateUrl: string;
+        siteId: string;
+        productId: string | null;
         merchantId: string | null;
         displayText: string | null;
         trackingId: string | null;
@@ -1138,8 +1138,8 @@ export declare const affiliateLinkService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             logoUrl: string | null;
+            description: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1159,10 +1159,10 @@ export declare const affiliateLinkService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        siteId: string;
-        productId: string | null;
         originalUrl: string;
         affiliateUrl: string;
+        siteId: string;
+        productId: string | null;
         merchantId: string | null;
         displayText: string | null;
         trackingId: string | null;
@@ -1226,8 +1226,8 @@ export declare const affiliateLinkService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             logoUrl: string | null;
+            description: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1247,10 +1247,10 @@ export declare const affiliateLinkService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        siteId: string;
-        productId: string | null;
         originalUrl: string;
         affiliateUrl: string;
+        siteId: string;
+        productId: string | null;
         merchantId: string | null;
         displayText: string | null;
         trackingId: string | null;
@@ -1314,8 +1314,8 @@ export declare const affiliateLinkService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             logoUrl: string | null;
+            description: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1335,10 +1335,10 @@ export declare const affiliateLinkService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        siteId: string;
-        productId: string | null;
         originalUrl: string;
         affiliateUrl: string;
+        siteId: string;
+        productId: string | null;
         merchantId: string | null;
         displayText: string | null;
         trackingId: string | null;
@@ -1398,8 +1398,8 @@ export declare const affiliateLinkService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             logoUrl: string | null;
+            description: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1419,10 +1419,10 @@ export declare const affiliateLinkService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        siteId: string;
-        productId: string | null;
         originalUrl: string;
         affiliateUrl: string;
+        siteId: string;
+        productId: string | null;
         merchantId: string | null;
         displayText: string | null;
         trackingId: string | null;
@@ -1436,10 +1436,10 @@ export declare const affiliateLinkService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        siteId: string;
-        productId: string | null;
         originalUrl: string;
         affiliateUrl: string;
+        siteId: string;
+        productId: string | null;
         merchantId: string | null;
         displayText: string | null;
         trackingId: string | null;
@@ -1492,10 +1492,10 @@ export declare const productService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            siteId: string;
-            productId: string | null;
             originalUrl: string;
             affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
             merchantId: string | null;
             displayText: string | null;
             trackingId: string | null;
@@ -1542,8 +1542,8 @@ export declare const productService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -1571,10 +1571,10 @@ export declare const productService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            siteId: string;
-            productId: string | null;
             originalUrl: string;
             affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
             merchantId: string | null;
             displayText: string | null;
             trackingId: string | null;
@@ -1621,8 +1621,8 @@ export declare const productService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -1650,10 +1650,10 @@ export declare const productService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            siteId: string;
-            productId: string | null;
             originalUrl: string;
             affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
             merchantId: string | null;
             displayText: string | null;
             trackingId: string | null;
@@ -1700,8 +1700,8 @@ export declare const productService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -1726,10 +1726,10 @@ export declare const productService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            siteId: string;
-            productId: string | null;
             originalUrl: string;
             affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
             merchantId: string | null;
             displayText: string | null;
             trackingId: string | null;
@@ -1776,8 +1776,8 @@ export declare const productService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -1836,10 +1836,10 @@ export declare const analyticsService: {
                 createdAt: Date | null;
                 updatedAt: Date | null;
                 name: string;
-                siteId: string;
-                productId: string | null;
                 originalUrl: string;
                 affiliateUrl: string;
+                siteId: string;
+                productId: string | null;
                 merchantId: string | null;
                 displayText: string | null;
                 trackingId: string | null;
@@ -2321,8 +2321,8 @@ export declare const mediaService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
     } & {
@@ -2390,8 +2390,8 @@ export declare const mediaService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
     } & {
@@ -2463,8 +2463,8 @@ export declare const mediaService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
     } & {
@@ -2532,8 +2532,8 @@ export declare const mediaService: {
                 socialLinks: Prisma.JsonValue | null;
             };
         } & {
-            siteId: string;
             contentId: string;
+            siteId: string;
             mediaAssetId: string;
         })[];
     } & {
@@ -2567,8 +2567,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         logoUrl: string | null;
+        description: string | null;
         website: string | null;
     }>;
     findById(id: string): Promise<({
@@ -2579,10 +2579,10 @@ export declare const merchantService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            siteId: string;
-            productId: string | null;
             originalUrl: string;
             affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
             merchantId: string | null;
             displayText: string | null;
             trackingId: string | null;
@@ -2594,8 +2594,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         logoUrl: string | null;
+        description: string | null;
         website: string | null;
     }) | null>;
     findByName(name: string): Promise<({
@@ -2606,10 +2606,10 @@ export declare const merchantService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            siteId: string;
-            productId: string | null;
             originalUrl: string;
             affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
             merchantId: string | null;
             displayText: string | null;
             trackingId: string | null;
@@ -2621,8 +2621,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         logoUrl: string | null;
+        description: string | null;
         website: string | null;
     }) | null>;
     findAll(options?: {
@@ -2636,10 +2636,10 @@ export declare const merchantService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            siteId: string;
-            productId: string | null;
             originalUrl: string;
             affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
             merchantId: string | null;
             displayText: string | null;
             trackingId: string | null;
@@ -2651,8 +2651,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         logoUrl: string | null;
+        description: string | null;
         website: string | null;
     })[]>;
     update(id: string, data: Prisma.MerchantUpdateInput): Promise<{
@@ -2663,10 +2663,10 @@ export declare const merchantService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            siteId: string;
-            productId: string | null;
             originalUrl: string;
             affiliateUrl: string;
+            siteId: string;
+            productId: string | null;
             merchantId: string | null;
             displayText: string | null;
             trackingId: string | null;
@@ -2678,8 +2678,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         logoUrl: string | null;
+        description: string | null;
         website: string | null;
     }>;
     delete(id: string): Promise<{
@@ -2687,8 +2687,8 @@ export declare const merchantService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         logoUrl: string | null;
+        description: string | null;
         website: string | null;
     }>;
 };
@@ -3193,8 +3193,8 @@ export declare const customNicheService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue | null;
         name: string;
-        description: string | null;
         targetAudience: string | null;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue | null;
         competitionLevel: string | null;
@@ -3243,8 +3243,8 @@ export declare const customNicheService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue | null;
         name: string;
-        description: string | null;
         targetAudience: string | null;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue | null;
         competitionLevel: string | null;
@@ -3293,8 +3293,8 @@ export declare const customNicheService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue | null;
         name: string;
-        description: string | null;
         targetAudience: string | null;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue | null;
         competitionLevel: string | null;
@@ -3347,8 +3347,8 @@ export declare const customNicheService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue | null;
         name: string;
-        description: string | null;
         targetAudience: string | null;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue | null;
         competitionLevel: string | null;
@@ -3397,8 +3397,8 @@ export declare const customNicheService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue | null;
         name: string;
-        description: string | null;
         targetAudience: string | null;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue | null;
         competitionLevel: string | null;
@@ -3410,8 +3410,8 @@ export declare const customNicheService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue | null;
         name: string;
-        description: string | null;
         targetAudience: string | null;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue | null;
         competitionLevel: string | null;
@@ -3428,8 +3428,8 @@ export declare const autoBlogPostService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        siteId: string;
         affiliateLinks: Prisma.JsonValue | null;
+        siteId: string;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3490,8 +3490,8 @@ export declare const autoBlogPostService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        siteId: string;
         affiliateLinks: Prisma.JsonValue | null;
+        siteId: string;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3557,8 +3557,8 @@ export declare const autoBlogPostService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        siteId: string;
         affiliateLinks: Prisma.JsonValue | null;
+        siteId: string;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3624,8 +3624,8 @@ export declare const autoBlogPostService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        siteId: string;
         affiliateLinks: Prisma.JsonValue | null;
+        siteId: string;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3686,8 +3686,8 @@ export declare const autoBlogPostService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        siteId: string;
         affiliateLinks: Prisma.JsonValue | null;
+        siteId: string;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3711,8 +3711,8 @@ export declare const autoBlogPostService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        siteId: string;
         affiliateLinks: Prisma.JsonValue | null;
+        siteId: string;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3773,8 +3773,8 @@ export declare const autoBlogPostService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        siteId: string;
         affiliateLinks: Prisma.JsonValue | null;
+        siteId: string;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3797,8 +3797,8 @@ export declare const contentScheduleService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue;
         name: string;
-        description: string | null;
         siteId: string;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue;
         frequency: string;
@@ -3850,8 +3850,8 @@ export declare const contentScheduleService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue;
         name: string;
-        description: string | null;
         siteId: string;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue;
         frequency: string;
@@ -3907,8 +3907,8 @@ export declare const contentScheduleService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue;
         name: string;
-        description: string | null;
         siteId: string;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue;
         frequency: string;
@@ -3964,8 +3964,8 @@ export declare const contentScheduleService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue;
         name: string;
-        description: string | null;
         siteId: string;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue;
         frequency: string;
@@ -4017,8 +4017,8 @@ export declare const contentScheduleService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue;
         name: string;
-        description: string | null;
         siteId: string;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue;
         frequency: string;
@@ -4033,8 +4033,8 @@ export declare const contentScheduleService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue;
         name: string;
-        description: string | null;
         siteId: string;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue;
         frequency: string;
@@ -4086,8 +4086,8 @@ export declare const contentScheduleService: {
         updatedAt: Date | null;
         categories: Prisma.JsonValue;
         name: string;
-        description: string | null;
         siteId: string;
+        description: string | null;
         isActive: boolean;
         keywords: Prisma.JsonValue;
         frequency: string;
@@ -4104,11 +4104,11 @@ export declare const productCategoryService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         siteId: string;
-        parentId: string | null;
+        description: string | null;
         displayOrder: number;
         isActive: boolean;
+        parentId: string | null;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
@@ -4165,8 +4165,8 @@ export declare const productCategoryService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -4178,11 +4178,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4193,11 +4193,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4208,11 +4208,11 @@ export declare const productCategoryService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         siteId: string;
-        parentId: string | null;
+        description: string | null;
         displayOrder: number;
         isActive: boolean;
+        parentId: string | null;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
@@ -4269,8 +4269,8 @@ export declare const productCategoryService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -4282,11 +4282,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4297,11 +4297,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4312,11 +4312,11 @@ export declare const productCategoryService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         siteId: string;
-        parentId: string | null;
+        description: string | null;
         displayOrder: number;
         isActive: boolean;
+        parentId: string | null;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
@@ -4378,8 +4378,8 @@ export declare const productCategoryService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -4391,11 +4391,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4406,11 +4406,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4421,11 +4421,11 @@ export declare const productCategoryService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         siteId: string;
-        parentId: string | null;
+        description: string | null;
         displayOrder: number;
         isActive: boolean;
+        parentId: string | null;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
@@ -4487,8 +4487,8 @@ export declare const productCategoryService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -4500,11 +4500,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4515,11 +4515,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4530,11 +4530,11 @@ export declare const productCategoryService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         siteId: string;
-        parentId: string | null;
+        description: string | null;
         displayOrder: number;
         isActive: boolean;
+        parentId: string | null;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
@@ -4591,8 +4591,8 @@ export declare const productCategoryService: {
         } & {
             createdAt: Date | null;
             updatedAt: Date | null;
-            siteId: string;
             categoryId: string | null;
+            siteId: string;
             productId: string;
             price: Prisma.Decimal;
             discount: Prisma.Decimal | null;
@@ -4604,11 +4604,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4619,11 +4619,11 @@ export declare const productCategoryService: {
             createdAt: Date | null;
             updatedAt: Date | null;
             name: string;
-            description: string | null;
             siteId: string;
-            parentId: string | null;
+            description: string | null;
             displayOrder: number;
             isActive: boolean;
+            parentId: string | null;
             seoTitle: string | null;
             seoDescription: string | null;
             seoKeywords: string | null;
@@ -4634,11 +4634,11 @@ export declare const productCategoryService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         siteId: string;
-        parentId: string | null;
+        description: string | null;
         displayOrder: number;
         isActive: boolean;
+        parentId: string | null;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
@@ -4649,11 +4649,11 @@ export declare const productCategoryService: {
         createdAt: Date | null;
         updatedAt: Date | null;
         name: string;
-        description: string | null;
         siteId: string;
-        parentId: string | null;
+        description: string | null;
         displayOrder: number;
         isActive: boolean;
+        parentId: string | null;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
