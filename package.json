@@ -6,6 +6,7 @@
   "packageManager": "pnpm@10.9.0",
   "scripts": {
     "build": "pnpm db:generate && pnpm --filter=@affiliate-template/db build && turbo run build",
+    "build:web": "pnpm db:generate && pnpm --filter=@affiliate-template/db build && pnpm --filter=web build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "test": "turbo run test",
