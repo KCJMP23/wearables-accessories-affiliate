@@ -277,6 +277,12 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.52.0
         version: 2.52.1
+      bcryptjs:
+        specifier: ^2.4.3
+        version: 2.4.3
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
     devDependencies:
       '@types/bcryptjs':
         specifier: ^3.0.0

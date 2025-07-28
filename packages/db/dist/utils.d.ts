@@ -2,12 +2,12 @@ import { PrismaClient, Prisma } from '@prisma/client';
 declare const prisma: PrismaClient<Prisma.PrismaClientOptions, never, import("@prisma/client/runtime/library").DefaultArgs>;
 export declare const contentService: {
     create(data: Prisma.ContentCreateInput): Promise<{
+        status: string;
+        data: Prisma.JsonValue;
         id: string;
         title: string;
         slug: string;
         contentTypeId: number;
-        data: Prisma.JsonValue;
-        status: string;
         createdBy: string | null;
         updatedBy: string | null;
         createdAt: Date | null;
@@ -52,8 +52,8 @@ export declare const contentService: {
             tagId: number;
         })[];
         versions: {
-            id: string;
             data: Prisma.JsonValue;
+            id: string;
             createdBy: string | null;
             createdAt: Date | null;
             version: number;
@@ -119,12 +119,12 @@ export declare const contentService: {
             mediaAssetId: string;
         })[];
     } & {
+        status: string;
+        data: Prisma.JsonValue;
         id: string;
         title: string;
         slug: string;
         contentTypeId: number;
-        data: Prisma.JsonValue;
-        status: string;
         createdBy: string | null;
         updatedBy: string | null;
         createdAt: Date | null;
@@ -169,8 +169,8 @@ export declare const contentService: {
             tagId: number;
         })[];
         versions: {
-            id: string;
             data: Prisma.JsonValue;
+            id: string;
             createdBy: string | null;
             createdAt: Date | null;
             version: number;
@@ -236,12 +236,12 @@ export declare const contentService: {
             mediaAssetId: string;
         })[];
     } & {
+        status: string;
+        data: Prisma.JsonValue;
         id: string;
         title: string;
         slug: string;
         contentTypeId: number;
-        data: Prisma.JsonValue;
-        status: string;
         createdBy: string | null;
         updatedBy: string | null;
         createdAt: Date | null;
@@ -291,8 +291,8 @@ export declare const contentService: {
             tagId: number;
         })[];
         versions: {
-            id: string;
             data: Prisma.JsonValue;
+            id: string;
             createdBy: string | null;
             createdAt: Date | null;
             version: number;
@@ -358,12 +358,12 @@ export declare const contentService: {
             mediaAssetId: string;
         })[];
     } & {
+        status: string;
+        data: Prisma.JsonValue;
         id: string;
         title: string;
         slug: string;
         contentTypeId: number;
-        data: Prisma.JsonValue;
-        status: string;
         createdBy: string | null;
         updatedBy: string | null;
         createdAt: Date | null;
@@ -408,8 +408,8 @@ export declare const contentService: {
             tagId: number;
         })[];
         versions: {
-            id: string;
             data: Prisma.JsonValue;
+            id: string;
             createdBy: string | null;
             createdAt: Date | null;
             version: number;
@@ -475,12 +475,12 @@ export declare const contentService: {
             mediaAssetId: string;
         })[];
     } & {
+        status: string;
+        data: Prisma.JsonValue;
         id: string;
         title: string;
         slug: string;
         contentTypeId: number;
-        data: Prisma.JsonValue;
-        status: string;
         createdBy: string | null;
         updatedBy: string | null;
         createdAt: Date | null;
@@ -489,12 +489,12 @@ export declare const contentService: {
         scheduledPublishAt: Date | null;
     }>;
     delete(id: string): Promise<{
+        status: string;
+        data: Prisma.JsonValue;
         id: string;
         title: string;
         slug: string;
         contentTypeId: number;
-        data: Prisma.JsonValue;
-        status: string;
         createdBy: string | null;
         updatedBy: string | null;
         createdAt: Date | null;
@@ -578,12 +578,12 @@ export declare const siteService: {
     findById(id: string): Promise<({
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -614,9 +614,9 @@ export declare const siteService: {
             mediaAssetId: string;
         })[];
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -691,12 +691,12 @@ export declare const siteService: {
     findByDomain(domain: string): Promise<({
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -727,9 +727,9 @@ export declare const siteService: {
             mediaAssetId: string;
         })[];
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -807,12 +807,12 @@ export declare const siteService: {
     }): Promise<({
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -843,9 +843,9 @@ export declare const siteService: {
             mediaAssetId: string;
         })[];
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -920,12 +920,12 @@ export declare const siteService: {
     update(id: string, data: Prisma.SiteUpdateInput): Promise<{
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -956,9 +956,9 @@ export declare const siteService: {
             mediaAssetId: string;
         })[];
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -1069,9 +1069,9 @@ export declare const siteService: {
 };
 export declare const affiliateLinkService: {
     create(data: Prisma.AffiliateLinkCreateInput): Promise<{
+        status: string;
         name: string;
         id: string;
-        status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -1086,6 +1086,26 @@ export declare const affiliateLinkService: {
         expirationDate: Date | null;
     }>;
     findById(id: string): Promise<({
+        merchant: {
+            name: string;
+            id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            logoUrl: string | null;
+            website: string | null;
+        } | null;
+        product: {
+            name: string;
+            id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            manufacturer: string | null;
+            basePrice: Prisma.Decimal;
+            mainImageUrl: string | null;
+            specifications: Prisma.JsonValue | null;
+        } | null;
         site: {
             name: string;
             id: string;
@@ -1122,26 +1142,6 @@ export declare const affiliateLinkService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
-        product: {
-            name: string;
-            id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            manufacturer: string | null;
-            basePrice: Prisma.Decimal;
-            mainImageUrl: string | null;
-            specifications: Prisma.JsonValue | null;
-        } | null;
-        merchant: {
-            name: string;
-            id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            logoUrl: string | null;
-            website: string | null;
-        } | null;
         linkClicks: {
             id: string;
             affiliateLinkId: string;
@@ -1153,9 +1153,9 @@ export declare const affiliateLinkService: {
             conversionValue: Prisma.Decimal | null;
         }[];
     } & {
+        status: string;
         name: string;
         id: string;
-        status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -1174,6 +1174,26 @@ export declare const affiliateLinkService: {
         limit?: number;
         offset?: number;
     }): Promise<({
+        merchant: {
+            name: string;
+            id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            logoUrl: string | null;
+            website: string | null;
+        } | null;
+        product: {
+            name: string;
+            id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            manufacturer: string | null;
+            basePrice: Prisma.Decimal;
+            mainImageUrl: string | null;
+            specifications: Prisma.JsonValue | null;
+        } | null;
         site: {
             name: string;
             id: string;
@@ -1210,26 +1230,6 @@ export declare const affiliateLinkService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
-        product: {
-            name: string;
-            id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            manufacturer: string | null;
-            basePrice: Prisma.Decimal;
-            mainImageUrl: string | null;
-            specifications: Prisma.JsonValue | null;
-        } | null;
-        merchant: {
-            name: string;
-            id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            logoUrl: string | null;
-            website: string | null;
-        } | null;
         linkClicks: {
             id: string;
             affiliateLinkId: string;
@@ -1241,9 +1241,9 @@ export declare const affiliateLinkService: {
             conversionValue: Prisma.Decimal | null;
         }[];
     } & {
+        status: string;
         name: string;
         id: string;
-        status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -1262,6 +1262,26 @@ export declare const affiliateLinkService: {
         limit?: number;
         offset?: number;
     }): Promise<({
+        merchant: {
+            name: string;
+            id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            logoUrl: string | null;
+            website: string | null;
+        } | null;
+        product: {
+            name: string;
+            id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            manufacturer: string | null;
+            basePrice: Prisma.Decimal;
+            mainImageUrl: string | null;
+            specifications: Prisma.JsonValue | null;
+        } | null;
         site: {
             name: string;
             id: string;
@@ -1298,26 +1318,6 @@ export declare const affiliateLinkService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
-        product: {
-            name: string;
-            id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            manufacturer: string | null;
-            basePrice: Prisma.Decimal;
-            mainImageUrl: string | null;
-            specifications: Prisma.JsonValue | null;
-        } | null;
-        merchant: {
-            name: string;
-            id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            logoUrl: string | null;
-            website: string | null;
-        } | null;
         linkClicks: {
             id: string;
             affiliateLinkId: string;
@@ -1329,9 +1329,9 @@ export declare const affiliateLinkService: {
             conversionValue: Prisma.Decimal | null;
         }[];
     } & {
+        status: string;
         name: string;
         id: string;
-        status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -1346,6 +1346,26 @@ export declare const affiliateLinkService: {
         expirationDate: Date | null;
     })[]>;
     update(id: string, data: Prisma.AffiliateLinkUpdateInput): Promise<{
+        merchant: {
+            name: string;
+            id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            logoUrl: string | null;
+            website: string | null;
+        } | null;
+        product: {
+            name: string;
+            id: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            manufacturer: string | null;
+            basePrice: Prisma.Decimal;
+            mainImageUrl: string | null;
+            specifications: Prisma.JsonValue | null;
+        } | null;
         site: {
             name: string;
             id: string;
@@ -1382,26 +1402,6 @@ export declare const affiliateLinkService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
-        product: {
-            name: string;
-            id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            manufacturer: string | null;
-            basePrice: Prisma.Decimal;
-            mainImageUrl: string | null;
-            specifications: Prisma.JsonValue | null;
-        } | null;
-        merchant: {
-            name: string;
-            id: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            description: string | null;
-            logoUrl: string | null;
-            website: string | null;
-        } | null;
         linkClicks: {
             id: string;
             affiliateLinkId: string;
@@ -1413,9 +1413,9 @@ export declare const affiliateLinkService: {
             conversionValue: Prisma.Decimal | null;
         }[];
     } & {
+        status: string;
         name: string;
         id: string;
-        status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -1430,9 +1430,9 @@ export declare const affiliateLinkService: {
         expirationDate: Date | null;
     }>;
     delete(id: string): Promise<{
+        status: string;
         name: string;
         id: string;
-        status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
@@ -1486,9 +1486,9 @@ export declare const productService: {
     }>;
     findById(id: string): Promise<({
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -1565,9 +1565,9 @@ export declare const productService: {
         offset?: number;
     }): Promise<({
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -1644,9 +1644,9 @@ export declare const productService: {
         offset?: number;
     }): Promise<({
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -1720,9 +1720,9 @@ export declare const productService: {
     })[]>;
     update(id: string, data: Prisma.ProductUpdateInput): Promise<{
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -1830,9 +1830,9 @@ export declare const analyticsService: {
                     specifications: Prisma.JsonValue | null;
                 } | null;
             } & {
+                status: string;
                 name: string;
                 id: string;
-                status: string;
                 createdBy: string | null;
                 createdAt: Date | null;
                 updatedAt: Date | null;
@@ -1929,10 +1929,10 @@ export declare const newsletterService: {
         preferences: Prisma.JsonValue | null;
     }[]>;
     createCampaign(data: Prisma.NewsletterCampaignCreateInput): Promise<{
+        status: string;
         name: string;
         content: string;
         id: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         subject: string;
@@ -1942,10 +1942,10 @@ export declare const newsletterService: {
         clickCount: number;
     }>;
     findCampaign(id: string): Promise<{
+        status: string;
         name: string;
         content: string;
         id: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         subject: string;
@@ -1955,10 +1955,10 @@ export declare const newsletterService: {
         clickCount: number;
     } | null>;
     updateCampaign(id: string, data: Prisma.NewsletterCampaignUpdateInput): Promise<{
+        status: string;
         name: string;
         content: string;
         id: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         subject: string;
@@ -1972,10 +1972,10 @@ export declare const newsletterService: {
         limit?: number;
         offset?: number;
     }): Promise<{
+        status: string;
         name: string;
         content: string;
         id: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         subject: string;
@@ -1998,12 +1998,12 @@ export declare const categoryService: {
     findById(id: number): Promise<({
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -2049,12 +2049,12 @@ export declare const categoryService: {
     }): Promise<({
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -2096,12 +2096,12 @@ export declare const categoryService: {
     update(id: number, data: Prisma.CategoryUpdateInput): Promise<{
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -2162,12 +2162,12 @@ export declare const tagService: {
     findById(id: number): Promise<({
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -2193,12 +2193,12 @@ export declare const tagService: {
     }): Promise<({
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -2221,12 +2221,12 @@ export declare const tagService: {
     update(id: number, data: Prisma.TagUpdateInput): Promise<{
         content: ({
             content: {
+                status: string;
+                data: Prisma.JsonValue;
                 id: string;
                 title: string;
                 slug: string;
                 contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
                 createdBy: string | null;
                 updatedBy: string | null;
                 createdAt: Date | null;
@@ -2270,20 +2270,6 @@ export declare const mediaService: {
     }>;
     findById(id: string): Promise<({
         siteMedia: ({
-            content: {
-                id: string;
-                title: string;
-                slug: string;
-                contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
-                createdBy: string | null;
-                updatedBy: string | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                version: number | null;
-                scheduledPublishAt: Date | null;
-            };
             site: {
                 name: string;
                 id: string;
@@ -2319,6 +2305,20 @@ export declare const mediaService: {
                 autoBlogCategories: Prisma.JsonValue | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
+            };
+            content: {
+                status: string;
+                data: Prisma.JsonValue;
+                id: string;
+                title: string;
+                slug: string;
+                contentTypeId: number;
+                createdBy: string | null;
+                updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                version: number | null;
+                scheduledPublishAt: Date | null;
             };
         } & {
             contentId: string;
@@ -2339,20 +2339,6 @@ export declare const mediaService: {
     }) | null>;
     findByFilename(filename: string): Promise<({
         siteMedia: ({
-            content: {
-                id: string;
-                title: string;
-                slug: string;
-                contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
-                createdBy: string | null;
-                updatedBy: string | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                version: number | null;
-                scheduledPublishAt: Date | null;
-            };
             site: {
                 name: string;
                 id: string;
@@ -2388,6 +2374,20 @@ export declare const mediaService: {
                 autoBlogCategories: Prisma.JsonValue | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
+            };
+            content: {
+                status: string;
+                data: Prisma.JsonValue;
+                id: string;
+                title: string;
+                slug: string;
+                contentTypeId: number;
+                createdBy: string | null;
+                updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                version: number | null;
+                scheduledPublishAt: Date | null;
             };
         } & {
             contentId: string;
@@ -2412,20 +2412,6 @@ export declare const mediaService: {
         offset?: number;
     }): Promise<({
         siteMedia: ({
-            content: {
-                id: string;
-                title: string;
-                slug: string;
-                contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
-                createdBy: string | null;
-                updatedBy: string | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                version: number | null;
-                scheduledPublishAt: Date | null;
-            };
             site: {
                 name: string;
                 id: string;
@@ -2461,6 +2447,20 @@ export declare const mediaService: {
                 autoBlogCategories: Prisma.JsonValue | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
+            };
+            content: {
+                status: string;
+                data: Prisma.JsonValue;
+                id: string;
+                title: string;
+                slug: string;
+                contentTypeId: number;
+                createdBy: string | null;
+                updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                version: number | null;
+                scheduledPublishAt: Date | null;
             };
         } & {
             contentId: string;
@@ -2481,20 +2481,6 @@ export declare const mediaService: {
     })[]>;
     update(id: string, data: Prisma.MediaAssetUpdateInput): Promise<{
         siteMedia: ({
-            content: {
-                id: string;
-                title: string;
-                slug: string;
-                contentTypeId: number;
-                data: Prisma.JsonValue;
-                status: string;
-                createdBy: string | null;
-                updatedBy: string | null;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                version: number | null;
-                scheduledPublishAt: Date | null;
-            };
             site: {
                 name: string;
                 id: string;
@@ -2530,6 +2516,20 @@ export declare const mediaService: {
                 autoBlogCategories: Prisma.JsonValue | null;
                 footerText: string | null;
                 socialLinks: Prisma.JsonValue | null;
+            };
+            content: {
+                status: string;
+                data: Prisma.JsonValue;
+                id: string;
+                title: string;
+                slug: string;
+                contentTypeId: number;
+                createdBy: string | null;
+                updatedBy: string | null;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                version: number | null;
+                scheduledPublishAt: Date | null;
             };
         } & {
             contentId: string;
@@ -2573,9 +2573,9 @@ export declare const merchantService: {
     }>;
     findById(id: string): Promise<({
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -2600,9 +2600,9 @@ export declare const merchantService: {
     }) | null>;
     findByName(name: string): Promise<({
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -2630,9 +2630,9 @@ export declare const merchantService: {
         offset?: number;
     }): Promise<({
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -2657,9 +2657,9 @@ export declare const merchantService: {
     })[]>;
     update(id: string, data: Prisma.MerchantUpdateInput): Promise<{
         affiliateLinks: {
+            status: string;
             name: string;
             id: string;
-            status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
@@ -2960,10 +2960,10 @@ export declare const recipeService: {
 };
 export declare const aiContentService: {
     log(data: Prisma.AIContentLogCreateInput): Promise<{
+        status: string;
         error: string | null;
         model: string;
         id: string;
-        status: string;
         createdAt: Date | null;
         prompt: string;
         response: string;
@@ -2972,10 +2972,10 @@ export declare const aiContentService: {
         duration: number | null;
     }>;
     findById(id: string): Promise<{
+        status: string;
         error: string | null;
         model: string;
         id: string;
-        status: string;
         createdAt: Date | null;
         prompt: string;
         response: string;
@@ -2987,10 +2987,10 @@ export declare const aiContentService: {
         limit?: number;
         offset?: number;
     }): Promise<{
+        status: string;
         error: string | null;
         model: string;
         id: string;
-        status: string;
         createdAt: Date | null;
         prompt: string;
         response: string;
@@ -3002,10 +3002,10 @@ export declare const aiContentService: {
         limit?: number;
         offset?: number;
     }): Promise<{
+        status: string;
         error: string | null;
         model: string;
         id: string;
-        status: string;
         createdAt: Date | null;
         prompt: string;
         response: string;
@@ -3023,21 +3023,21 @@ export declare const aiContentService: {
 };
 export declare const notificationService: {
     create(data: Prisma.RealTimeNotificationCreateInput): Promise<{
+        message: string;
+        type: string;
         id: string;
         title: string;
         createdAt: Date | null;
         userId: string;
-        type: string;
-        message: string;
         isRead: boolean;
     }>;
     findById(id: string): Promise<{
+        message: string;
+        type: string;
         id: string;
         title: string;
         createdAt: Date | null;
         userId: string;
-        type: string;
-        message: string;
         isRead: boolean;
     } | null>;
     findByUserId(userId: string, options?: {
@@ -3045,31 +3045,31 @@ export declare const notificationService: {
         limit?: number;
         offset?: number;
     }): Promise<{
+        message: string;
+        type: string;
         id: string;
         title: string;
         createdAt: Date | null;
         userId: string;
-        type: string;
-        message: string;
         isRead: boolean;
     }[]>;
     markAsRead(id: string): Promise<{
+        message: string;
+        type: string;
         id: string;
         title: string;
         createdAt: Date | null;
         userId: string;
-        type: string;
-        message: string;
         isRead: boolean;
     }>;
     markAllAsRead(userId: string): Promise<Prisma.BatchPayload>;
     delete(id: string): Promise<{
+        message: string;
+        type: string;
         id: string;
         title: string;
         createdAt: Date | null;
         userId: string;
-        type: string;
-        message: string;
         isRead: boolean;
     }>;
 };
@@ -3084,12 +3084,12 @@ export declare const contentTypeService: {
     }>;
     findById(id: number): Promise<({
         content: {
+            status: string;
+            data: Prisma.JsonValue;
             id: string;
             title: string;
             slug: string;
             contentTypeId: number;
-            data: Prisma.JsonValue;
-            status: string;
             createdBy: string | null;
             updatedBy: string | null;
             createdAt: Date | null;
@@ -3107,12 +3107,12 @@ export declare const contentTypeService: {
     }) | null>;
     findByName(name: string): Promise<({
         content: {
+            status: string;
+            data: Prisma.JsonValue;
             id: string;
             title: string;
             slug: string;
             contentTypeId: number;
-            data: Prisma.JsonValue;
-            status: string;
             createdBy: string | null;
             updatedBy: string | null;
             createdAt: Date | null;
@@ -3133,12 +3133,12 @@ export declare const contentTypeService: {
         offset?: number;
     }): Promise<({
         content: {
+            status: string;
+            data: Prisma.JsonValue;
             id: string;
             title: string;
             slug: string;
             contentTypeId: number;
-            data: Prisma.JsonValue;
-            status: string;
             createdBy: string | null;
             updatedBy: string | null;
             createdAt: Date | null;
@@ -3156,12 +3156,12 @@ export declare const contentTypeService: {
     })[]>;
     update(id: number, data: Prisma.ContentTypeUpdateInput): Promise<{
         content: {
+            status: string;
+            data: Prisma.JsonValue;
             id: string;
             title: string;
             slug: string;
             contentTypeId: number;
-            data: Prisma.JsonValue;
-            status: string;
             createdBy: string | null;
             updatedBy: string | null;
             createdAt: Date | null;
@@ -3420,10 +3420,10 @@ export declare const customNicheService: {
 };
 export declare const autoBlogPostService: {
     create(data: Prisma.AutoBlogPostCreateInput): Promise<{
+        status: string;
         content: string;
         id: string;
         title: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
@@ -3482,10 +3482,10 @@ export declare const autoBlogPostService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        status: string;
         content: string;
         id: string;
         title: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
@@ -3549,10 +3549,10 @@ export declare const autoBlogPostService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        status: string;
         content: string;
         id: string;
         title: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
@@ -3616,10 +3616,10 @@ export declare const autoBlogPostService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        status: string;
         content: string;
         id: string;
         title: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
@@ -3678,10 +3678,10 @@ export declare const autoBlogPostService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        status: string;
         content: string;
         id: string;
         title: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
@@ -3703,10 +3703,10 @@ export declare const autoBlogPostService: {
         generationCost: Prisma.Decimal | null;
     }>;
     delete(id: string): Promise<{
+        status: string;
         content: string;
         id: string;
         title: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
@@ -3765,10 +3765,10 @@ export declare const autoBlogPostService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        status: string;
         content: string;
         id: string;
         title: string;
-        status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;

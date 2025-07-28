@@ -6,15 +6,15 @@ export declare const ContentFilterSchema: z.ZodObject<{
     dateFrom: z.ZodOptional<z.ZodDate>;
     dateTo: z.ZodOptional<z.ZodDate>;
 }, "strip", z.ZodTypeAny, {
-    search?: string | undefined;
     status?: string | undefined;
     contentType?: number | undefined;
+    search?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }, {
-    search?: string | undefined;
     status?: string | undefined;
     contentType?: number | undefined;
+    search?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }>;
@@ -28,21 +28,21 @@ export declare const AffiliateLinkFilterSchema: z.ZodObject<{
     dateFrom: z.ZodOptional<z.ZodDate>;
     dateTo: z.ZodOptional<z.ZodDate>;
 }, "strip", z.ZodTypeAny, {
-    search?: string | undefined;
     status?: string | undefined;
-    site?: string | undefined;
-    product?: string | undefined;
-    merchant?: string | undefined;
+    search?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
+    merchant?: string | undefined;
+    product?: string | undefined;
+    site?: string | undefined;
 }, {
-    search?: string | undefined;
     status?: string | undefined;
-    site?: string | undefined;
-    product?: string | undefined;
-    merchant?: string | undefined;
+    search?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
+    merchant?: string | undefined;
+    product?: string | undefined;
+    site?: string | undefined;
 }>;
 export type AffiliateLinkFilter = z.infer<typeof AffiliateLinkFilterSchema>;
 export declare const PaginationSchema: z.ZodObject<{
@@ -51,13 +51,13 @@ export declare const PaginationSchema: z.ZodObject<{
     total: z.ZodNumber;
     totalPages: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    limit: number;
     page: number;
+    limit: number;
     total: number;
     totalPages: number;
 }, {
-    limit: number;
     page: number;
+    limit: number;
     total: number;
     totalPages: number;
 }>;
@@ -72,33 +72,33 @@ export declare const ApiResponseSchema: z.ZodObject<{
         total: z.ZodNumber;
         totalPages: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        limit: number;
         page: number;
+        limit: number;
         total: number;
         totalPages: number;
     }, {
-        limit: number;
         page: number;
+        limit: number;
         total: number;
         totalPages: number;
     }>>;
 }, "strip", z.ZodTypeAny, {
     success: boolean;
-    error?: string | undefined;
     data?: any;
+    error?: string | undefined;
     pagination?: {
-        limit: number;
         page: number;
+        limit: number;
         total: number;
         totalPages: number;
     } | undefined;
 }, {
     success: boolean;
-    error?: string | undefined;
     data?: any;
+    error?: string | undefined;
     pagination?: {
-        limit: number;
         page: number;
+        limit: number;
         total: number;
         totalPages: number;
     } | undefined;
@@ -123,17 +123,17 @@ export declare const ClickAnalyticsSchema: z.ZodObject<{
     topProducts: z.ZodArray<z.ZodAny, "many">;
     dailyStats: z.ZodArray<z.ZodAny, "many">;
 }, "strip", z.ZodTypeAny, {
-    revenue: number;
     totalClicks: number;
     uniqueClicks: number;
     conversionRate: number;
+    revenue: number;
     topProducts: any[];
     dailyStats: any[];
 }, {
-    revenue: number;
     totalClicks: number;
     uniqueClicks: number;
     conversionRate: number;
+    revenue: number;
     topProducts: any[];
     dailyStats: any[];
 }>;
