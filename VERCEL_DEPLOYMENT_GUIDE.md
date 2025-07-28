@@ -19,9 +19,12 @@ This monorepo contains two Next.js applications that need to be deployed separat
 Project Name: techwear-hub
 Framework Preset: Other
 Root Directory: ./
-Build Command: chmod +x vercel-build.sh && ./vercel-build.sh
+Build Command: cd packages/db && pnpm prisma generate && pnpm build && cd ../../apps/web && pnpm next build
 Output Directory: apps/web/.next
 Install Command: pnpm install --frozen-lockfile
+Environment Variables:
+  TURBO_REMOTE_ONLY: 0
+  TURBO_RUN_SUMMARY: 0
 ```
 
 5. Add Environment Variables:
