@@ -2,14 +2,6 @@
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install",
   "framework": "nextjs",
-  "functions": {
-    "apps/admin/src/app/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    },
-    "apps/web/src/app/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "env": {
     "NODE_ENV": "production"
   },
