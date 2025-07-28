@@ -17,11 +17,11 @@ This monorepo contains two Next.js applications that need to be deployed separat
 
 ```
 Project Name: techwear-hub
-Framework Preset: Next.js
-Root Directory: apps/web
-Build Command: cd ../.. && pnpm install && pnpm db:generate && cd apps/web && pnpm build
+Framework Preset: Other
+Root Directory: ./
+Build Command: chmod +x vercel-build.sh && ./vercel-build.sh
 Output Directory: apps/web/.next
-Install Command: cd ../.. && pnpm install
+Install Command: pnpm install --frozen-lockfile
 ```
 
 5. Add Environment Variables:
@@ -44,11 +44,11 @@ DATABASE_URL=postgresql://postgres.hdvruoskquplrtddmwnj:C56emdFoC3ZaYeqr@aws-0-u
 
 ```
 Project Name: techwear-hub-admin
-Framework Preset: Next.js
-Root Directory: apps/admin
-Build Command: cd ../.. && pnpm install && pnpm db:generate && cd apps/admin && pnpm build
+Framework Preset: Other
+Root Directory: ./
+Build Command: chmod +x vercel-build.sh && ./vercel-build.sh
 Output Directory: apps/admin/.next
-Install Command: cd ../.. && pnpm install
+Install Command: pnpm install --frozen-lockfile
 ```
 
 5. Add ALL Environment Variables:
