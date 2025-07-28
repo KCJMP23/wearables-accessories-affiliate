@@ -15,7 +15,7 @@ export type {
   AIServiceConfig,
   ContentTemplate,
   AIGenerationHistory,
-} from '@affiliate/shared-types';
+} from '@affiliate-template/shared-types';
 
 // Export manual Amazon link management
 export { manualAmazonLinkManager, type ManualAmazonLink, type AmazonTrackingId } from './providers/amazon-manual'; 

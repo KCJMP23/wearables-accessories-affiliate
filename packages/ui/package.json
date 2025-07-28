@@ -1,5 +1,5 @@
 {
-  "name": "@affiliate/ui",
+  "name": "@affiliate-template/ui",
   "version": "1.0.0",
   "description": "Shared UI components for the affiliate platform",
   "main": "./dist/index.js",
@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@affiliate/shared-types": "workspace:*",
+    "@affiliate-template/shared-types": "workspace:*",
     "clsx": "^2.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

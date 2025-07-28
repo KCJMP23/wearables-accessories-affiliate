@@ -1,5 +1,5 @@
 {
-  "name": "@affiliate/eslint-config-custom",
+  "name": "@affiliate-template/eslint-config-custom",
   "version": "1.0.0",
   "description": "Shared ESLint configuration for the affiliate platform",
   "main": "index.js",

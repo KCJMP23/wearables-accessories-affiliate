@@ -4,7 +4,7 @@ import {
   ImageGenerationRequest, 
   ImageGenerationResponse,
   AIGenerationHistory 
-} from '@affiliate/shared-types';
+} from '@affiliate-template/shared-types';
 import { OpenAIService } from './providers/openai';
 import { ClaudeService } from './providers/claude';
 import { LeonardoService } from './providers/leonardo';

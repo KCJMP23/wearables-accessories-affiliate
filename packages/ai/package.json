@@ -1,5 +1,5 @@
 {
-  "name": "@affiliate/ai",
+  "name": "@affiliate-template/ai",
   "version": "0.0.0",
   "private": true,
   "main": "./src/index.ts",
@@ -11,15 +11,15 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@affiliate/db": "workspace:*",
-    "@affiliate/shared-types": "workspace:*",
+    "@affiliate-template/db": "workspace:*",
+    "@affiliate-template/shared-types": "workspace:*",
     "@anthropic-ai/sdk": "^0.18.0",
     "amazon-paapi": "^1.0.7",
     "openai": "^4.28.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@affiliate/eslint-config-custom": "workspace:*",
+    "@affiliate-template/eslint-config-custom": "workspace:*",
     "@types/node": "^20.11.0",
     "typescript": "^5.8.3"
   }

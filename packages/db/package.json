@@ -1,5 +1,5 @@
 {
-  "name": "@affiliate/db",
+  "name": "@affiliate-template/db",
   "version": "1.0.0",
   "description": "Database schema and client for the affiliate platform",
   "main": "./dist/index.js",
@@ -15,7 +15,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@affiliate/shared-types": "workspace:*",
+    "@affiliate-template/shared-types": "workspace:*",
     "@prisma/client": "^6.12.0",
     "@supabase/supabase-js": "^2.52.0"
   },

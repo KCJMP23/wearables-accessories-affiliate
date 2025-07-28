@@ -2,7 +2,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { 
   AIContentGenerationRequest, 
   AIContentGenerationResponse 
-} from '@affiliate/shared-types';
+} from '@affiliate-template/shared-types';
 import { aiConfig } from '../config';
 
 export class ClaudeService {

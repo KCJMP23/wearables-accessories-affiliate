@@ -4,7 +4,7 @@ import {
   AIContentGenerationResponse, 
   ImageGenerationRequest, 
   ImageGenerationResponse 
-} from '@affiliate/shared-types';
+} from '@affiliate-template/shared-types';
 import { aiConfig } from '../config';
 
 export class OpenAIService {

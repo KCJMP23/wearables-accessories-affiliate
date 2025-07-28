@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { AIServiceConfig } from '@affiliate/shared-types';
+import { AIServiceConfig } from '@affiliate-template/shared-types';
 
 const aiConfigSchema = z.object({
   openai: z.object({

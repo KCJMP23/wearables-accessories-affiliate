@@ -33,16 +33,16 @@ importers:
 
   apps/admin:
     dependencies:
-      '@affiliate/ai':
+      '@affiliate-template/ai':
         specifier: workspace:*
         version: link:../../packages/ai
-      '@affiliate/db':
+      '@affiliate-template/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@affiliate/shared-types':
+      '@affiliate-template/shared-types':
         specifier: workspace:*
         version: link:../../packages/shared-types
-      '@affiliate/ui':
+      '@affiliate-template/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@auth/prisma-adapter':
@@ -124,10 +124,10 @@ importers:
 
   apps/web:
     dependencies:
-      '@affiliate/cms':
+      '@affiliate-template/cms':
         specifier: workspace:*
         version: link:../../packages/cms
-      '@affiliate/db':
+      '@affiliate-template/db':
         specifier: workspace:*
         version: link:../../packages/db
       '@payloadcms/bundler-webpack':
@@ -185,10 +185,10 @@ importers:
 
   packages/ai:
     dependencies:
-      '@affiliate/db':
+      '@affiliate-template/db':
         specifier: workspace:*
         version: link:../db
-      '@affiliate/shared-types':
+      '@affiliate-template/shared-types':
         specifier: workspace:*
         version: link:../shared-types
       '@anthropic-ai/sdk':
@@ -204,7 +204,7 @@ importers:
         specifier: ^3.22.4
         version: 3.25.76
     devDependencies:
-      '@affiliate/eslint-config-custom':
+      '@affiliate-template/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint-config-custom
       '@types/node':
@@ -268,7 +268,7 @@ importers:
 
   packages/db:
     dependencies:
-      '@affiliate/shared-types':
+      '@affiliate-template/shared-types':
         specifier: workspace:*
         version: link:../shared-types
       '@prisma/client':
@@ -323,7 +323,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@affiliate/shared-types':
+      '@affiliate-template/shared-types':
         specifier: workspace:*
         version: link:../shared-types
       clsx:

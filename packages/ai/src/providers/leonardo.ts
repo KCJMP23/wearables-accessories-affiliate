@@ -1,7 +1,7 @@
 import { 
   ImageGenerationRequest, 
   ImageGenerationResponse 
-} from '@affiliate/shared-types';
+} from '@affiliate-template/shared-types';
 import { aiConfig } from '../config';
 
 export class LeonardoService {
