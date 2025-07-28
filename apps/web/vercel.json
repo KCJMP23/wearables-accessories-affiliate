@@ -1,15 +1,8 @@
 {
-  "name": "techwear-hub",
   "buildCommand": "pnpm build",
-  "installCommand": "cd ../.. && pnpm install && cd apps/web",
   "outputDirectory": ".next",
   "framework": "nextjs",
   "env": {
     "NODE_ENV": "production"
-  },
-  "build": {
-    "env": {
-      "ENABLE_ROOT_PATH_BUILD_CACHE": "1"
-    }
   }
 }
