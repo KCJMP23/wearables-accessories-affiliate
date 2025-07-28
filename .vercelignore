@@ -1,0 +1,68 @@
+# Vercel deployment ignore file
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Testing
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+__tests__/
+coverage/
+.nyc_output/
+scripts/test-*.js
+scripts/comprehensive-qa*.js
+scripts/auth-crud-test.js
+scripts/debug-*.js
+
+# Development
+.env
+.env.backup
+.env.local
+.env.development
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+firebase-debug.log
+
+# Build artifacts
+.turbo/
+.next/
+dist/
+build/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+docs/
+*.md
+!README.md
+!CHANGELOG.md
+
+# QA & Screenshots
+qa-screenshots/
+screenshots/
+qa-report-*.json
+
+# Git
+.git/
+.gitignore
+
+# Other
+.cursorrules
+.bmad-core/
+CLAUDE.md
