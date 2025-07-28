@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getSiteConfig, getFeaturedProducts, getCategories, getProductCount } from '@affiliate/db';
+import { getSiteConfig, getFeaturedProducts, getCategories, getProductCount } from '@affiliate-template/db';
 
 interface Product {
   id: string;

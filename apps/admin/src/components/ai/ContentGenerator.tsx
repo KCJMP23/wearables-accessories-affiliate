@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AIContentGenerationRequest } from '@affiliate/shared-types';
+import { AIContentGenerationRequest } from '@affiliate-template/shared-types';
 
 interface ContentGeneratorProps {
   onContentGenerated?: (content: string) => void;

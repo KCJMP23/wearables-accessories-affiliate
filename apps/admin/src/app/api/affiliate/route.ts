@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { affiliateLinkService } from '@affiliate/db';
+import { affiliateLinkService } from '@affiliate-template/db';
 
 export async function GET(request: NextRequest) {
   try {

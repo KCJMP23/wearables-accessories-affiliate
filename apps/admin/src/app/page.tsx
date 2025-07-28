@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Card } from '@affiliate/ui';
+import { Card } from '@affiliate-template/ui';
 
 export default function AdminDashboard() {
   return (

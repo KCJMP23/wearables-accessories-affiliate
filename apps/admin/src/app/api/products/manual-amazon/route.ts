@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { manualAmazonLinkManager } from '@affiliate/ai';
+import { manualAmazonLinkManager } from '@affiliate-template/ai';
 
 export async function POST(request: NextRequest) {
   try {

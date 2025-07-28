@@ -7,8 +7,8 @@ import {
   autoBlogPostService, 
   contentScheduleService, 
   productCategoryService 
-} from '@affiliate/db/src/utils';
-import { AIService } from '@affiliate/ai';
+} from '@affiliate-template/db/src/utils';
+import { AIService } from '@affiliate-template/ai';
 
 export async function POST(request: NextRequest) {
   try {

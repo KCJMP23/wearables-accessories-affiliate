@@ -1,4 +1,4 @@
-import { getSiteConfig } from '@affiliate/db';
+import { getSiteConfig } from '@affiliate-template/db';
 
 export interface SiteConfig {
   id: string;

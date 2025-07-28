@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@affiliate/ui';
-import { Button } from '@affiliate/ui';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@affiliate-template/ui';
+import { Button } from '@affiliate-template/ui';
 import { Plus, FileText, Image, Users, Tag, Folder } from 'lucide-react';
 
 interface CMSStats {

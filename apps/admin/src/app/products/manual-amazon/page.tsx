@@ -1,13 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@affiliate/ui';
-import { Card } from '@affiliate/ui';
-import { Input } from '@affiliate/ui';
-import { Textarea } from '@affiliate/ui';
-import { Select } from '@affiliate/ui';
-import { Badge } from '@affiliate/ui';
-import { Toast } from '@affiliate/ui';
+import { Button } from '@affiliate-template/ui';
+import { Card } from '@affiliate-template/ui';
+import { Input } from '@affiliate-template/ui';
+import { Textarea } from '@affiliate-template/ui';
+import { Select } from '@affiliate-template/ui';
+import { Badge } from '@affiliate-template/ui';
+import { Toast } from '@affiliate-template/ui';
 
 interface ManualAmazonLink {
   originalUrl: string;

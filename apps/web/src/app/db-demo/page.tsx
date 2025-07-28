@@ -1,4 +1,4 @@
-import { getSiteConfig, getFeaturedProducts, getCategories, getProductCount } from '@affiliate/db';
+import { getSiteConfig, getFeaturedProducts, getCategories, getProductCount } from '@affiliate-template/db';
 
 export default async function DatabaseDemoPage() {
   const domain = 'localhost:3000';

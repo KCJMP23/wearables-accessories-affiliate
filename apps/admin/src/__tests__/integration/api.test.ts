@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from '@jest/globals';
 import { NextRequest } from 'next/server';
 
 // Mock the database utilities
-jest.mock('@affiliate/db', () => ({
+jest.mock('@affiliate-template/db', () => ({
   affiliateLinkService: {
     create: jest.fn(),
     findById: jest.fn(),
@@ -51,7 +51,7 @@ describe('API Routes', () => {
         status: 'active'
       };
 
-      const { affiliateLinkService } = await import('@affiliate/db');
+      const { affiliateLinkService } = await import('@affiliate-template/db');
       (affiliateLinkService.create as jest.Mock).mockResolvedValue({
         id: 'link-123',
         ...mockData
@@ -94,7 +94,7 @@ describe('API Routes', () => {
         { id: 'link-2', name: 'Link 2' }
       ];
 
-      const { affiliateLinkService } = await import('@affiliate/db');
+      const { affiliateLinkService } = await import('@affiliate-template/db');
       (affiliateLinkService.findAll as jest.Mock).mockResolvedValue(mockLinks);
 
       const { GET } = await import('../app/api/affiliate/route');
@@ -116,7 +116,7 @@ describe('API Routes', () => {
         { id: 'site-2', name: 'Site 2' }
       ];
 
-      const { siteService } = await import('@affiliate/db');
+      const { siteService } = await import('@affiliate-template/db');
       (siteService.findAll as jest.Mock).mockResolvedValue(mockSites);
 
       const { GET } = await import('../app/api/sites/route');
@@ -139,7 +139,7 @@ describe('API Routes', () => {
         description: 'Test site description'
       };
 
-      const { siteService } = await import('@affiliate/db');
+      const { siteService } = await import('@affiliate-template/db');
       (siteService.create as jest.Mock).mockResolvedValue({
         id: 'site-123',
         ...mockData
@@ -168,7 +168,7 @@ describe('API Routes', () => {
         { id: 'product-2', name: 'Product 2' }
       ];
 
-      const { productService } = await import('@affiliate/db');
+      const { productService } = await import('@affiliate-template/db');
       (productService.findAll as jest.Mock).mockResolvedValue(mockProducts);
 
       const { GET } = await import('../app/api/products/route');
@@ -192,7 +192,7 @@ describe('API Routes', () => {
         basePrice: 99.99
       };
 
-      const { productService } = await import('@affiliate/db');
+      const { productService } = await import('@affiliate-template/db');
       (productService.create as jest.Mock).mockResolvedValue({
         id: 'product-123',
         ...mockData
@@ -224,7 +224,7 @@ describe('API Routes', () => {
         totalRevenue: 500
       };
 
-      const { analyticsService } = await import('@affiliate/db');
+      const { analyticsService } = await import('@affiliate-template/db');
       (analyticsService.getSiteAnalytics as jest.Mock).mockResolvedValue(mockAnalytics);
 
       const { GET } = await import('../app/api/analytics/route');
@@ -244,7 +244,7 @@ describe('API Routes', () => {
         { product: { id: 'product-2', name: 'Product 2' }, clicks: 30, revenue: 150 }
       ];
 
-      const { analyticsService } = await import('@affiliate/db');
+      const { analyticsService } = await import('@affiliate-template/db');
       (analyticsService.getTopProducts as jest.Mock).mockResolvedValue(mockTopProducts);
 
       const { GET } = await import('../app/api/analytics/route');
@@ -266,7 +266,7 @@ describe('API Routes', () => {
         clicks: []
       };
 
-      const { affiliateLinkService } = await import('@affiliate/db');
+      const { affiliateLinkService } = await import('@affiliate-template/db');
       (affiliateLinkService.getClickStats as jest.Mock).mockResolvedValue(mockLinkStats);
 
       const { GET } = await import('../app/api/analytics/route');
@@ -286,7 +286,7 @@ describe('API Routes', () => {
         { id: 'click-2', clickedAt: new Date(), ipAddress: '192.168.1.2' }
       ];
 
-      const { analyticsService } = await import('@affiliate/db');
+      const { analyticsService } = await import('@affiliate-template/db');
       (analyticsService.getClickHistory as jest.Mock).mockResolvedValue(mockClickHistory);
 
       const { GET } = await import('../app/api/analytics/route');

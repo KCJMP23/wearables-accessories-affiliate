@@ -15,7 +15,7 @@ import {
   aiContentService,
   notificationService,
   contentTypeService
-} from '@affiliate/db';
+} from '@affiliate-template/db';
 
 // Mock Prisma client
 jest.mock('@prisma/client', () => ({

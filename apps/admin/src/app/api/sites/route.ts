@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { siteService } from '@affiliate/db/src/utils';
+import { siteService } from '@affiliate-template/db/src/utils';
 
 export async function GET(request: NextRequest) {
   try {

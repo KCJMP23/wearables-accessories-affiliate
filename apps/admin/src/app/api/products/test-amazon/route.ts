@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { amazonService } from '@affiliate/ai';
+import { amazonService } from '@affiliate-template/ai';
 
 export async function POST(request: NextRequest) {
   try {

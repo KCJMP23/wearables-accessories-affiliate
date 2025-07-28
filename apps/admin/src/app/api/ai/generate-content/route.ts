@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { AIService } from '@affiliate/ai';
-import { AIContentGenerationRequest } from '@affiliate/shared-types';
+import { AIService } from '@affiliate-template/ai';
+import { AIContentGenerationRequest } from '@affiliate-template/shared-types';
 
 export async function POST(request: NextRequest) {
   try {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ImageGenerationRequest } from '@affiliate/shared-types';
+import { ImageGenerationRequest } from '@affiliate-template/shared-types';
 
 interface ImageGeneratorProps {
   onImageGenerated?: (imageUrl: string) => void;

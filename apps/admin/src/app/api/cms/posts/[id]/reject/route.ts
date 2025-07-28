@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { autoBlogPostService } from '@affiliate/db/src/utils';
+import { autoBlogPostService } from '@affiliate-template/db/src/utils';
 
 export async function POST(
   request: NextRequest,

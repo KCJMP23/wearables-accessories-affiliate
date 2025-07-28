@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@affiliate/db';
+import { prisma } from '@affiliate-template/db';
 
 export async function GET() {
   try {
