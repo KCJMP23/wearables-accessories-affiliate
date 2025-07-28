@@ -38,10 +38,6 @@ const nextConfig: NextConfig = {
   },
   // Server external packages for Payload CMS
   serverExternalPackages: ['payload'],
-  // Experimental features
-  experimental: {
-    serverComponentsExternalPackages: ['payload'],
-  },
 };
 
 export default nextConfig;

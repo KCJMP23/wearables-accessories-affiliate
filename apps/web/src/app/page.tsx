@@ -1,108 +1,96 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { getSiteConfig, getFeaturedProducts, getCategories, getProductCount } from '@affiliate/db';
 
-export default function HomePage() {
-  // Featured Products Data
-  const featuredProducts = [
-    {
-      id: 1,
-      name: "Apple MacBook Pro 14-inch",
-      description: "Latest M3 chip, 16GB RAM, 512GB SSD",
-      price: 1999.99,
-      originalPrice: 2199.99,
-      rating: 4.8,
-      reviewCount: 1247,
-      category: "Laptops",
-      image: "/products/macbook-pro.jpg",
-      retailers: [
-        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
-        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
-        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" },
-        { name: "Best Buy", url: "#", logo: "💙", color: "bg-blue-600" }
-      ]
-    },
-    {
-      id: 2,
-      name: "Sony WH-1000XM5 Headphones",
-      description: "Industry-leading noise cancellation",
-      price: 349.99,
-      originalPrice: 399.99,
-      rating: 4.9,
-      reviewCount: 892,
-      category: "Audio",
-      image: "/products/sony-headphones.jpg",
-      retailers: [
-        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
-        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
-        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" }
-      ]
-    },
-    {
-      id: 3,
-      name: "Samsung 65-inch QLED TV",
-      description: "4K Ultra HD, Quantum HDR, Smart TV",
-      price: 1299.99,
-      originalPrice: 1499.99,
-      rating: 4.7,
-      reviewCount: 567,
-      category: "TVs",
-      image: "/products/samsung-tv.jpg",
-      retailers: [
-        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
-        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
-        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" },
-        { name: "Best Buy", url: "#", logo: "💙", color: "bg-blue-600" }
-      ]
-    },
-    {
-      id: 4,
-      name: "Nike Air Max 270",
-      description: "Comfortable running shoes with Air unit",
-      price: 129.99,
-      originalPrice: 150.00,
-      rating: 4.6,
-      reviewCount: 2341,
-      category: "Shoes",
-      image: "/products/nike-shoes.jpg",
-      retailers: [
-        { name: "Amazon", url: "#", logo: "🛒", color: "bg-orange-500" },
-        { name: "Target", url: "#", logo: "🎯", color: "bg-red-500" },
-        { name: "Walmart", url: "#", logo: "🛒", color: "bg-blue-500" }
-      ]
-    }
-  ];
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price?: number;
+  basePrice?: number;
+  category?: string;
+  siteProduct?: {
+    price: number;
+    discount: number;
+    category?: {
+      name: string;
+      slug: string;
+    };
+  };
+  affiliateLinks?: Array<{
+    id: string;
+    name: string;
+    affiliateUrl: string;
+    displayText: string;
+  }>;
+  retailers?: Array<{
+    name: string;
+    url: string;
+    logo: string;
+    color: string;
+  }>;
+}
 
-  const categories = [
-    { name: "Electronics", icon: "📱", count: 156 },
-    { name: "Home & Garden", icon: "🏠", count: 89 },
-    { name: "Fashion", icon: "👕", count: 234 },
-    { name: "Sports", icon: "⚽", count: 67 },
-    { name: "Books", icon: "📚", count: 123 },
-    { name: "Toys", icon: "🧸", count: 78 }
-  ];
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  slug: string;
+  displayOrder: number;
+  seoTitle: string;
+  seoDescription: string;
+  seoKeywords: string;
+}
+
+interface SiteConfig {
+  siteTitle: string;
+  siteDescription: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  featuredProductsTitle: string;
+  featuredProductsSubtitle: string;
+}
+
+export default async function HomePage() {
+  const domain = 'localhost:3000';
+  
+  const [siteConfig, featuredProducts, categories, productCount] = await Promise.all([
+    getSiteConfig(domain),
+    getFeaturedProducts(domain, 8),
+    getCategories(domain),
+    getProductCount(domain)
+  ]);
+
+  const config = siteConfig || {
+    siteTitle: 'TechGear Reviews',
+    siteDescription: 'Comprehensive reviews of the latest gadgets and technology',
+    heroTitle: 'Find the Best Tech Products',
+    heroSubtitle: 'Comprehensive reviews of the latest gadgets and technology',
+    featuredProductsTitle: 'Featured Products',
+    featuredProductsSubtitle: 'Handpicked products with the best value and quality'
+  };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              Discover Amazing Products
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              {config.heroTitle}
             </h1>
-            <p className="text-xl lg:text-2xl mb-8 text-blue-100">
-              Your trusted source for honest reviews and recommendations
+            <p className="text-xl sm:text-2xl lg:text-3xl mb-8 max-w-4xl mx-auto leading-relaxed">
+              {config.heroSubtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/products"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              <Link 
+                href="/products" 
+                className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-200"
               >
                 Browse Products
               </Link>
-              <Link
-                href="/blog"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+              <Link 
+                href="/blog" 
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition-colors duration-200"
               >
                 Read Reviews
               </Link>
@@ -111,112 +99,132 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="py-16">
+      {/* Featured Products Section */}
+      <section className="py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Featured Products
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              {config.featuredProductsTitle}
             </h2>
-            <p className="text-lg text-gray-600">
-              Handpicked products with the best value and quality
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              {config.featuredProductsSubtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
             {featuredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div key={product.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9 bg-gray-200">
-                  <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-                    <span className="text-4xl">📦</span>
+                  <div className="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <span className="text-gray-500 text-sm">Product Image</span>
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-gray-500">{product.category}</span>
-                    <div className="flex items-center">
-                      <span className="text-yellow-400">★</span>
-                      <span className="text-sm text-gray-600 ml-1">{product.rating}</span>
-                      <span className="text-xs text-gray-400 ml-1">({product.reviewCount})</span>
-                    </div>
+                <div className="p-4 sm:p-6">
+                  <div className="mb-2">
+                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">
+                      {product.siteProduct?.category?.name || 'Technology'}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
                     {product.name}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                  <p className="text-gray-600 text-sm sm:text-base mb-4 line-clamp-3">
                     {product.description}
                   </p>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <span className="text-2xl font-bold text-gray-900">${product.price}</span>
-                      {product.originalPrice > product.price && (
-                        <span className="text-lg text-gray-400 line-through ml-2">${product.originalPrice}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-2xl font-bold text-gray-900">
+                        ${product.siteProduct?.price || product.basePrice}
+                      </span>
+                      {product.siteProduct?.discount && product.siteProduct.discount > 0 && (
+                        <span className="text-sm text-green-600 font-medium">
+                          {product.siteProduct.discount}% OFF
+                        </span>
                       )}
                     </div>
-                  </div>
-                  
-                  {/* Retailer Buttons */}
-                  <div className="grid grid-cols-2 gap-2">
-                    {product.retailers.map((retailer) => (
-                      <button
-                        key={retailer.name}
-                        className={`${retailer.color} text-white px-3 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity flex items-center justify-center`}
-                      >
-                        <span className="mr-1">{retailer.logo}</span>
-                        {retailer.name}
-                      </button>
-                    ))}
+                    <Link 
+                      href={`/products/${product.id}`}
+                      className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200"
+                    >
+                      View Details
+                    </Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <Link 
+              href="/products" 
+              className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200"
+            >
+              View All Products
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="py-16 bg-gray-50">
+      {/* Categories Section */}
+      <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Shop by Category
             </h2>
-            <p className="text-lg text-gray-600">
-              Find exactly what you&apos;re looking for
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              Find exactly what you&apos;re looking for in our organized categories
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {categories.map((category) => (
-              <Link
-                key={category.name}
-                href={`/products?category=${category.name.toLowerCase().replace(/\s+/g, '-')}`}
-                className="bg-white rounded-lg p-6 text-center hover:shadow-lg transition-shadow"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            {categories.slice(0, 8).map((category, index) => (
+              <Link 
+                key={category.slug || index} 
+                href={`/products?category=${category.slug}`}
+                className="group bg-gray-50 rounded-xl p-6 sm:p-8 hover:bg-blue-50 transition-colors duration-200"
               >
-                <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.name}</h3>
-                <p className="text-sm text-gray-500">{category.count} products</p>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors duration-200">
+                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
+                    {category.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Browse products
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Ready to Find Your Perfect Product?
+      {/* Newsletter Section */}
+      <section className="py-16 sm:py-24 bg-gradient-to-r from-blue-600 to-purple-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Stay Updated
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join thousands of satisfied customers who trust our recommendations
+          <p className="text-xl sm:text-2xl text-blue-100 mb-8">
+            Get the latest product reviews and tech news delivered to your inbox
           </p>
-          <Link
-            href="/products"
-            className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block"
-          >
-            Start Shopping Now
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              className="flex-1 px-6 py-4 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+            />
+            <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+              Subscribe
+            </button>
+          </div>
         </div>
       </section>
     </div>

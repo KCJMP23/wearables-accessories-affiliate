@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { autoBlogPostService } from '@affiliate/db/src/utils';
 
 export async function POST(
   request: NextRequest,
@@ -7,18 +8,16 @@ export async function POST(
   try {
     const resolvedParams = await params;
     const body = await request.json();
-    
-    // For now, return a success response indicating the API is working
-    // We'll implement the full database integration later
+    const { reason } = body;
+
+    // For now, we'll delete the rejected post
+    // In a real implementation, you might want to keep it with a 'rejected' status
+    await autoBlogPostService.delete(resolvedParams.id);
+
     return NextResponse.json({
       success: true,
-      data: {
-        id: resolvedParams.id,
-        status: 'rejected',
-        rejection_reason: body.reason || 'No reason provided',
-        rejected_at: new Date().toISOString()
-      },
-      message: 'Post rejection API is working. Database integration coming soon.'
+      message: 'Post rejected and removed successfully',
+      reason: reason || 'Rejected by admin'
     });
   } catch (error) {
     console.error('Error rejecting post:', error);

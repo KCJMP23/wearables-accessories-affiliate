@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 interface SidebarProps {
-  currentPage: string;
+  currentPage?: string;
 }
 
 export default function Sidebar({ currentPage }: SidebarProps) {

@@ -161,7 +161,7 @@ export default function BlogPage() {
     }
     
     return filtered;
-  }, [selectedCategory, searchTerm]);
+  }, [selectedCategory, searchTerm, posts]);
 
   return (
     <div className="min-h-screen">

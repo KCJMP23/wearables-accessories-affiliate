@@ -14,8 +14,8 @@ export const prisma = globalThis.__prisma || new PrismaClient({
       url: process.env.DATABASE_URL,
     },
   },
-  // Add connection pooling configuration
-  log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+  // Simplified logging for development
+  log: process.env.NODE_ENV === 'development' ? ['error', 'warn'] : ['error'],
 });
 
 if (process.env.NODE_ENV !== 'production') {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
+
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -182,7 +182,7 @@ export default function ProductsPage() {
       default:
         return filtered;
     }
-  }, [selectedCategory, sortBy]);
+  }, [selectedCategory, sortBy, products]);
 
   return (
     <div className="min-h-screen">

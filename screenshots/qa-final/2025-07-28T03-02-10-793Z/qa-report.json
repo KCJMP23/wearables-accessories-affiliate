@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-07-28T03-02-10-793Z",
+  "summary": {
+    "total": 16,
+    "passed": 3,
+    "failed": 13,
+    "errors": 0
+  },
+  "passed": [
+    "Health API: Working",
+    "Database Health: Working",
+    "Admin Health API: Working"
+  ],
+  "failed": [
+    "Homepage: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/web-homepage.png'",
+    "About: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/web-about.png'",
+    "Blog: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/web-blog.png'",
+    "Products: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/web-products.png'",
+    "Contact: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/web-contact.png'",
+    "Privacy: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/web-privacy.png'",
+    "Terms: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/web-terms.png'",
+    "Disclosure: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/web-disclosure.png'",
+    "Admin app: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/admin-home.png'",
+    "Admin Database Health: 404",
+    "Responsive Desktop: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/responsive-desktop.png'",
+    "Responsive Tablet: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/responsive-tablet.png'",
+    "Responsive Mobile: ENOENT: no such file or directory, open 'screenshots/qa-final/2025-07-28T03-02-10-793Z/responsive-mobile.png'"
+  ],
+  "errors": [],
+  "screenshots": []
+}

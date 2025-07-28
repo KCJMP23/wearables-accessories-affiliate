@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 // Mock data for food products
 const featuredProducts = [
@@ -189,7 +188,7 @@ export default function FoodThemePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-serif font-light mb-4">Shop by Category</h2>
-            <p className="text-xl text-gray-600">Find exactly what you're craving</p>
+            <p className="text-xl text-gray-600">Find exactly what you&apos;re craving</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -282,7 +281,7 @@ export default function FoodThemePage() {
           <p className="text-sm text-gray-500 mt-4">
             By subscribing, you agree to our{' '}
             <Link href="/privacy" className="underline">privacy policy</Link>.
-            We'll treat your information with care.
+            We&apos;ll treat your information with care.
           </p>
         </div>
       </section>

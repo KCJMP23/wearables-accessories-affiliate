@@ -1,27 +1,21 @@
 {
-  "name": "Affiliate Template Platform",
-  "short_name": "Affiliate Template",
-  "description": "Your trusted source for honest product reviews and recommendations",
+  "name": "Affiliate Template",
+  "short_name": "Affiliate",
+  "description": "Affiliate marketing template with AI-powered content generation",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "orientation": "portrait-primary",
+  "theme_color": "#007AFF",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "/next.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     },
     {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "/vercel.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
     }
-  ],
-  "categories": ["business", "productivity", "utilities"],
-  "lang": "en",
-  "dir": "ltr"
+  ]
 } 

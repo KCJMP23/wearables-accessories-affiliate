@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { autoBlogPostService } from '@affiliate/db/src/utils';
 
 export async function GET(
   request: NextRequest,
@@ -37,27 +38,16 @@ export async function PUT(
   try {
     const resolvedParams = await params;
     const body = await request.json();
-    
-    // Validate required fields
-    if (!body.title || !body.content) {
-      return NextResponse.json(
-        { success: false, error: 'Missing required fields: title and content' },
-        { status: 400 }
-      );
-    }
 
-    // For now, return a success response indicating the API is working
-    // We'll implement the full database integration later
+    const updatedPost = await autoBlogPostService.update(resolvedParams.id, {
+      ...body,
+      updatedAt: new Date()
+    });
+
     return NextResponse.json({
       success: true,
-      data: {
-        id: resolvedParams.id,
-        title: body.title,
-        content: body.content,
-        status: body.status || 'draft',
-        updated_at: new Date().toISOString()
-      },
-      message: 'Post update API is working. Database integration coming soon.'
+      data: updatedPost,
+      message: 'Post updated successfully'
     });
   } catch (error) {
     console.error('Error updating post:', error);
@@ -75,11 +65,11 @@ export async function DELETE(
   try {
     const resolvedParams = await params;
     
-    // For now, return a success response indicating the API is working
-    // We'll implement the full database integration later
+    await autoBlogPostService.delete(resolvedParams.id);
+
     return NextResponse.json({
       success: true,
-      message: 'Post deletion API is working. Database integration coming soon.'
+      message: 'Post deleted successfully'
     });
   } catch (error) {
     console.error('Error deleting post:', error);

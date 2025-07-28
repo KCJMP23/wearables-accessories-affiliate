@@ -17,19 +17,54 @@ export declare const contentService: {
     }>;
     findById(id: string): Promise<({
         contentType: {
+            name: string;
             id: number;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             schema: Prisma.JsonValue | null;
         };
+        categories: ({
+            category: {
+                name: string;
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                name: string;
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
         siteContent: ({
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -65,47 +100,12 @@ export declare const contentService: {
             contentId: string;
             siteId: string;
         })[];
-        categories: ({
-            category: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
         media: ({
             mediaAsset: {
-                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                url: string;
                 filename: string;
                 originalName: string;
                 mimeType: string;
@@ -134,19 +134,54 @@ export declare const contentService: {
     }) | null>;
     findBySlug(slug: string): Promise<({
         contentType: {
+            name: string;
             id: number;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             schema: Prisma.JsonValue | null;
         };
+        categories: ({
+            category: {
+                name: string;
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                name: string;
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
         siteContent: ({
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -182,47 +217,12 @@ export declare const contentService: {
             contentId: string;
             siteId: string;
         })[];
-        categories: ({
-            category: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
         media: ({
             mediaAsset: {
-                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                url: string;
                 filename: string;
                 originalName: string;
                 mimeType: string;
@@ -256,19 +256,54 @@ export declare const contentService: {
         offset?: number;
     }): Promise<({
         contentType: {
+            name: string;
             id: number;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             schema: Prisma.JsonValue | null;
         };
+        categories: ({
+            category: {
+                name: string;
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                name: string;
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
         siteContent: ({
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -304,47 +339,12 @@ export declare const contentService: {
             contentId: string;
             siteId: string;
         })[];
-        categories: ({
-            category: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
         media: ({
             mediaAsset: {
-                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                url: string;
                 filename: string;
                 originalName: string;
                 mimeType: string;
@@ -373,19 +373,54 @@ export declare const contentService: {
     })[]>;
     update(id: string, data: Prisma.ContentUpdateInput): Promise<{
         contentType: {
+            name: string;
             id: number;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             schema: Prisma.JsonValue | null;
         };
+        categories: ({
+            category: {
+                name: string;
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                description: string | null;
+                parentId: number | null;
+            };
+        } & {
+            contentId: string;
+            categoryId: number;
+        })[];
+        tags: ({
+            tag: {
+                name: string;
+                id: number;
+                slug: string;
+                createdAt: Date | null;
+                updatedAt: Date | null;
+                description: string | null;
+            };
+        } & {
+            contentId: string;
+            tagId: number;
+        })[];
+        versions: {
+            id: string;
+            data: Prisma.JsonValue;
+            createdBy: string | null;
+            createdAt: Date | null;
+            version: number;
+            contentId: string;
+        }[];
         siteContent: ({
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -421,47 +456,12 @@ export declare const contentService: {
             contentId: string;
             siteId: string;
         })[];
-        categories: ({
-            category: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-                parentId: number | null;
-            };
-        } & {
-            contentId: string;
-            categoryId: number;
-        })[];
-        tags: ({
-            tag: {
-                id: number;
-                slug: string;
-                createdAt: Date | null;
-                updatedAt: Date | null;
-                name: string;
-                description: string | null;
-            };
-        } & {
-            contentId: string;
-            tagId: number;
-        })[];
-        versions: {
-            id: string;
-            data: Prisma.JsonValue;
-            createdBy: string | null;
-            createdAt: Date | null;
-            version: number;
-            contentId: string;
-        }[];
         media: ({
             mediaAsset: {
-                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                url: string;
                 filename: string;
                 originalName: string;
                 mimeType: string;
@@ -504,11 +504,11 @@ export declare const contentService: {
     }>;
     addCategory(contentId: string, categoryId: number): Promise<{
         category: {
+            name: string;
             id: number;
             slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             parentId: number | null;
         };
@@ -522,11 +522,11 @@ export declare const contentService: {
     }>;
     addTag(contentId: string, tagId: number): Promise<{
         tag: {
+            name: string;
             id: number;
             slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
         };
     } & {
@@ -540,10 +540,10 @@ export declare const contentService: {
 };
 export declare const siteService: {
     create(data: Prisma.SiteCreateInput): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         domain: string;
         logoUrl: string | null;
         primaryColor: string | null;
@@ -597,10 +597,10 @@ export declare const siteService: {
         })[];
         media: ({
             mediaAsset: {
-                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                url: string;
                 filename: string;
                 originalName: string;
                 mimeType: string;
@@ -614,15 +614,15 @@ export declare const siteService: {
             mediaAssetId: string;
         })[];
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -632,10 +632,10 @@ export declare const siteService: {
         }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -653,10 +653,10 @@ export declare const siteService: {
             inStock: boolean;
         })[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         domain: string;
         logoUrl: string | null;
         primaryColor: string | null;
@@ -710,10 +710,10 @@ export declare const siteService: {
         })[];
         media: ({
             mediaAsset: {
-                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                url: string;
                 filename: string;
                 originalName: string;
                 mimeType: string;
@@ -727,15 +727,15 @@ export declare const siteService: {
             mediaAssetId: string;
         })[];
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -745,10 +745,10 @@ export declare const siteService: {
         }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -766,10 +766,10 @@ export declare const siteService: {
             inStock: boolean;
         })[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         domain: string;
         logoUrl: string | null;
         primaryColor: string | null;
@@ -826,10 +826,10 @@ export declare const siteService: {
         })[];
         media: ({
             mediaAsset: {
-                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                url: string;
                 filename: string;
                 originalName: string;
                 mimeType: string;
@@ -843,15 +843,15 @@ export declare const siteService: {
             mediaAssetId: string;
         })[];
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -861,10 +861,10 @@ export declare const siteService: {
         }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -882,10 +882,10 @@ export declare const siteService: {
             inStock: boolean;
         })[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         domain: string;
         logoUrl: string | null;
         primaryColor: string | null;
@@ -939,10 +939,10 @@ export declare const siteService: {
         })[];
         media: ({
             mediaAsset: {
-                url: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
+                url: string;
                 filename: string;
                 originalName: string;
                 mimeType: string;
@@ -956,15 +956,15 @@ export declare const siteService: {
             mediaAssetId: string;
         })[];
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -974,10 +974,10 @@ export declare const siteService: {
         }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -995,10 +995,10 @@ export declare const siteService: {
             inStock: boolean;
         })[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         domain: string;
         logoUrl: string | null;
         primaryColor: string | null;
@@ -1031,10 +1031,10 @@ export declare const siteService: {
         socialLinks: Prisma.JsonValue | null;
     }>;
     delete(id: string): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         domain: string;
         logoUrl: string | null;
         primaryColor: string | null;
@@ -1069,15 +1069,15 @@ export declare const siteService: {
 };
 export declare const affiliateLinkService: {
     create(data: Prisma.AffiliateLinkCreateInput): Promise<{
+        name: string;
         id: string;
         status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
+        siteId: string;
         originalUrl: string;
         affiliateUrl: string;
-        siteId: string;
         productId: string | null;
         merchantId: string | null;
         displayText: string | null;
@@ -1087,10 +1087,10 @@ export declare const affiliateLinkService: {
     }>;
     findById(id: string): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -1123,10 +1123,10 @@ export declare const affiliateLinkService: {
             socialLinks: Prisma.JsonValue | null;
         };
         product: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1134,12 +1134,12 @@ export declare const affiliateLinkService: {
             specifications: Prisma.JsonValue | null;
         } | null;
         merchant: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
-            logoUrl: string | null;
             description: string | null;
+            logoUrl: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1153,15 +1153,15 @@ export declare const affiliateLinkService: {
             conversionValue: Prisma.Decimal | null;
         }[];
     } & {
+        name: string;
         id: string;
         status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
+        siteId: string;
         originalUrl: string;
         affiliateUrl: string;
-        siteId: string;
         productId: string | null;
         merchantId: string | null;
         displayText: string | null;
@@ -1175,10 +1175,10 @@ export declare const affiliateLinkService: {
         offset?: number;
     }): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -1211,10 +1211,10 @@ export declare const affiliateLinkService: {
             socialLinks: Prisma.JsonValue | null;
         };
         product: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1222,12 +1222,12 @@ export declare const affiliateLinkService: {
             specifications: Prisma.JsonValue | null;
         } | null;
         merchant: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
-            logoUrl: string | null;
             description: string | null;
+            logoUrl: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1241,15 +1241,15 @@ export declare const affiliateLinkService: {
             conversionValue: Prisma.Decimal | null;
         }[];
     } & {
+        name: string;
         id: string;
         status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
+        siteId: string;
         originalUrl: string;
         affiliateUrl: string;
-        siteId: string;
         productId: string | null;
         merchantId: string | null;
         displayText: string | null;
@@ -1263,10 +1263,10 @@ export declare const affiliateLinkService: {
         offset?: number;
     }): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -1299,10 +1299,10 @@ export declare const affiliateLinkService: {
             socialLinks: Prisma.JsonValue | null;
         };
         product: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1310,12 +1310,12 @@ export declare const affiliateLinkService: {
             specifications: Prisma.JsonValue | null;
         } | null;
         merchant: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
-            logoUrl: string | null;
             description: string | null;
+            logoUrl: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1329,15 +1329,15 @@ export declare const affiliateLinkService: {
             conversionValue: Prisma.Decimal | null;
         }[];
     } & {
+        name: string;
         id: string;
         status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
+        siteId: string;
         originalUrl: string;
         affiliateUrl: string;
-        siteId: string;
         productId: string | null;
         merchantId: string | null;
         displayText: string | null;
@@ -1347,10 +1347,10 @@ export declare const affiliateLinkService: {
     })[]>;
     update(id: string, data: Prisma.AffiliateLinkUpdateInput): Promise<{
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -1383,10 +1383,10 @@ export declare const affiliateLinkService: {
             socialLinks: Prisma.JsonValue | null;
         };
         product: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1394,12 +1394,12 @@ export declare const affiliateLinkService: {
             specifications: Prisma.JsonValue | null;
         } | null;
         merchant: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
-            logoUrl: string | null;
             description: string | null;
+            logoUrl: string | null;
             website: string | null;
         } | null;
         linkClicks: {
@@ -1413,15 +1413,15 @@ export declare const affiliateLinkService: {
             conversionValue: Prisma.Decimal | null;
         }[];
     } & {
+        name: string;
         id: string;
         status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
+        siteId: string;
         originalUrl: string;
         affiliateUrl: string;
-        siteId: string;
         productId: string | null;
         merchantId: string | null;
         displayText: string | null;
@@ -1430,15 +1430,15 @@ export declare const affiliateLinkService: {
         expirationDate: Date | null;
     }>;
     delete(id: string): Promise<{
+        name: string;
         id: string;
         status: string;
         createdBy: string | null;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
+        siteId: string;
         originalUrl: string;
         affiliateUrl: string;
-        siteId: string;
         productId: string | null;
         merchantId: string | null;
         displayText: string | null;
@@ -1474,10 +1474,10 @@ export declare const affiliateLinkService: {
 };
 export declare const productService: {
     create(data: Prisma.ProductCreateInput): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1486,15 +1486,15 @@ export declare const productService: {
     }>;
     findById(id: string): Promise<({
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -1504,10 +1504,10 @@ export declare const productService: {
         }[];
         siteProducts: ({
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -1550,10 +1550,10 @@ export declare const productService: {
             inStock: boolean;
         })[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1565,15 +1565,15 @@ export declare const productService: {
         offset?: number;
     }): Promise<({
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -1583,10 +1583,10 @@ export declare const productService: {
         }[];
         siteProducts: ({
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -1629,10 +1629,10 @@ export declare const productService: {
             inStock: boolean;
         })[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1644,15 +1644,15 @@ export declare const productService: {
         offset?: number;
     }): Promise<({
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -1662,10 +1662,10 @@ export declare const productService: {
         }[];
         siteProducts: ({
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -1708,10 +1708,10 @@ export declare const productService: {
             inStock: boolean;
         })[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1720,15 +1720,15 @@ export declare const productService: {
     })[]>;
     update(id: string, data: Prisma.ProductUpdateInput): Promise<{
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -1738,10 +1738,10 @@ export declare const productService: {
         }[];
         siteProducts: ({
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -1784,10 +1784,10 @@ export declare const productService: {
             inStock: boolean;
         })[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1795,10 +1795,10 @@ export declare const productService: {
         specifications: Prisma.JsonValue | null;
     }>;
     delete(id: string): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         manufacturer: string | null;
         basePrice: Prisma.Decimal;
@@ -1819,10 +1819,10 @@ export declare const analyticsService: {
         clicks: ({
             affiliateLink: {
                 product: {
+                    name: string;
                     id: string;
                     createdAt: Date | null;
                     updatedAt: Date | null;
-                    name: string;
                     description: string | null;
                     manufacturer: string | null;
                     basePrice: Prisma.Decimal;
@@ -1830,15 +1830,15 @@ export declare const analyticsService: {
                     specifications: Prisma.JsonValue | null;
                 } | null;
             } & {
+                name: string;
                 id: string;
                 status: string;
                 createdBy: string | null;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
+                siteId: string;
                 originalUrl: string;
                 affiliateUrl: string;
-                siteId: string;
                 productId: string | null;
                 merchantId: string | null;
                 displayText: string | null;
@@ -1859,10 +1859,10 @@ export declare const analyticsService: {
     }>;
     getTopProducts(siteId: string, limit?: number): Promise<{
         product: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             manufacturer: string | null;
             basePrice: Prisma.Decimal;
@@ -1888,11 +1888,11 @@ export declare const newsletterService: {
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        isActive: boolean;
         source: string | null;
         email: string;
         firstName: string | null;
         lastName: string | null;
-        isActive: boolean;
         subscribedAt: Date | null;
         unsubscribedAt: Date | null;
         preferences: Prisma.JsonValue | null;
@@ -1902,11 +1902,11 @@ export declare const newsletterService: {
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        isActive: boolean;
         source: string | null;
         email: string;
         firstName: string | null;
         lastName: string | null;
-        isActive: boolean;
         subscribedAt: Date | null;
         unsubscribedAt: Date | null;
         preferences: Prisma.JsonValue | null;
@@ -1919,22 +1919,22 @@ export declare const newsletterService: {
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        isActive: boolean;
         source: string | null;
         email: string;
         firstName: string | null;
         lastName: string | null;
-        isActive: boolean;
         subscribedAt: Date | null;
         unsubscribedAt: Date | null;
         preferences: Prisma.JsonValue | null;
     }[]>;
     createCampaign(data: Prisma.NewsletterCampaignCreateInput): Promise<{
+        name: string;
         content: string;
         id: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         subject: string;
         sentAt: Date | null;
         sentCount: number;
@@ -1942,12 +1942,12 @@ export declare const newsletterService: {
         clickCount: number;
     }>;
     findCampaign(id: string): Promise<{
+        name: string;
         content: string;
         id: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         subject: string;
         sentAt: Date | null;
         sentCount: number;
@@ -1955,12 +1955,12 @@ export declare const newsletterService: {
         clickCount: number;
     } | null>;
     updateCampaign(id: string, data: Prisma.NewsletterCampaignUpdateInput): Promise<{
+        name: string;
         content: string;
         id: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         subject: string;
         sentAt: Date | null;
         sentCount: number;
@@ -1972,12 +1972,12 @@ export declare const newsletterService: {
         limit?: number;
         offset?: number;
     }): Promise<{
+        name: string;
         content: string;
         id: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         subject: string;
         sentAt: Date | null;
         sentCount: number;
@@ -1987,11 +1987,11 @@ export declare const newsletterService: {
 };
 export declare const categoryService: {
     create(data: Prisma.CategoryCreateInput): Promise<{
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         parentId: number | null;
     }>;
@@ -2016,29 +2016,29 @@ export declare const categoryService: {
             categoryId: number;
         })[];
         parent: {
+            name: string;
             id: number;
             slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             parentId: number | null;
         } | null;
         children: {
+            name: string;
             id: number;
             slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             parentId: number | null;
         }[];
     } & {
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         parentId: number | null;
     }) | null>;
@@ -2067,29 +2067,29 @@ export declare const categoryService: {
             categoryId: number;
         })[];
         parent: {
+            name: string;
             id: number;
             slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             parentId: number | null;
         } | null;
         children: {
+            name: string;
             id: number;
             slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             parentId: number | null;
         }[];
     } & {
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         parentId: number | null;
     })[]>;
@@ -2114,49 +2114,49 @@ export declare const categoryService: {
             categoryId: number;
         })[];
         parent: {
+            name: string;
             id: number;
             slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             parentId: number | null;
         } | null;
         children: {
+            name: string;
             id: number;
             slug: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             description: string | null;
             parentId: number | null;
         }[];
     } & {
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         parentId: number | null;
     }>;
     delete(id: number): Promise<{
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         parentId: number | null;
     }>;
 };
 export declare const tagService: {
     create(data: Prisma.TagCreateInput): Promise<{
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
     }>;
     findById(id: number): Promise<({
@@ -2180,11 +2180,11 @@ export declare const tagService: {
             tagId: number;
         })[];
     } & {
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
     }) | null>;
     findAll(options?: {
@@ -2211,11 +2211,11 @@ export declare const tagService: {
             tagId: number;
         })[];
     } & {
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
     })[]>;
     update(id: number, data: Prisma.TagUpdateInput): Promise<{
@@ -2239,28 +2239,28 @@ export declare const tagService: {
             tagId: number;
         })[];
     } & {
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
     }>;
     delete(id: number): Promise<{
+        name: string;
         id: number;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
     }>;
 };
 export declare const mediaService: {
     create(data: Prisma.MediaAssetCreateInput): Promise<{
-        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        url: string;
         filename: string;
         originalName: string;
         mimeType: string;
@@ -2285,10 +2285,10 @@ export declare const mediaService: {
                 scheduledPublishAt: Date | null;
             };
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -2326,10 +2326,10 @@ export declare const mediaService: {
             mediaAssetId: string;
         })[];
     } & {
-        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        url: string;
         filename: string;
         originalName: string;
         mimeType: string;
@@ -2354,10 +2354,10 @@ export declare const mediaService: {
                 scheduledPublishAt: Date | null;
             };
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -2395,10 +2395,10 @@ export declare const mediaService: {
             mediaAssetId: string;
         })[];
     } & {
-        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        url: string;
         filename: string;
         originalName: string;
         mimeType: string;
@@ -2427,10 +2427,10 @@ export declare const mediaService: {
                 scheduledPublishAt: Date | null;
             };
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -2468,10 +2468,10 @@ export declare const mediaService: {
             mediaAssetId: string;
         })[];
     } & {
-        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        url: string;
         filename: string;
         originalName: string;
         mimeType: string;
@@ -2496,10 +2496,10 @@ export declare const mediaService: {
                 scheduledPublishAt: Date | null;
             };
             site: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 domain: string;
                 logoUrl: string | null;
                 primaryColor: string | null;
@@ -2537,10 +2537,10 @@ export declare const mediaService: {
             mediaAssetId: string;
         })[];
     } & {
-        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        url: string;
         filename: string;
         originalName: string;
         mimeType: string;
@@ -2549,10 +2549,10 @@ export declare const mediaService: {
         metadata: Prisma.JsonValue | null;
     }>;
     delete(id: string): Promise<{
-        url: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
+        url: string;
         filename: string;
         originalName: string;
         mimeType: string;
@@ -2563,25 +2563,25 @@ export declare const mediaService: {
 };
 export declare const merchantService: {
     create(data: Prisma.MerchantCreateInput): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }>;
     findById(id: string): Promise<({
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -2590,25 +2590,25 @@ export declare const merchantService: {
             expirationDate: Date | null;
         }[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }) | null>;
     findByName(name: string): Promise<({
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -2617,12 +2617,12 @@ export declare const merchantService: {
             expirationDate: Date | null;
         }[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }) | null>;
     findAll(options?: {
@@ -2630,15 +2630,15 @@ export declare const merchantService: {
         offset?: number;
     }): Promise<({
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -2647,25 +2647,25 @@ export declare const merchantService: {
             expirationDate: Date | null;
         }[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     })[]>;
     update(id: string, data: Prisma.MerchantUpdateInput): Promise<{
         affiliateLinks: {
+            name: string;
             id: string;
             status: string;
             createdBy: string | null;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
+            siteId: string;
             originalUrl: string;
             affiliateUrl: string;
-            siteId: string;
             productId: string | null;
             merchantId: string | null;
             displayText: string | null;
@@ -2674,21 +2674,21 @@ export declare const merchantService: {
             expirationDate: Date | null;
         }[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }>;
     delete(id: string): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        logoUrl: string | null;
         description: string | null;
+        logoUrl: string | null;
         website: string | null;
     }>;
 };
@@ -2749,8 +2749,8 @@ export declare const recipeService: {
         title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        tags: Prisma.JsonValue | null;
         description: string | null;
+        tags: Prisma.JsonValue | null;
         prepTime: number | null;
         cookTime: number | null;
         servings: number | null;
@@ -2759,14 +2759,14 @@ export declare const recipeService: {
     }>;
     findById(id: string): Promise<({
         ingredients: {
+            name: string;
             id: string;
             createdAt: Date | null;
-            name: string;
+            order: number;
+            notes: string | null;
+            recipeId: string;
             amount: Prisma.Decimal;
             unit: string;
-            notes: string | null;
-            order: number;
-            recipeId: string;
         }[];
         instructions: {
             id: string;
@@ -2781,8 +2781,8 @@ export declare const recipeService: {
         title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        tags: Prisma.JsonValue | null;
         description: string | null;
+        tags: Prisma.JsonValue | null;
         prepTime: number | null;
         cookTime: number | null;
         servings: number | null;
@@ -2791,14 +2791,14 @@ export declare const recipeService: {
     }) | null>;
     findByTitle(title: string): Promise<({
         ingredients: {
+            name: string;
             id: string;
             createdAt: Date | null;
-            name: string;
+            order: number;
+            notes: string | null;
+            recipeId: string;
             amount: Prisma.Decimal;
             unit: string;
-            notes: string | null;
-            order: number;
-            recipeId: string;
         }[];
         instructions: {
             id: string;
@@ -2813,8 +2813,8 @@ export declare const recipeService: {
         title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        tags: Prisma.JsonValue | null;
         description: string | null;
+        tags: Prisma.JsonValue | null;
         prepTime: number | null;
         cookTime: number | null;
         servings: number | null;
@@ -2828,14 +2828,14 @@ export declare const recipeService: {
         offset?: number;
     }): Promise<({
         ingredients: {
+            name: string;
             id: string;
             createdAt: Date | null;
-            name: string;
+            order: number;
+            notes: string | null;
+            recipeId: string;
             amount: Prisma.Decimal;
             unit: string;
-            notes: string | null;
-            order: number;
-            recipeId: string;
         }[];
         instructions: {
             id: string;
@@ -2850,8 +2850,8 @@ export declare const recipeService: {
         title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        tags: Prisma.JsonValue | null;
         description: string | null;
+        tags: Prisma.JsonValue | null;
         prepTime: number | null;
         cookTime: number | null;
         servings: number | null;
@@ -2860,14 +2860,14 @@ export declare const recipeService: {
     })[]>;
     update(id: string, data: Prisma.RecipeUpdateInput): Promise<{
         ingredients: {
+            name: string;
             id: string;
             createdAt: Date | null;
-            name: string;
+            order: number;
+            notes: string | null;
+            recipeId: string;
             amount: Prisma.Decimal;
             unit: string;
-            notes: string | null;
-            order: number;
-            recipeId: string;
         }[];
         instructions: {
             id: string;
@@ -2882,8 +2882,8 @@ export declare const recipeService: {
         title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        tags: Prisma.JsonValue | null;
         description: string | null;
+        tags: Prisma.JsonValue | null;
         prepTime: number | null;
         cookTime: number | null;
         servings: number | null;
@@ -2895,8 +2895,8 @@ export declare const recipeService: {
         title: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        tags: Prisma.JsonValue | null;
         description: string | null;
+        tags: Prisma.JsonValue | null;
         prepTime: number | null;
         cookTime: number | null;
         servings: number | null;
@@ -2904,34 +2904,34 @@ export declare const recipeService: {
         cuisine: string | null;
     }>;
     addIngredient(data: Prisma.RecipeIngredientCreateInput): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
-        name: string;
+        order: number;
+        notes: string | null;
+        recipeId: string;
         amount: Prisma.Decimal;
         unit: string;
-        notes: string | null;
-        order: number;
-        recipeId: string;
     }>;
     updateIngredient(id: string, data: Prisma.RecipeIngredientUpdateInput): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
-        name: string;
+        order: number;
+        notes: string | null;
+        recipeId: string;
         amount: Prisma.Decimal;
         unit: string;
-        notes: string | null;
-        order: number;
-        recipeId: string;
     }>;
     deleteIngredient(id: string): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
-        name: string;
+        order: number;
+        notes: string | null;
+        recipeId: string;
         amount: Prisma.Decimal;
         unit: string;
-        notes: string | null;
-        order: number;
-        recipeId: string;
     }>;
     addInstruction(data: Prisma.RecipeInstructionCreateInput): Promise<{
         id: string;
@@ -3075,10 +3075,10 @@ export declare const notificationService: {
 };
 export declare const contentTypeService: {
     create(data: Prisma.ContentTypeCreateInput): Promise<{
+        name: string;
         id: number;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }>;
@@ -3098,10 +3098,10 @@ export declare const contentTypeService: {
             scheduledPublishAt: Date | null;
         }[];
     } & {
+        name: string;
         id: number;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }) | null>;
@@ -3121,10 +3121,10 @@ export declare const contentTypeService: {
             scheduledPublishAt: Date | null;
         }[];
     } & {
+        name: string;
         id: number;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }) | null>;
@@ -3147,10 +3147,10 @@ export declare const contentTypeService: {
             scheduledPublishAt: Date | null;
         }[];
     } & {
+        name: string;
         id: number;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     })[]>;
@@ -3170,42 +3170,42 @@ export declare const contentTypeService: {
             scheduledPublishAt: Date | null;
         }[];
     } & {
+        name: string;
         id: number;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }>;
     delete(id: number): Promise<{
+        name: string;
         id: number;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
         description: string | null;
         schema: Prisma.JsonValue | null;
     }>;
 };
 export declare const customNicheService: {
     create(data: Prisma.CustomNicheCreateInput): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue | null;
-        name: string;
-        targetAudience: string | null;
         description: string | null;
-        isActive: boolean;
+        categories: Prisma.JsonValue | null;
+        targetAudience: string | null;
         keywords: Prisma.JsonValue | null;
+        isActive: boolean;
         competitionLevel: string | null;
         profitabilityScore: number | null;
     }>;
     findById(id: string): Promise<({
         sites: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3238,24 +3238,24 @@ export declare const customNicheService: {
             socialLinks: Prisma.JsonValue | null;
         }[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue | null;
-        name: string;
-        targetAudience: string | null;
         description: string | null;
-        isActive: boolean;
+        categories: Prisma.JsonValue | null;
+        targetAudience: string | null;
         keywords: Prisma.JsonValue | null;
+        isActive: boolean;
         competitionLevel: string | null;
         profitabilityScore: number | null;
     }) | null>;
     findByName(name: string): Promise<({
         sites: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3288,15 +3288,15 @@ export declare const customNicheService: {
             socialLinks: Prisma.JsonValue | null;
         }[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue | null;
-        name: string;
-        targetAudience: string | null;
         description: string | null;
-        isActive: boolean;
+        categories: Prisma.JsonValue | null;
+        targetAudience: string | null;
         keywords: Prisma.JsonValue | null;
+        isActive: boolean;
         competitionLevel: string | null;
         profitabilityScore: number | null;
     }) | null>;
@@ -3306,10 +3306,10 @@ export declare const customNicheService: {
         offset?: number;
     }): Promise<({
         sites: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3342,24 +3342,24 @@ export declare const customNicheService: {
             socialLinks: Prisma.JsonValue | null;
         }[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue | null;
-        name: string;
-        targetAudience: string | null;
         description: string | null;
-        isActive: boolean;
+        categories: Prisma.JsonValue | null;
+        targetAudience: string | null;
         keywords: Prisma.JsonValue | null;
+        isActive: boolean;
         competitionLevel: string | null;
         profitabilityScore: number | null;
     })[]>;
     update(id: string, data: Prisma.CustomNicheUpdateInput): Promise<{
         sites: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3392,28 +3392,28 @@ export declare const customNicheService: {
             socialLinks: Prisma.JsonValue | null;
         }[];
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue | null;
-        name: string;
-        targetAudience: string | null;
         description: string | null;
-        isActive: boolean;
+        categories: Prisma.JsonValue | null;
+        targetAudience: string | null;
         keywords: Prisma.JsonValue | null;
+        isActive: boolean;
         competitionLevel: string | null;
         profitabilityScore: number | null;
     }>;
     delete(id: string): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue | null;
-        name: string;
-        targetAudience: string | null;
         description: string | null;
-        isActive: boolean;
+        categories: Prisma.JsonValue | null;
+        targetAudience: string | null;
         keywords: Prisma.JsonValue | null;
+        isActive: boolean;
         competitionLevel: string | null;
         profitabilityScore: number | null;
     }>;
@@ -3421,15 +3421,14 @@ export declare const customNicheService: {
 export declare const autoBlogPostService: {
     create(data: Prisma.AutoBlogPostCreateInput): Promise<{
         content: string;
-        category: string | null;
         id: string;
         title: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        affiliateLinks: Prisma.JsonValue | null;
         siteId: string;
+        category: string | null;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3439,6 +3438,7 @@ export declare const autoBlogPostService: {
         postType: string;
         wordCount: number | null;
         readingTime: number | null;
+        affiliateLinks: Prisma.JsonValue | null;
         internalLinks: Prisma.JsonValue | null;
         externalLinks: Prisma.JsonValue | null;
         aiProvider: string | null;
@@ -3446,10 +3446,10 @@ export declare const autoBlogPostService: {
     }>;
     findById(id: string): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3483,15 +3483,14 @@ export declare const autoBlogPostService: {
         };
     } & {
         content: string;
-        category: string | null;
         id: string;
         title: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        affiliateLinks: Prisma.JsonValue | null;
         siteId: string;
+        category: string | null;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3501,6 +3500,7 @@ export declare const autoBlogPostService: {
         postType: string;
         wordCount: number | null;
         readingTime: number | null;
+        affiliateLinks: Prisma.JsonValue | null;
         internalLinks: Prisma.JsonValue | null;
         externalLinks: Prisma.JsonValue | null;
         aiProvider: string | null;
@@ -3513,10 +3513,10 @@ export declare const autoBlogPostService: {
         offset?: number;
     }): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3550,15 +3550,14 @@ export declare const autoBlogPostService: {
         };
     } & {
         content: string;
-        category: string | null;
         id: string;
         title: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        affiliateLinks: Prisma.JsonValue | null;
         siteId: string;
+        category: string | null;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3568,6 +3567,7 @@ export declare const autoBlogPostService: {
         postType: string;
         wordCount: number | null;
         readingTime: number | null;
+        affiliateLinks: Prisma.JsonValue | null;
         internalLinks: Prisma.JsonValue | null;
         externalLinks: Prisma.JsonValue | null;
         aiProvider: string | null;
@@ -3580,10 +3580,10 @@ export declare const autoBlogPostService: {
         offset?: number;
     }): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3617,15 +3617,14 @@ export declare const autoBlogPostService: {
         };
     } & {
         content: string;
-        category: string | null;
         id: string;
         title: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        affiliateLinks: Prisma.JsonValue | null;
         siteId: string;
+        category: string | null;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3635,6 +3634,7 @@ export declare const autoBlogPostService: {
         postType: string;
         wordCount: number | null;
         readingTime: number | null;
+        affiliateLinks: Prisma.JsonValue | null;
         internalLinks: Prisma.JsonValue | null;
         externalLinks: Prisma.JsonValue | null;
         aiProvider: string | null;
@@ -3642,10 +3642,10 @@ export declare const autoBlogPostService: {
     })[]>;
     update(id: string, data: Prisma.AutoBlogPostUpdateInput): Promise<{
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3679,15 +3679,14 @@ export declare const autoBlogPostService: {
         };
     } & {
         content: string;
-        category: string | null;
         id: string;
         title: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        affiliateLinks: Prisma.JsonValue | null;
         siteId: string;
+        category: string | null;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3697,6 +3696,7 @@ export declare const autoBlogPostService: {
         postType: string;
         wordCount: number | null;
         readingTime: number | null;
+        affiliateLinks: Prisma.JsonValue | null;
         internalLinks: Prisma.JsonValue | null;
         externalLinks: Prisma.JsonValue | null;
         aiProvider: string | null;
@@ -3704,15 +3704,14 @@ export declare const autoBlogPostService: {
     }>;
     delete(id: string): Promise<{
         content: string;
-        category: string | null;
         id: string;
         title: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        affiliateLinks: Prisma.JsonValue | null;
         siteId: string;
+        category: string | null;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3722,6 +3721,7 @@ export declare const autoBlogPostService: {
         postType: string;
         wordCount: number | null;
         readingTime: number | null;
+        affiliateLinks: Prisma.JsonValue | null;
         internalLinks: Prisma.JsonValue | null;
         externalLinks: Prisma.JsonValue | null;
         aiProvider: string | null;
@@ -3729,10 +3729,10 @@ export declare const autoBlogPostService: {
     }>;
     getScheduledPosts(): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3766,15 +3766,14 @@ export declare const autoBlogPostService: {
         };
     } & {
         content: string;
-        category: string | null;
         id: string;
         title: string;
         status: string;
         createdAt: Date | null;
         updatedAt: Date | null;
         tags: Prisma.JsonValue | null;
-        affiliateLinks: Prisma.JsonValue | null;
         siteId: string;
+        category: string | null;
         summary: string | null;
         keyTakeaways: Prisma.JsonValue | null;
         featuredImage: string | null;
@@ -3784,6 +3783,7 @@ export declare const autoBlogPostService: {
         postType: string;
         wordCount: number | null;
         readingTime: number | null;
+        affiliateLinks: Prisma.JsonValue | null;
         internalLinks: Prisma.JsonValue | null;
         externalLinks: Prisma.JsonValue | null;
         aiProvider: string | null;
@@ -3792,27 +3792,27 @@ export declare const autoBlogPostService: {
 };
 export declare const contentScheduleService: {
     create(data: Prisma.ContentScheduleCreateInput): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue;
-        name: string;
-        siteId: string;
         description: string | null;
-        isActive: boolean;
-        keywords: Prisma.JsonValue;
+        categories: Prisma.JsonValue;
+        siteId: string;
         frequency: string;
         interval: number;
         postTypes: Prisma.JsonValue;
+        keywords: Prisma.JsonValue;
+        isActive: boolean;
         lastRunAt: Date | null;
         nextRunAt: Date | null;
     }>;
     findById(id: string): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3845,18 +3845,18 @@ export declare const contentScheduleService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue;
-        name: string;
-        siteId: string;
         description: string | null;
-        isActive: boolean;
-        keywords: Prisma.JsonValue;
+        categories: Prisma.JsonValue;
+        siteId: string;
         frequency: string;
         interval: number;
         postTypes: Prisma.JsonValue;
+        keywords: Prisma.JsonValue;
+        isActive: boolean;
         lastRunAt: Date | null;
         nextRunAt: Date | null;
     }) | null>;
@@ -3866,10 +3866,10 @@ export declare const contentScheduleService: {
         offset?: number;
     }): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3902,18 +3902,18 @@ export declare const contentScheduleService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue;
-        name: string;
-        siteId: string;
         description: string | null;
-        isActive: boolean;
-        keywords: Prisma.JsonValue;
+        categories: Prisma.JsonValue;
+        siteId: string;
         frequency: string;
         interval: number;
         postTypes: Prisma.JsonValue;
+        keywords: Prisma.JsonValue;
+        isActive: boolean;
         lastRunAt: Date | null;
         nextRunAt: Date | null;
     })[]>;
@@ -3923,10 +3923,10 @@ export declare const contentScheduleService: {
         offset?: number;
     }): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -3959,27 +3959,27 @@ export declare const contentScheduleService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue;
-        name: string;
-        siteId: string;
         description: string | null;
-        isActive: boolean;
-        keywords: Prisma.JsonValue;
+        categories: Prisma.JsonValue;
+        siteId: string;
         frequency: string;
         interval: number;
         postTypes: Prisma.JsonValue;
+        keywords: Prisma.JsonValue;
+        isActive: boolean;
         lastRunAt: Date | null;
         nextRunAt: Date | null;
     })[]>;
     update(id: string, data: Prisma.ContentScheduleUpdateInput): Promise<{
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -4012,43 +4012,43 @@ export declare const contentScheduleService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue;
-        name: string;
-        siteId: string;
         description: string | null;
-        isActive: boolean;
-        keywords: Prisma.JsonValue;
+        categories: Prisma.JsonValue;
+        siteId: string;
         frequency: string;
         interval: number;
         postTypes: Prisma.JsonValue;
+        keywords: Prisma.JsonValue;
+        isActive: boolean;
         lastRunAt: Date | null;
         nextRunAt: Date | null;
     }>;
     delete(id: string): Promise<{
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue;
-        name: string;
-        siteId: string;
         description: string | null;
-        isActive: boolean;
-        keywords: Prisma.JsonValue;
+        categories: Prisma.JsonValue;
+        siteId: string;
         frequency: string;
         interval: number;
         postTypes: Prisma.JsonValue;
+        keywords: Prisma.JsonValue;
+        isActive: boolean;
         lastRunAt: Date | null;
         nextRunAt: Date | null;
     }>;
     getDueSchedules(): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -4081,44 +4081,44 @@ export declare const contentScheduleService: {
             socialLinks: Prisma.JsonValue | null;
         };
     } & {
+        name: string;
         id: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        categories: Prisma.JsonValue;
-        name: string;
-        siteId: string;
         description: string | null;
-        isActive: boolean;
-        keywords: Prisma.JsonValue;
+        categories: Prisma.JsonValue;
+        siteId: string;
         frequency: string;
         interval: number;
         postTypes: Prisma.JsonValue;
+        keywords: Prisma.JsonValue;
+        isActive: boolean;
         lastRunAt: Date | null;
         nextRunAt: Date | null;
     })[]>;
 };
 export declare const productCategoryService: {
     create(data: Prisma.ProductCategoryCreateInput): Promise<{
+        name: string;
         id: string;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        siteId: string;
         description: string | null;
-        displayOrder: number;
-        isActive: boolean;
+        siteId: string;
         parentId: string | null;
+        isActive: boolean;
+        displayOrder: number;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
     }>;
     findById(id: string): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -4150,12 +4150,42 @@ export declare const productCategoryService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
+        parent: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        } | null;
+        children: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -4172,57 +4202,27 @@ export declare const productCategoryService: {
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        parent: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        } | null;
-        children: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        }[];
     } & {
+        name: string;
         id: string;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        siteId: string;
         description: string | null;
-        displayOrder: number;
-        isActive: boolean;
+        siteId: string;
         parentId: string | null;
+        isActive: boolean;
+        displayOrder: number;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
     }) | null>;
     findBySlug(slug: string): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -4254,12 +4254,42 @@ export declare const productCategoryService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
+        parent: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        } | null;
+        children: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -4276,47 +4306,17 @@ export declare const productCategoryService: {
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        parent: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        } | null;
-        children: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        }[];
     } & {
+        name: string;
         id: string;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        siteId: string;
         description: string | null;
-        displayOrder: number;
-        isActive: boolean;
+        siteId: string;
         parentId: string | null;
+        isActive: boolean;
+        displayOrder: number;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
@@ -4328,10 +4328,10 @@ export declare const productCategoryService: {
         offset?: number;
     }): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -4363,12 +4363,42 @@ export declare const productCategoryService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
+        parent: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        } | null;
+        children: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -4385,47 +4415,17 @@ export declare const productCategoryService: {
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        parent: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        } | null;
-        children: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        }[];
     } & {
+        name: string;
         id: string;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        siteId: string;
         description: string | null;
-        displayOrder: number;
-        isActive: boolean;
+        siteId: string;
         parentId: string | null;
+        isActive: boolean;
+        displayOrder: number;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
@@ -4437,10 +4437,10 @@ export declare const productCategoryService: {
         offset?: number;
     }): Promise<({
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -4472,12 +4472,42 @@ export declare const productCategoryService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
+        parent: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        } | null;
+        children: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -4494,57 +4524,27 @@ export declare const productCategoryService: {
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        parent: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        } | null;
-        children: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        }[];
     } & {
+        name: string;
         id: string;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        siteId: string;
         description: string | null;
-        displayOrder: number;
-        isActive: boolean;
+        siteId: string;
         parentId: string | null;
+        isActive: boolean;
+        displayOrder: number;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
     })[]>;
     update(id: string, data: Prisma.ProductCategoryUpdateInput): Promise<{
         site: {
+            name: string;
             id: string;
             createdAt: Date | null;
             updatedAt: Date | null;
-            name: string;
             domain: string;
             logoUrl: string | null;
             primaryColor: string | null;
@@ -4576,12 +4576,42 @@ export declare const productCategoryService: {
             footerText: string | null;
             socialLinks: Prisma.JsonValue | null;
         };
+        parent: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        } | null;
+        children: {
+            name: string;
+            id: string;
+            slug: string;
+            createdAt: Date | null;
+            updatedAt: Date | null;
+            description: string | null;
+            siteId: string;
+            parentId: string | null;
+            isActive: boolean;
+            displayOrder: number;
+            seoTitle: string | null;
+            seoDescription: string | null;
+            seoKeywords: string | null;
+        }[];
         products: ({
             product: {
+                name: string;
                 id: string;
                 createdAt: Date | null;
                 updatedAt: Date | null;
-                name: string;
                 description: string | null;
                 manufacturer: string | null;
                 basePrice: Prisma.Decimal;
@@ -4598,62 +4628,32 @@ export declare const productCategoryService: {
             discount: Prisma.Decimal | null;
             inStock: boolean;
         })[];
-        parent: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        } | null;
-        children: {
-            id: string;
-            slug: string;
-            createdAt: Date | null;
-            updatedAt: Date | null;
-            name: string;
-            siteId: string;
-            description: string | null;
-            displayOrder: number;
-            isActive: boolean;
-            parentId: string | null;
-            seoTitle: string | null;
-            seoDescription: string | null;
-            seoKeywords: string | null;
-        }[];
     } & {
+        name: string;
         id: string;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        siteId: string;
         description: string | null;
-        displayOrder: number;
-        isActive: boolean;
+        siteId: string;
         parentId: string | null;
+        isActive: boolean;
+        displayOrder: number;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;
     }>;
     delete(id: string): Promise<{
+        name: string;
         id: string;
         slug: string;
         createdAt: Date | null;
         updatedAt: Date | null;
-        name: string;
-        siteId: string;
         description: string | null;
-        displayOrder: number;
-        isActive: boolean;
+        siteId: string;
         parentId: string | null;
+        isActive: boolean;
+        displayOrder: number;
         seoTitle: string | null;
         seoDescription: string | null;
         seoKeywords: string | null;

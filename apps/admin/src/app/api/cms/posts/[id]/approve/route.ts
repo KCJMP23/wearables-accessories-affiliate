@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { autoBlogPostService } from '@affiliate/db/src/utils';
 
 export async function POST(
   request: NextRequest,
@@ -7,16 +8,16 @@ export async function POST(
   try {
     const resolvedParams = await params;
     
-    // For now, return a success response indicating the API is working
-    // We'll implement the full database integration later
+    const updatedPost = await autoBlogPostService.update(resolvedParams.id, {
+      status: 'published',
+      publishedAt: new Date(),
+      updatedAt: new Date()
+    });
+
     return NextResponse.json({
       success: true,
-      data: {
-        id: resolvedParams.id,
-        status: 'published',
-        approved_at: new Date().toISOString()
-      },
-      message: 'Post approval API is working. Database integration coming soon.'
+      data: updatedPost,
+      message: 'Post approved and published successfully'
     });
   } catch (error) {
     console.error('Error approving post:', error);

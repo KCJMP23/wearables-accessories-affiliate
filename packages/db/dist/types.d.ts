@@ -7,14 +7,14 @@ export declare const ContentFilterSchema: z.ZodObject<{
     dateTo: z.ZodOptional<z.ZodDate>;
 }, "strip", z.ZodTypeAny, {
     search?: string | undefined;
-    contentType?: number | undefined;
     status?: string | undefined;
+    contentType?: number | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }, {
     search?: string | undefined;
-    contentType?: number | undefined;
     status?: string | undefined;
+    contentType?: number | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }>;
@@ -29,18 +29,18 @@ export declare const AffiliateLinkFilterSchema: z.ZodObject<{
     dateTo: z.ZodOptional<z.ZodDate>;
 }, "strip", z.ZodTypeAny, {
     search?: string | undefined;
+    status?: string | undefined;
     site?: string | undefined;
     product?: string | undefined;
     merchant?: string | undefined;
-    status?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }, {
     search?: string | undefined;
+    status?: string | undefined;
     site?: string | undefined;
     product?: string | undefined;
     merchant?: string | undefined;
-    status?: string | undefined;
     dateFrom?: Date | undefined;
     dateTo?: Date | undefined;
 }>;
@@ -51,13 +51,13 @@ export declare const PaginationSchema: z.ZodObject<{
     total: z.ZodNumber;
     totalPages: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    page: number;
     limit: number;
+    page: number;
     total: number;
     totalPages: number;
 }, {
-    page: number;
     limit: number;
+    page: number;
     total: number;
     totalPages: number;
 }>;
@@ -72,13 +72,13 @@ export declare const ApiResponseSchema: z.ZodObject<{
         total: z.ZodNumber;
         totalPages: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        page: number;
         limit: number;
+        page: number;
         total: number;
         totalPages: number;
     }, {
-        page: number;
         limit: number;
+        page: number;
         total: number;
         totalPages: number;
     }>>;
@@ -87,8 +87,8 @@ export declare const ApiResponseSchema: z.ZodObject<{
     error?: string | undefined;
     data?: any;
     pagination?: {
-        page: number;
         limit: number;
+        page: number;
         total: number;
         totalPages: number;
     } | undefined;
@@ -97,8 +97,8 @@ export declare const ApiResponseSchema: z.ZodObject<{
     error?: string | undefined;
     data?: any;
     pagination?: {
-        page: number;
         limit: number;
+        page: number;
         total: number;
         totalPages: number;
     } | undefined;

@@ -2,28 +2,80 @@ export interface SiteConfig {
     id: string;
     name: string;
     domain: string;
-    logoUrl: string | null;
-    primaryColor: string | null;
-    secondaryColor: string | null;
-    siteTitle: string | null;
-    siteDescription: string | null;
-    heroTitle: string | null;
-    heroSubtitle: string | null;
-    aboutTitle: string | null;
-    aboutDescription: string | null;
-    contactEmail: string | null;
-    metaTitle: string | null;
-    metaDescription: string | null;
-    metaKeywords: string | null;
-    featuredPostsTitle: string | null;
-    featuredPostsSubtitle: string | null;
-    featuredProductsTitle: string | null;
-    featuredProductsSubtitle: string | null;
-    newsletterTitle: string | null;
-    newsletterSubtitle: string | null;
-    footerText: string | null;
-    socialLinks: any | null;
+    siteTitle: string;
+    siteDescription: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    aboutTitle: string;
+    aboutDescription: string;
+    contactEmail: string;
+    metaTitle: string;
+    metaDescription: string;
+    featuredPostsTitle: string;
+    featuredPostsSubtitle: string;
+    featuredProductsTitle: string;
+    featuredProductsSubtitle: string;
+    newsletterTitle: string;
+    newsletterSubtitle: string;
+    footerText: string;
+    socialLinks: Record<string, string>;
 }
-export declare function getSiteConfig(domain?: string): Promise<SiteConfig>;
-export declare function createDefaultSite(): Promise<void>;
+export interface Product {
+    id: string;
+    name: string;
+    description: string;
+    manufacturer: string;
+    basePrice: number;
+    mainImageUrl: string;
+    specifications: Record<string, any>;
+    siteProduct?: {
+        price: number;
+        discount: number;
+        inStock: boolean;
+        category?: {
+            name: string;
+            slug: string;
+        };
+    };
+    affiliateLinks?: Array<{
+        id: string;
+        name: string;
+        affiliateUrl: string;
+        displayText: string;
+        status: string;
+    }>;
+}
+export interface BlogPost {
+    id: string;
+    title: string;
+    content: string;
+    summary: string;
+    keyTakeaways: string[];
+    featuredImage: string;
+    status: string;
+    publishedAt: Date;
+    category: string;
+    wordCount: number;
+    readingTime: number;
+    affiliateLinks: Array<{
+        product: string;
+        url: string;
+        commission: string;
+    }>;
+}
+export interface Category {
+    id: string;
+    name: string;
+    description: string;
+    slug: string;
+    displayOrder: number;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+}
+export declare function getSiteConfig(domain: string): Promise<SiteConfig | null>;
+export declare function getFeaturedProducts(domain: string, limit?: number): Promise<Product[]>;
+export declare function getCategories(domain: string): Promise<Category[]>;
+export declare function getBlogPosts(domain: string, limit?: number): Promise<BlogPost[]>;
+export declare function getProductCount(domain: string): Promise<number>;
 //# sourceMappingURL=site-config.d.ts.map
